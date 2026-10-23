@@ -18,3 +18,4 @@ scale = Vector2(0.375, 0.375)
 texture = ExtResource("2_dovo2")
 
 [node name="Camera" type="Camera2D" parent="." unique_id=1609676840]
+zoom = Vector2(0.1, 0.1)

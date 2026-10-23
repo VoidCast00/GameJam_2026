@@ -3,6 +3,19 @@
 [ext_resource type="PackedScene" uid="uid://dcbh3t1vcddv8" path="res://scenes/player/player.tscn" id="1_ma5rq"]
 [ext_resource type="Script" uid="uid://ccoeuwkyb0cbq" path="res://scenes/main/gameHandler.gd" id="2_e3dby"]
 [ext_resource type="Texture2D" uid="uid://djtja7xynnqrg" path="res://assets/icon.svg" id="2_gsayk"]
+[ext_resource type="Script" uid="uid://dpvdyqogqjqu8" path="res://scenes/caveGenerator/gameHandler.gd" id="3_gsayk"]
+
+[sub_resource type="Gradient" id="Gradient_kjrfb"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.5)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_0rn35"]
+noise_type = 0
+fractal_octaves = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_em1bs"]
+noise = SubResource("FastNoiseLite_0rn35")
+color_ramp = SubResource("Gradient_kjrfb")
 
 [node name="Game" type="Node2D" unique_id=1476364967]
 
@@ -19,6 +32,11 @@ position = Vector2(444, 37)
 texture = ExtResource("2_gsayk")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="World/Static" unique_id=737530197]
+
+[node name="WorldGenerator" type="Node" parent="World/Static" unique_id=1190584267 node_paths=PackedStringArray("caveTilemap")]
+script = ExtResource("3_gsayk")
+caveNoise = SubResource("NoiseTexture2D_em1bs")
+caveTilemap = NodePath("../TileMapLayer")
 
 [node name="UI" type="Control" parent="." unique_id=383421448]
 layout_mode = 3
