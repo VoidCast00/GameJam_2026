@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://dcbh3t1vcddv8"]
+
+[ext_resource type="Script" uid="uid://bgrn0bl0mxpub" path="res://scenes/player/player.gd" id="1_8afob"]
+[ext_resource type="Texture2D" uid="uid://djtja7xynnqrg" path="res://assets/icon.svg" id="2_dovo2"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3aygq"]
+radius = 25.019993
+
+[node name="Player" type="CharacterBody2D" unique_id=698144906]
+collision_mask = 6
+script = ExtResource("1_8afob")
+
+[node name="HitBox" type="CollisionShape2D" parent="." unique_id=1134588989]
+shape = SubResource("CircleShape2D_3aygq")
+
+[node name="PlayerAsset" type="Sprite2D" parent="." unique_id=1751219166]
+scale = Vector2(0.375, 0.375)
+texture = ExtResource("2_dovo2")
+
+[node name="Camera" type="Camera2D" parent="." unique_id=1609676840]

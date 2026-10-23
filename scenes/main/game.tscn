@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://dxxby0mufpujj"]
+
+[ext_resource type="PackedScene" uid="uid://dcbh3t1vcddv8" path="res://scenes/player/player.tscn" id="1_ma5rq"]
+[ext_resource type="Script" uid="uid://ccoeuwkyb0cbq" path="res://scenes/main/gameHandler.gd" id="2_e3dby"]
+[ext_resource type="Texture2D" uid="uid://djtja7xynnqrg" path="res://assets/icon.svg" id="2_gsayk"]
+
+[node name="Game" type="Node2D" unique_id=1476364967]
+
+[node name="World" type="Node2D" parent="." unique_id=1604233761]
+
+[node name="Entities" type="Node2D" parent="World" unique_id=1991981586]
+
+[node name="Player" parent="World/Entities" unique_id=698144906 instance=ExtResource("1_ma5rq")]
+
+[node name="Static" type="Node2D" parent="World" unique_id=985928390]
+
+[node name="Icon" type="Sprite2D" parent="World/Static" unique_id=2032386562]
+position = Vector2(444, 37)
+texture = ExtResource("2_gsayk")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="World/Static" unique_id=737530197]
+
+[node name="UI" type="Control" parent="." unique_id=383421448]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="UI" unique_id=2068374819]
+
+[node name="Node" type="Node" parent="." unique_id=1531804948]
+script = ExtResource("2_e3dby")
