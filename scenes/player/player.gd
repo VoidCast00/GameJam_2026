@@ -4,9 +4,12 @@ extends CharacterBody2D
 @export var friction = 0.4
 @export var acceleration = 0.1
 @export var rotation_speed = 4
-
 @onready var shooting_point: Marker2D = $ShootingPoint
 @onready var laser: Line2D = $Laser
+@export var caveTilemap:TileMapLayer
+@onready var world_generator: Node = $"../../Static/WorldGenerator"
+
+var LASER_LENGHT := 200
 
 func get_movement_input():
 	var vertical = Input.get_axis("up", "down")
@@ -28,12 +31,25 @@ func _physics_process(delta):
 	move_and_slide()
 
 func _process(delta: float) -> void:
-	var is_clicked = get_click()
-	if(is_clicked):
+	mine()
+
+
+
+func mine():
+	if (!caveTilemap):
+		return
+		
+	var mouse_position = get_global_mouse_position()
+	if(get_click() and global_position.distance_to(mouse_position) < LASER_LENGHT):
+		
+		#show laser
 		laser.show()
-		var mouse_position = get_local_mouse_position()
-		laser.points = PackedVector2Array([Vector2(shooting_point.position.x, shooting_point.position.y), Vector2(mouse_position.x, mouse_position.y)])
+		laser.points = PackedVector2Array([
+			laser.to_local(shooting_point.global_position),
+			laser.to_local(get_global_mouse_position())
+		])
+		#mine
+		world_generator.mine(mouse_position)
+		
 	else:
 		laser.hide()
-	
-		

@@ -3,8 +3,16 @@
 [ext_resource type="Script" uid="uid://bgrn0bl0mxpub" path="res://scenes/player/player.gd" id="1_8afob"]
 [ext_resource type="Texture2D" uid="uid://djtja7xynnqrg" path="res://assets/icon.svg" id="2_dovo2"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_3aygq"]
-radius = 25.019993
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dovo2"]
+radius = 11.0
+height = 58.0
+
+[sub_resource type="Curve" id="Curve_gmlin"]
+_data = [Vector2(0, 0.32584274), 0.0, 0.0, 0, 0, Vector2(1, 0.5842697), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_gmlin"]
+colors = PackedColorArray(0, 0, 0.31764707, 1, 0.48406488, 0.00017943144, 0.48948932, 1)
 
 [node name="Player" type="CharacterBody2D" unique_id=698144906]
 collision_mask = 6
@@ -12,17 +20,22 @@ script = ExtResource("1_8afob")
 
 [node name="HitBox" type="CollisionShape2D" parent="." unique_id=1134588989]
 z_index = 1
-shape = SubResource("CircleShape2D_3aygq")
+shape = SubResource("CapsuleShape2D_dovo2")
 
 [node name="PlayerAsset" type="Sprite2D" parent="." unique_id=1751219166]
-scale = Vector2(0.375, 0.765625)
+scale = Vector2(0.19837275, 0.45419815)
 texture = ExtResource("2_dovo2")
 
 [node name="Camera" type="Camera2D" parent="." unique_id=1609676840]
+zoom = Vector2(2, 2)
 
 [node name="Laser" type="Line2D" parent="." unique_id=2127118092]
-points = PackedVector2Array(0, 0, 0, 0)
-default_color = Color(1, 0, 0, 1)
+z_index = 1
+width_curve = SubResource("Curve_gmlin")
+gradient = SubResource("Gradient_gmlin")
+texture_mode = 1
 
 [node name="ShootingPoint" type="Marker2D" parent="." unique_id=1266603544]
-position = Vector2(0, -41)
+position = Vector2(0, -26)
+
+[node name="RayCast2D" type="RayCast2D" parent="." unique_id=2109613606]
