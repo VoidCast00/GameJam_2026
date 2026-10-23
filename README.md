@@ -2,7 +2,6 @@
 
 ```
 game/
-│
 ├── addons/                  → Plugins from the Asset Library or other sources
 │
 ├── assets/                  → All raw art, sound and visual files
@@ -35,8 +34,5 @@ game/
 │   └── utils/               → General helper functions
 │
 ├── data/                    → Game data (item stats, enemy stats, dialogue)
-│
-├── localization/            → Translation files (optional)
-│
-└── tests/                   → Automated tests (optional)
+
 ```
