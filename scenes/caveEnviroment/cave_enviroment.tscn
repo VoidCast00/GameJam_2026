@@ -8,6 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://xak3e440bhdx" path="res://assets/audio/sfx/player/breaking bloks.mp3" id="5_b6bav"]
 [ext_resource type="Script" uid="uid://ccus05sctsxmx" path="res://scenes/caveEnviroment/perlin_backround.gd" id="5_hyba4"]
 [ext_resource type="Script" uid="uid://bokuosutvx4fr" path="res://scenes/caveEnviroment/transportUp.gd" id="7_k1atb"]
+[ext_resource type="AudioStream" uid="uid://b2sufp58s406l" path="res://assets/audio/sfx/player/oreDestroy.mp3" id="7_w32iq"]
 [ext_resource type="Script" uid="uid://c4gisitxcsjxa" path="res://scenes/caveEnviroment/background_music_manager.gd" id="9_53e16"]
 [ext_resource type="AudioStream" uid="uid://b47ert4sspfga" path="res://assets/audio/music/caveSoundtrack.mp3" id="9_yf8om"]
 [ext_resource type="AudioStream" uid="uid://0i1gv5oi48j2" path="res://assets/audio/sfx/ambience/CaveAmbience.mp3" id="10_iqo5d"]
@@ -610,6 +611,9 @@ tile_set = SubResource("TileSet_vsfrg")
 
 [node name="BlockBreak" type="AudioStreamPlayer" parent="Static/Cave" unique_id=420296650]
 stream = ExtResource("5_b6bav")
+
+[node name="OreBreak" type="AudioStreamPlayer" parent="Static/Cave" unique_id=1785020823]
+stream = ExtResource("7_w32iq")
 
 [node name="OresTilemap" type="TileMapLayer" parent="Static" unique_id=46205129]
 texture_filter = 1
