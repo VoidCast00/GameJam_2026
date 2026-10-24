@@ -1,3 +1,85 @@
 [gd_scene format=3 uid="uid://bp55nk6o06xuj"]
 
+[ext_resource type="Script" uid="uid://eu0sn7th1gci" path="res://scenes/shopEnviroment/customPLayer/custom_player.gd" id="1_ry6u4"]
+[ext_resource type="Texture2D" uid="uid://djtja7xynnqrg" path="res://assets/icon.svg" id="2_x2lbe"]
+[ext_resource type="Script" uid="uid://f41kc4e7q3tx" path="res://scenes/shopEnviroment/shop.gd" id="3_528fk"]
+[ext_resource type="Script" uid="uid://cq8hyljfogs4k" path="res://scenes/shopEnviroment/transport.gd" id="4_k81a4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_x8mcd"]
+radius = 62.514
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3aygq"]
+size = Vector2(6558, 126)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c18aq"]
+size = Vector2(1216, 1300)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x8mcd"]
+size = Vector2(718, 792)
+
 [node name="Shop" type="Node2D" unique_id=2046859950]
+
+[node name="CustomPlayer" type="CharacterBody2D" parent="." unique_id=1560269461]
+collision_mask = 6
+script = ExtResource("1_ry6u4")
+
+[node name="Icon" type="Sprite2D" parent="CustomPlayer" unique_id=61088180]
+texture = ExtResource("2_x2lbe")
+
+[node name="Hitbox" type="CollisionShape2D" parent="CustomPlayer" unique_id=1983985218]
+shape = SubResource("CircleShape2D_x8mcd")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=630826328]
+position = Vector2(51, 337)
+collision_layer = 4
+collision_mask = 3
+
+[node name="Icon" type="Sprite2D" parent="StaticBody2D" unique_id=1403559901]
+position = Vector2(243.5, 0)
+scale = Vector2(51.16406, 1)
+texture = ExtResource("2_x2lbe")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1912339731]
+position = Vector2(232, 0)
+shape = SubResource("RectangleShape2D_3aygq")
+
+[node name="Shop" type="Node2D" parent="." unique_id=1090378436]
+script = ExtResource("3_528fk")
+
+[node name="EnterBox" type="Area2D" parent="Shop" unique_id=127864080]
+position = Vector2(5, 15)
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shop/EnterBox" unique_id=1439994587]
+position = Vector2(2932, -403)
+shape = SubResource("RectangleShape2D_c18aq")
+
+[node name="Shop" type="Sprite2D" parent="Shop" unique_id=516819660]
+position = Vector2(3079, -443)
+scale = Vector2(8.1875, 11.109375)
+texture = ExtResource("2_x2lbe")
+
+[node name="Transport" type="Node2D" parent="." unique_id=685474258]
+script = ExtResource("4_k81a4")
+
+[node name="Icon" type="Sprite2D" parent="Transport" unique_id=711241636]
+position = Vector2(-3051, 1114)
+scale = Vector2(1, 13.2421875)
+texture = ExtResource("2_x2lbe")
+
+[node name="Icon2" type="Sprite2D" parent="Transport" unique_id=1662869996]
+position = Vector2(-3049.0002, -99)
+scale = Vector2(3.9375, 6.171875)
+texture = ExtResource("2_x2lbe")
+
+[node name="EnterArea" type="Area2D" parent="Transport" unique_id=1328667083]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Transport/EnterArea" unique_id=1451094441]
+position = Vector2(-2924, -115)
+shape = SubResource("RectangleShape2D_x8mcd")
+
+[connection signal="body_entered" from="Shop/EnterBox" to="Shop" method="_on_enter_box_body_entered"]
+[connection signal="body_exited" from="Shop/EnterBox" to="Shop" method="_on_enter_box_body_exited"]
+[connection signal="body_entered" from="Transport/EnterArea" to="Transport" method="_on_enter_area_body_entered"]
+[connection signal="body_exited" from="Transport/EnterArea" to="Transport" method="_on_enter_area_body_exited"]

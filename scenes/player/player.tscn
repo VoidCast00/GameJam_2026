@@ -15,6 +15,16 @@ point_count = 2
 [sub_resource type="Gradient" id="Gradient_gmlin"]
 colors = PackedColorArray(0, 0, 0.31764707, 1, 0.48406488, 0.00017943144, 0.48948932, 1)
 
+[sub_resource type="Gradient" id="Gradient_dovo2"]
+offsets = PackedFloat32Array(0.5283019, 0.8584906, 0.9716981)
+colors = PackedColorArray(1, 1, 1, 1, 0.44881737, 0.44881737, 0.44881737, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_3aygq"]
+gradient = SubResource("Gradient_dovo2")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.13529412, 0.12941177)
+
 [node name="Player" type="CharacterBody2D" unique_id=698144906]
 collision_mask = 6
 script = ExtResource("1_8afob")
@@ -26,9 +36,6 @@ shape = SubResource("CapsuleShape2D_dovo2")
 [node name="PlayerAsset" type="Sprite2D" parent="." unique_id=1751219166]
 scale = Vector2(0.19837275, 0.45419815)
 texture = ExtResource("2_dovo2")
-
-[node name="Camera" type="Camera2D" parent="." unique_id=1609676840]
-zoom = Vector2(2, 2)
 
 [node name="Laser" type="Line2D" parent="." unique_id=2127118092]
 z_index = -1
@@ -47,3 +54,8 @@ collision_mask = 4
 [node name="LaserSound" type="AudioStreamPlayer" parent="." unique_id=586568699]
 stream = ExtResource("3_gmlin")
 bus = &"SFX"
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1046057679]
+scale = Vector2(16.46875, 15.350958)
+blend_mode = 2
+texture = SubResource("GradientTexture2D_3aygq")

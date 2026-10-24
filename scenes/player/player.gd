@@ -1,3 +1,4 @@
+class_name Player
 extends CharacterBody2D
 
 #movement==================================================
@@ -9,7 +10,7 @@ extends CharacterBody2D
 #mining============================================
 @export var cave_tilemap: TileMapLayer
 const LASER_LENGTH := 200.0
-const CELL_HIT_RANGE := 30.0
+const CELL_HIT_RANGE := 60.0
 var mining_pos:Vector2
 var mining_pos_last_frame:Vector2
 var mining_state:bool = false
@@ -46,9 +47,11 @@ func move(delta: float) -> void:
 	if direction != Vector2.ZERO:
 		velocity = velocity.lerp(direction * speed, acceleration)
 		rotation = lerp_angle(rotation, direction.angle() + PI / 2, rotation_speed * delta)
+		
 	else:
 		velocity = velocity.lerp(Vector2.ZERO, friction)
-
+	if is_clicking():
+		rotation = lerp_angle(rotation, global_position.angle_to_point(get_global_mouse_position()) + PI * 0.5, (rotation_speed * delta) )
 	move_and_slide()
 
 
