@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://fm42lqidpgmx"]
 
-[ext_resource type="Script" uid="uid://dft3a0yq81n11" path="res://scenes/ui/main_menu.gd" id="1_j3ryx"]
-[ext_resource type="Texture2D" uid="uid://87ffhaxe2a8x" path="res://assets/Nebula.png" id="1_ph80j"]
+[ext_resource type="Script" uid="uid://dft3a0yq81n11" path="res://scenes/ui/mainMenu/main_menu.gd" id="1_bysf3"]
+[ext_resource type="Texture2D" uid="uid://87ffhaxe2a8x" path="res://assets/Nebula.png" id="2_tdf6f"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ofx7d"]
-texture = ExtResource("1_ph80j")
+texture = ExtResource("2_tdf6f")
 modulate_color = Color(0.3953672, 0.39536718, 0.39536715, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8iceo"]
@@ -43,7 +43,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_j3ryx")
+script = ExtResource("1_bysf3")
 
 [node name="Panel" type="Panel" parent="." unique_id=739571034]
 z_index = -1

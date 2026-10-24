@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://bokuosutvx4fr" path="res://scenes/caveEnviroment/transportUp.gd" id="7_k1atb"]
 [ext_resource type="Script" uid="uid://c4gisitxcsjxa" path="res://scenes/caveEnviroment/background_music_manager.gd" id="9_53e16"]
 [ext_resource type="AudioStream" uid="uid://b47ert4sspfga" path="res://assets/audio/music/caveSoundtrack.mp3" id="9_yf8om"]
+[ext_resource type="AudioStream" uid="uid://0i1gv5oi48j2" path="res://assets/audio/sfx/ambience/CaveAmbience.mp3" id="10_iqo5d"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3aygq"]
 shader = ExtResource("4_g0opn")
@@ -525,6 +526,9 @@ layer = -1
 script = ExtResource("9_53e16")
 
 [node name="Ambience" type="AudioStreamPlayer" parent="BackgroundMusicManager" unique_id=385490424]
+stream = ExtResource("10_iqo5d")
+volume_db = 10.0
+mix_target = 1
 
 [node name="Soundtrack" type="AudioStreamPlayer" parent="BackgroundMusicManager" unique_id=2018717848]
 stream = ExtResource("9_yf8om")
