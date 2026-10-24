@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://fm42lqidpgmx"]
 
 [ext_resource type="Script" uid="uid://dft3a0yq81n11" path="res://scenes/ui/mainMenu/main_menu.gd" id="1_bysf3"]
-[ext_resource type="Texture2D" uid="uid://87ffhaxe2a8x" path="res://assets/Nebula.png" id="2_tdf6f"]
+[ext_resource type="Texture2D" uid="uid://87ffhaxe2a8x" path="res://assets/background/Nebula.png" id="2_tdf6f"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ofx7d"]
 texture = ExtResource("2_tdf6f")

@@ -20,6 +20,3 @@ script = ExtResource("2_e3dby")
 WaterEnviroment = ExtResource("1_e3dby")
 ShopEnviroment = ExtResource("4_gsayk")
 menu = NodePath("../UI/CanvasLayer")
-
-[node name="waterSoundtrack" type="AudioStreamPlayer2D" parent="." unique_id=1821612887]
-bus = &"Music"
