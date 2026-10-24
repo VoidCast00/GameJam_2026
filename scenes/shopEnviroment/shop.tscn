@@ -32,7 +32,7 @@ texture_filter = 1
 
 [node name="Backround" type="Sprite2D" parent="." unique_id=993751961]
 texture_filter = 1
-position = Vector2(-88.00006, 439)
+position = Vector2(-71.00001, 438)
 scale = Vector2(7, 7)
 texture = ExtResource("9_uaush")
 metadata/_edit_lock_ = true
@@ -49,6 +49,7 @@ position = Vector2(27.000122, 760)
 scale = Vector2(0.99999994, 0.99999994)
 collision_layer = 4
 collision_mask = 3
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floor" unique_id=1912339731]
 z_index = 1

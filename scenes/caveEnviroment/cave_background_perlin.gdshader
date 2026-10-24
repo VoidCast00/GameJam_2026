@@ -4,8 +4,8 @@ shader_type canvas_item;
 uniform vec2 offset = vec2(0.0);
 uniform float scale = 0.004;
 uniform float parallax = 0.5;
-uniform vec4 color_a : source_color = vec4(0.02, 0.05, 0.12, 1.0);
-uniform vec4 color_b : source_color = vec4(0.05, 0.25, 0.4, 1.0);
+uniform vec4 color_a : source_color = vec4(0.02, 0.04, 0.12, 1.0);
+uniform vec4 color_b : source_color = vec4(0.06, 0.25, 0.4, 1.0);
 uniform vec2 camera_pos = vec2(0.0);
 varying vec2 world_pos;
 

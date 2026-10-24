@@ -59,7 +59,14 @@ corner_radius_bottom_right = 32
 spacing_top = 3
 spacing_bottom = 3
 
-[node name="ShopUI" type="Control" unique_id=1585925505 node_paths=PackedStringArray("item_list", "sell_value", "Sell_All")]
+[sub_resource type="SystemFont" id="SystemFont_8f7lt"]
+
+[sub_resource type="FontVariation" id="FontVariation_afst3"]
+base_font = SubResource("SystemFont_8f7lt")
+variation_embolden = 2.0
+variation_transform = Transform2D(1.11, 0, -0.25, 1.57, 0, 0)
+
+[node name="ShopUI" type="Control" unique_id=1585925505 node_paths=PackedStringArray("item_list", "sell_value", "Sell_All", "MoneyParticle", "timer")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -71,6 +78,8 @@ itemScene = ExtResource("2_afst3")
 item_list = NodePath("Pages/Sell/HBoxContainer/ItemPanel/ItemList")
 sell_value = NodePath("Pages/Sell/HBoxContainer/PanelContainer/VBoxContainer/TextSellValue")
 Sell_All = NodePath("Pages/Sell/HBoxContainer/PanelContainer/VBoxContainer/Sell_All")
+MoneyParticle = NodePath("MoneyParticle")
+timer = NodePath("MoneyParticle/Timer")
 
 [node name="Buttons" type="HBoxContainer" parent="." unique_id=1018599329]
 layout_mode = 1
@@ -133,6 +142,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="Sell" type="PanelContainer" parent="Pages" unique_id=372834407]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -207,5 +217,29 @@ text = " SELL ALL!! "
 script = ExtResource("2_jgblb")
 metadata/_custom_type_script = "uid://cpe2ml4pgkvvj"
 
+[node name="MoneyParticle" type="RigidBody2D" parent="." unique_id=1485607575]
+visible = false
+position = Vector2(921.715, 510)
+collision_layer = 0
+collision_mask = 0
+freeze = true
+
+[node name="Cash" type="Label" parent="MoneyParticle" unique_id=245706442]
+offset_right = 39.0
+offset_bottom = 23.0
+scale = Vector2(6, 6)
+theme_override_colors/font_color = Color(0.39250132, 0.68153924, 0.19562408, 1)
+theme_override_colors/font_shadow_color = Color(0.23608004, 0.39, 0.1404, 0.92156863)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = -7
+theme_override_constants/shadow_offset_y = 1
+theme_override_fonts/font = SubResource("FontVariation_afst3")
+theme_override_font_sizes/font_size = 8
+text = "100$"
+
+[node name="Timer" type="Timer" parent="MoneyParticle" unique_id=1381803116]
+wait_time = 2.0
+
 [connection signal="pressed" from="Buttons/Buy" to="." method="_on_buy_pressed"]
 [connection signal="pressed" from="Buttons/Sell" to="." method="_on_sell_pressed"]
+[connection signal="timeout" from="MoneyParticle/Timer" to="." method="_on_timer_timeout"]
