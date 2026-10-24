@@ -1,0 +1,14 @@
+[gd_resource type="NoiseTexture2D" format=3 uid="uid://crs1s5er4yhtj"]
+
+[sub_resource type="Gradient" id="Gradient_kjrfb"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.5)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_0rn35"]
+frequency = 0.0242
+fractal_octaves = 8
+cellular_distance_function = 2
+
+[resource]
+noise = SubResource("FastNoiseLite_0rn35")
+color_ramp = SubResource("Gradient_kjrfb")

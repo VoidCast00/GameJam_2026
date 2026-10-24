@@ -5,6 +5,8 @@
 [ext_resource type="AudioStream" uid="uid://brhghwo45pwr7" path="res://assets/audio/sfx/player/tazenie.mp3" id="3_gmlin"]
 [ext_resource type="Texture2D" uid="uid://bds22acncap3y" path="res://assets/player/animations/Scuba_Diver_LegsSprite.png" id="3_lvxji"]
 [ext_resource type="AudioStream" uid="uid://0sye1sxv3rja" path="res://assets/audio/sfx/player/breathing.mp3" id="5_p47bc"]
+[ext_resource type="Script" uid="uid://chg646lqd83o" path="res://scenes/player/inventory.gd" id="4_p47bc"]
+[ext_resource type="Script" uid="uid://b2ckqh0k0xeai" path="res://scenes/player/inventory_ui.gd" id="5_75vfm"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dovo2"]
 height = 42.0
@@ -393,8 +395,6 @@ position = Vector2(0, -26)
 [node name="RayCast2D" type="RayCast2D" parent="." unique_id=2109613606]
 collision_mask = 4
 
-[node name="Inventory" type="Node" parent="." unique_id=1056460378]
-
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=1046057679]
 position = Vector2(0, -0.76934826)
 scale = Vector2(16.46875, 15.350958)
@@ -409,3 +409,35 @@ bus = &"SFX"
 [node name="Breathing" type="AudioStreamPlayer" parent="." unique_id=316902766]
 stream = ExtResource("5_p47bc")
 volume_db = -5.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=470083292]
+
+[node name="Inventory" type="Node" parent="CanvasLayer" unique_id=1056460378]
+script = ExtResource("4_p47bc")
+
+[node name="InventoryUI" type="PanelContainer" parent="CanvasLayer" unique_id=913355198]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -240.0
+offset_top = -240.0
+offset_right = 240.0
+offset_bottom = 240.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("5_75vfm")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/InventoryUI" unique_id=1351990200]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/InventoryUI/MarginContainer" unique_id=1083174710]
+layout_mode = 2
+
+[node name="Name" type="Label" parent="CanvasLayer/InventoryUI/MarginContainer/VBoxContainer" unique_id=1594049949]
+layout_mode = 2
+theme_override_font_sizes/font_size = 100
+
+[node name="ItemList" type="VBoxContainer" parent="CanvasLayer/InventoryUI/MarginContainer/VBoxContainer" unique_id=654960682]
+layout_mode = 2
