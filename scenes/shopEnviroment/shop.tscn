@@ -11,12 +11,15 @@
 [ext_resource type="AudioStream" uid="uid://c3dhqtrcibjit" path="res://assets/audio/sfx/ambience/beachambience.mp3" id="8_5pml0"]
 [ext_resource type="Texture2D" uid="uid://i4ojbefinv88" path="res://assets/surface/Surface_exprts.png" id="9_uaush"]
 
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_uaush"]
+distance = 69.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uaush"]
+size = Vector2(741.50006, 347)
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_528fk"]
 radius = 32.0
 height = 106.0
-
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_uaush"]
-distance = 69.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c18aq"]
 size = Vector2(512, 318.34937)
@@ -24,11 +27,52 @@ size = Vector2(512, 318.34937)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x8mcd"]
 size = Vector2(379, 792)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_uaush"]
-size = Vector2(741.50006, 347)
-
 [node name="Shop" type="Node2D" unique_id=2046859950]
 texture_filter = 1
+
+[node name="Backround" type="Sprite2D" parent="." unique_id=993751961]
+texture_filter = 1
+position = Vector2(-978, 439)
+scale = Vector2(7, 7)
+texture = ExtResource("9_uaush")
+metadata/_edit_lock_ = true
+
+[node name="Floor" type="StaticBody2D" parent="." unique_id=630826328]
+position = Vector2(27.000122, 760)
+scale = Vector2(0.99999994, 0.99999994)
+collision_layer = 4
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor" unique_id=1912339731]
+z_index = 1
+position = Vector2(-1360, 33)
+shape = SubResource("WorldBoundaryShape2D_uaush")
+
+[node name="rightBorder" type="StaticBody2D" parent="." unique_id=1445592504]
+position = Vector2(1717.9999, 405)
+scale = Vector2(0.99999994, 0.99999994)
+collision_layer = 4
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="rightBorder" unique_id=1329526070]
+z_index = 3
+position = Vector2(-722.9998, 53)
+rotation = -1.5707964
+scale = Vector2(0.9999998, 0.9999998)
+shape = SubResource("RectangleShape2D_uaush")
+
+[node name="leftBorder" type="StaticBody2D" parent="." unique_id=144425264]
+position = Vector2(1717.9999, 405)
+scale = Vector2(0.99999994, 0.99999994)
+collision_layer = 4
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="leftBorder" unique_id=822103694]
+z_index = 3
+position = Vector2(-4474.9995, 158)
+rotation = -1.5707964
+scale = Vector2(0.9999997, 0.9999997)
+shape = SubResource("RectangleShape2D_uaush")
 
 [node name="CustomPlayer" type="CharacterBody2D" parent="." unique_id=1560269461]
 z_index = 2
@@ -49,16 +93,6 @@ offset = Vector2(0, -200)
 zoom = Vector2(0.4, 0.4)
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0
-
-[node name="Floor" type="StaticBody2D" parent="." unique_id=630826328]
-position = Vector2(27, 760)
-collision_layer = 4
-collision_mask = 3
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor" unique_id=1912339731]
-z_index = 1
-position = Vector2(-1360, 33)
-shape = SubResource("WorldBoundaryShape2D_uaush")
 
 [node name="Shop" type="Node2D" parent="." unique_id=1090378436]
 position = Vector2(1735, 327)
@@ -147,39 +181,6 @@ stream = ExtResource("7_5pml0")
 stream = ExtResource("8_5pml0")
 volume_db = -20.0
 mix_target = 1
-
-[node name="Backround" type="Sprite2D" parent="." unique_id=993751961]
-texture_filter = 1
-position = Vector2(-978, 439)
-scale = Vector2(7, 7)
-texture = ExtResource("9_uaush")
-metadata/_edit_lock_ = true
-
-[node name="rightBorder" type="StaticBody2D" parent="." unique_id=1445592504]
-position = Vector2(1717.9999, 405)
-scale = Vector2(0.99999994, 0.99999994)
-collision_layer = 4
-metadata/_edit_lock_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="rightBorder" unique_id=1329526070]
-z_index = 3
-position = Vector2(-722.9998, 53)
-rotation = -1.5707964
-scale = Vector2(0.9999998, 0.9999998)
-shape = SubResource("RectangleShape2D_uaush")
-
-[node name="leftBorder" type="StaticBody2D" parent="." unique_id=144425264]
-position = Vector2(1717.9999, 405)
-scale = Vector2(0.99999994, 0.99999994)
-collision_layer = 4
-metadata/_edit_lock_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="leftBorder" unique_id=822103694]
-z_index = 3
-position = Vector2(-4475.0005, 158)
-rotation = -1.5707964
-scale = Vector2(0.9999998, 0.9999998)
-shape = SubResource("RectangleShape2D_uaush")
 
 [connection signal="body_entered" from="Shop/EnterBox" to="Shop" method="_on_enter_box_body_entered"]
 [connection signal="body_exited" from="Shop/EnterBox" to="Shop" method="_on_enter_box_body_exited"]
