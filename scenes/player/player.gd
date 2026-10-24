@@ -59,7 +59,6 @@ func move(delta: float) -> void:
 
 #mine=======================================================================
 func mine(delta) -> void:
-	#print("player: " ,mining_state)
 	if not cave_tilemap or not can_mine():
 		laser.hide()
 		LaserSound.stop()
