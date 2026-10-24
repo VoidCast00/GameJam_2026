@@ -614,6 +614,7 @@ stream = ExtResource("5_b6bav")
 [node name="PointLight2D" type="PointLight2D" parent="Static/Cave" unique_id=413666573]
 
 [node name="OresTilemap" type="TileMapLayer" parent="Static" unique_id=46205129]
+texture_filter = 1
 tile_set = SubResource("TileSet_pd0ml")
 
 [node name="WorldGenerator" type="Node" parent="Static" unique_id=85954663 node_paths=PackedStringArray("caveTilemap", "oreTilemap", "transport")]

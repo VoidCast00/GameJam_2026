@@ -1,20 +1,28 @@
 [gd_scene format=3 uid="uid://dxxby0mufpujj"]
 
 [ext_resource type="PackedScene" uid="uid://ba7vddmnq4tp" path="res://scenes/caveEnviroment/cave_enviroment.tscn" id="1_e3dby"]
+[ext_resource type="Shader" uid="uid://4o44qqvquetx" path="res://scenes/main/PixelPerfect.gdshader" id="1_gf1f2"]
 [ext_resource type="Script" uid="uid://ccoeuwkyb0cbq" path="res://scenes/main/gameHandler.gd" id="2_e3dby"]
 [ext_resource type="PackedScene" uid="uid://fm42lqidpgmx" path="res://scenes/ui/mainMenu/mainMenu.tscn" id="4_gf1f2"]
 [ext_resource type="PackedScene" uid="uid://bp55nk6o06xuj" path="res://scenes/shopEnviroment/shop.tscn" id="4_gsayk"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uaush"]
+shader = ExtResource("1_gf1f2")
+shader_parameter/cam_offset = Vector2(0, 0)
+
 [node name="Game" type="Node2D" unique_id=1476364967]
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=1451652045]
-offset_right = 640.0
-offset_bottom = 360.0
+material = SubResource("ShaderMaterial_uaush")
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 638.0
+offset_bottom = 358.0
 scale = Vector2(3, 3)
 
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=1128228576]
 handle_input_locally = false
-size = Vector2i(640, 360)
+size = Vector2i(642, 362)
 render_target_update_mode = 4
 
 [node name="UI" type="Control" parent="." unique_id=383421448]
