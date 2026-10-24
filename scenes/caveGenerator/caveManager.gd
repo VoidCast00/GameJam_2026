@@ -39,6 +39,7 @@ const CRYSTAL_TILES := {
 @export var transport: StaticBody2D
 
 @onready var block_break: AudioStreamPlayer = $"../Cave/BlockBreak"
+@onready var ore_break: AudioStreamPlayer = $"../Cave/OreBreak"
 
 #ores: cell : gold / amethyst
 var ores := {}
@@ -60,8 +61,17 @@ func _process(delta: float) -> void:
 
 	mining_timer += delta
 	if mining_timer >= MINING_TIMES.get(mining_type, 1.0):
-		block_break.play()
 		Global.mined.emit(mining_type)
+		match mining_type:
+			"rock":
+				block_break.play()
+			"gold":
+				ore_break.play()
+			"amethyst":
+				ore_break.play()
+			"ruby":
+				ore_break.play()
+
 		_remove_cells([mining_cell])
 		stopMining()
 

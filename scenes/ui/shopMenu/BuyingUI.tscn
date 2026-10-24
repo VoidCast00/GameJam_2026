@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cgl2trpwxfw1n"]
 
-[ext_resource type="Script" uid="uid://belg2q2hjeqgx" path="res://scenes/ui/shopMenu/shop_ui.gd" id="1_c4wdb"]
+[ext_resource type="Script" uid="uid://belg2q2hjeqgx" path="res://scenes/ui/shopMenu/shop_ui.gd" id="1_lf3py"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8iceo"]
 corner_radius_top_left = 16
@@ -11,14 +11,14 @@ corner_radius_bottom_left = 16
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m1ae1"]
 bg_color = Color(1, 1, 1, 1)
 
-[node name="ShopUI" type="Control" unique_id=1585925505]
+[node name="BuyingUI" type="Control" unique_id=1585925505]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_c4wdb")
+script = ExtResource("1_lf3py")
 
 [node name="VBoxContainer" type="HBoxContainer" parent="." unique_id=1018599329]
 layout_mode = 1

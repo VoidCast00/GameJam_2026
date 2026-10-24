@@ -4,7 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://djtja7xynnqrg" path="res://assets/icon.svg" id="2_x2lbe"]
 [ext_resource type="Script" uid="uid://f41kc4e7q3tx" path="res://scenes/shopEnviroment/shop.gd" id="3_528fk"]
 [ext_resource type="Script" uid="uid://cq8hyljfogs4k" path="res://scenes/shopEnviroment/transportDown.gd" id="4_k81a4"]
-[ext_resource type="PackedScene" uid="uid://cgl2trpwxfw1n" path="res://scenes/ui/shopMenu/shopUI.tscn" id="5_k81a4"]
+[ext_resource type="PackedScene" uid="uid://cgl2trpwxfw1n" path="res://scenes/ui/shopMenu/BuyingUI.tscn" id="5_k81a4"]
+[ext_resource type="Texture2D" uid="uid://be3eocojim3dx" path="res://assets/places/Boat.png" id="5_mkqyk"]
 [ext_resource type="Script" uid="uid://bsjgplsdrqgcu" path="res://scenes/shopEnviroment/backgroundmusic_handler.gd" id="6_vnm1a"]
 [ext_resource type="AudioStream" uid="uid://df38h0acwkb5x" path="res://assets/audio/music/beachTrack.mp3" id="7_5pml0"]
 [ext_resource type="AudioStream" uid="uid://c3dhqtrcibjit" path="res://assets/audio/sfx/ambience/beachambience.mp3" id="8_5pml0"]
@@ -90,6 +91,9 @@ text = "Go down"
 metadata/_edit_use_anchors_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Transport" unique_id=2143626126]
+position = Vector2(-799.9999, 305)
+scale = Vector2(5, 5)
+texture = ExtResource("5_mkqyk")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1392447750]
 
