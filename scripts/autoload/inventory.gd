@@ -1,6 +1,5 @@
-extends Node
+extends  Node
 
-#tells ui when something changes
 signal changed(item: String, amount: int)
 
 #item name -> amount

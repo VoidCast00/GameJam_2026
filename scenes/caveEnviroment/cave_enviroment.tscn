@@ -605,6 +605,8 @@ tile_set = SubResource("TileSet_vsfrg")
 [node name="BlockBreak" type="AudioStreamPlayer" parent="Static/Cave" unique_id=420296650]
 stream = ExtResource("5_b6bav")
 
+[node name="PointLight2D" type="PointLight2D" parent="Static/Cave" unique_id=413666573]
+
 [node name="OresTilemap" type="TileMapLayer" parent="Static" unique_id=46205129]
 tile_set = SubResource("TileSet_pd0ml")
 

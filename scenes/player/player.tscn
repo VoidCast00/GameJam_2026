@@ -4,7 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://of43x4akss18" path="res://assets/player/animations/Scuba_Diver_Torso.png" id="2_gmlin"]
 [ext_resource type="AudioStream" uid="uid://brhghwo45pwr7" path="res://assets/audio/sfx/player/tazenie.mp3" id="3_gmlin"]
 [ext_resource type="Texture2D" uid="uid://bds22acncap3y" path="res://assets/player/animations/Scuba_Diver_LegsSprite.png" id="3_lvxji"]
-[ext_resource type="Script" uid="uid://chg646lqd83o" path="res://scenes/player/inventory.gd" id="4_p47bc"]
 [ext_resource type="Script" uid="uid://b2ckqh0k0xeai" path="res://scenes/player/inventory_ui.gd" id="5_75vfm"]
 [ext_resource type="AudioStream" uid="uid://0sye1sxv3rja" path="res://assets/audio/sfx/player/breathing.mp3" id="5_p47bc"]
 
@@ -415,9 +414,6 @@ stream = ExtResource("5_p47bc")
 volume_db = -5.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=470083292]
-
-[node name="Inventory" type="Node" parent="CanvasLayer" unique_id=1056460378]
-script = ExtResource("4_p47bc")
 
 [node name="InventoryUI" type="PanelContainer" parent="CanvasLayer" unique_id=913355198]
 anchors_preset = 8
