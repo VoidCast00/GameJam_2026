@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://clf2jhe35jjp6" path="res://scenes/caveGenerator/CaveTileMap.png" id="2_smjkd"]
 [ext_resource type="Script" uid="uid://dpvdyqogqjqu8" path="res://scenes/caveGenerator/caveManager.gd" id="3_g0opn"]
 [ext_resource type="Shader" uid="uid://bximonf5agbam" path="res://scenes/caveEnviroment/cave_background_perlin.gdshader" id="4_g0opn"]
+[ext_resource type="AudioStream" uid="uid://xak3e440bhdx" path="res://assets/audio/sfx/player/breaking bloks.mp3" id="5_b6bav"]
 [ext_resource type="Script" uid="uid://ccus05sctsxmx" path="res://scenes/caveEnviroment/perlin_backround.gd" id="5_hyba4"]
 [ext_resource type="Script" uid="uid://bokuosutvx4fr" path="res://scenes/caveEnviroment/transport.gd" id="7_k1atb"]
 
@@ -486,6 +487,9 @@ color = Color(0, 0, 0, 1)
 [node name="Cave" type="TileMapLayer" parent="Static" unique_id=1651881328]
 texture_filter = 1
 tile_set = SubResource("TileSet_vsfrg")
+
+[node name="BlockBreak" type="AudioStreamPlayer" parent="Static/Cave" unique_id=420296650]
+stream = ExtResource("5_b6bav")
 
 [node name="Crystals" type="TileMapLayer" parent="Static" unique_id=369582150]
 tile_set = SubResource("TileSet_3aygq")

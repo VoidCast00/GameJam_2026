@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://xak3e440bhdx"
+path="res://.godot/imported/breaking bloks.mp3-e8b76606a35383fe685d73417075b050.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/sfx/player/breaking bloks.mp3"
+dest_files=["res://.godot/imported/breaking bloks.mp3-e8b76606a35383fe685d73417075b050.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

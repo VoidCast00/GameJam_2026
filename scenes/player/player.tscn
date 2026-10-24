@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bgrn0bl0mxpub" path="res://scenes/player/player.gd" id="1_8afob"]
 [ext_resource type="Texture2D" uid="uid://djtja7xynnqrg" path="res://assets/icon.svg" id="2_dovo2"]
-[ext_resource type="AudioStream" uid="uid://dfpppyg8sbvrx" path="res://assets/audio/sfx/player/tazenie_laser.mp3" id="3_gmlin"]
+[ext_resource type="AudioStream" uid="uid://brhghwo45pwr7" path="res://assets/audio/sfx/player/tazenie.mp3" id="3_gmlin"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dovo2"]
 radius = 11.0
@@ -51,11 +51,12 @@ collision_mask = 4
 
 [node name="Inventory" type="Node" parent="." unique_id=1056460378]
 
-[node name="LaserSound" type="AudioStreamPlayer" parent="." unique_id=586568699]
-stream = ExtResource("3_gmlin")
-bus = &"SFX"
-
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=1046057679]
 scale = Vector2(16.46875, 15.350958)
 blend_mode = 2
 texture = SubResource("GradientTexture2D_3aygq")
+
+[node name="LaserSound" type="AudioStreamPlayer" parent="." unique_id=586568699]
+stream = ExtResource("3_gmlin")
+max_polyphony = 5
+bus = &"SFX"

@@ -4,6 +4,8 @@ extends Node
 @export var WaterEnviroment: PackedScene
 @export var ShopEnviroment: PackedScene
 @export var menu:CanvasLayer
+@onready var waterSoundtrack: AudioStreamPlayer2D = $"../waterSoundtrack"
+
 #current environment
 var current_env: Node = null
 
@@ -12,6 +14,7 @@ func _ready() -> void:
 	Global.loadWaterEnviroment.connect(loadWaterEnviroment)
 	Global.loadShopEnviroment.connect(loadShopEnviroment)
 	Global.exitGame.connect(exitGame)
+	
 
 func loadWaterEnviroment() -> void:
 	menu.hide()

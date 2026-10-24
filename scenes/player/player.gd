@@ -7,6 +7,7 @@ extends CharacterBody2D
 @export var acceleration: float = 0.1
 @export var rotation_speed: float = 4
 
+
 #mining============================================
 @export var cave_tilemap: TileMapLayer
 const LASER_LENGTH := 200.0
@@ -21,6 +22,8 @@ var mining_state_last_frame:bool = false
 @onready var ray_cast: RayCast2D = $RayCast2D
 @export var world_generator: Node 
 @onready var LaserSound: AudioStreamPlayer = $LaserSound
+@onready var breaking_block_sound: AudioStreamPlayer = $BreakingBlockSound
+
 
 
 func _physics_process(delta: float) -> void:

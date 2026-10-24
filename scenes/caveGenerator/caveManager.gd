@@ -5,6 +5,8 @@ extends Node
 @export var caveTilemap: TileMapLayer
 @export var cristalTilemap: TileMapLayer
 
+@onready var BlockBreak: AudioStreamPlayer = $"../Cave/BlockBreak"
+
 const MAP_SIZE =  200
 var terrain_cells_arr:Array[Vector2i]
 var cristal_ceels_arr:Array[Vector2i]
@@ -38,6 +40,7 @@ func _process(delta: float) -> void:
 	if (mining_state):
 		mining_timer += delta
 	if mining_timer > MINING_ROCK :
+		BlockBreak.play()
 		print("mined")
 		mining_timer = 0
 		_mine(miningPos)
