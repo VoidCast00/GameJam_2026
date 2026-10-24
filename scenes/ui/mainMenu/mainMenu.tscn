@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dft3a0yq81n11" path="res://scenes/ui/mainMenu/main_menu.gd" id="1_bysf3"]
 [ext_resource type="Texture2D" uid="uid://87ffhaxe2a8x" path="res://assets/background/Nebula.png" id="2_tdf6f"]
+[ext_resource type="AudioStream" uid="uid://by38ngk5om3hu" path="res://assets/audio/music/Utopia - mainMenuSoundtrack.mp3" id="3_tdf6f"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ofx7d"]
 texture = ExtResource("2_tdf6f")
@@ -156,6 +157,9 @@ theme_override_font_sizes/font_size = 60
 text = "Water Miner"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Utopia - mainMenuSoundtrack" type="AudioStreamPlayer" parent="." unique_id=824638409]
+stream = ExtResource("3_tdf6f")
 
 [connection signal="pressed" from="VBoxContainer/start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="VBoxContainer/exit" to="." method="_on_exit_pressed"]

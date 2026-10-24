@@ -8,6 +8,10 @@ extends Node
 @export var oxygen_gauge: Control 
 
 
+
+
+
+
 #current environment
 var current_env: Node = null
 var is_loading := false
@@ -71,3 +75,6 @@ func load_env(scene: PackedScene) -> void:
 	#done
 	Global.loading_text.hide()
 	is_loading = false
+		
+		
+		
