@@ -1,6 +1,6 @@
 extends PanelContainer
 
-@onready var inventory:Node = $"../Inventory"
+@onready var inventory:Node = Inventory
 @onready var item_list: VBoxContainer = $MarginContainer/VBoxContainer/ItemList
 
 
