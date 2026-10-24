@@ -375,6 +375,7 @@ position = Vector2(0, 15)
 rotation = -1.5707964
 sprite_frames = SubResource("SpriteFrames_0y4ya")
 autoplay = "default"
+frame_progress = 0.018961778
 
 [node name="Laser" type="Line2D" parent="." unique_id=2127118092]
 z_index = -1

@@ -44,7 +44,8 @@ shape = SubResource("CapsuleShape2D_528fk")
 
 [node name="Camera2D" type="Camera2D" parent="CustomPlayer" unique_id=190721130]
 texture_filter = 1
-zoom = Vector2(0.6, 0.6)
+offset = Vector2(0, -200)
+zoom = Vector2(0.4, 0.4)
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0
 
@@ -159,7 +160,7 @@ collision_layer = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="rightBorder" unique_id=1329526070]
 z_index = 3
-position = Vector2(-1536.4998, -3)
+position = Vector2(-722.9998, 53)
 rotation = -1.5707964
 scale = Vector2(0.9999998, 0.9999998)
 shape = SubResource("RectangleShape2D_uaush")
