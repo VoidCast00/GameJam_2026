@@ -6,11 +6,90 @@
 [ext_resource type="Script" uid="uid://b2ckqh0k0xeai" path="res://scenes/player/inventory_ui.gd" id="3_0rn35"]
 [ext_resource type="PackedScene" uid="uid://fm42lqidpgmx" path="res://scenes/ui/mainMenu/mainMenu.tscn" id="4_gf1f2"]
 [ext_resource type="PackedScene" uid="uid://bp55nk6o06xuj" path="res://scenes/shopEnviroment/shop.tscn" id="4_gsayk"]
-[ext_resource type="Script" uid="uid://djjdafuujwy1j" path="res://scenes/player/oxigen_ui.gd" id="4_kjrfb"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_uaush"]
 shader = ExtResource("1_gf1f2")
 shader_parameter/cam_offset = Vector2(0, 0)
+
+[sub_resource type="GDScript" id="GDScript_em1bs"]
+script/source = "extends Control
+# WARNING: AI GENERATED UI
+#colors
+const BG := Color(0.07, 0.07, 0.08, 0.85)
+const TEXT := Color(0.92, 0.91, 0.88)
+const MUTED := Color(0.55, 0.55, 0.55)
+const OFF := Color(1, 1, 1, 0.08)
+const FILL := Color(0.78, 0.86, 0.9)
+const RED := Color(0.9, 0.25, 0.2)
+
+#settings
+const LOW := 0.25        #blink below 25%
+const SEGMENTS := 36
+const THICKNESS := 6.0
+
+var oxygen := 0.0
+var max_oxygen := 1.0
+var alert := 0.0         #0 normal, 1 full red
+
+
+func _ready() -> void:
+	custom_minimum_size = Vector2(120, 120)
+	size = custom_minimum_size
+
+
+func _process(_delta: float) -> void:
+	oxygen = Global.oxygen
+	max_oxygen = Global.oxygenTankSize
+	alert = _get_alert(oxygen / max_oxygen)
+	queue_redraw()
+
+
+#red warning
+func _get_alert(ratio: float) -> float:
+	var t := Time.get_ticks_msec() / 1000.0
+
+	#empty fast on off
+	if ratio <= 0.0:
+		return 1.0 if fmod(t, 0.25) < 0.125 else 0.0
+
+	#low slow pulse
+	if ratio < LOW:
+		return (sin(t * 6.0) + 1.0) / 2.0
+
+	return 0.0
+
+
+func _draw() -> void:
+	var ratio := oxygen / max_oxygen
+	var center := size / 2.0
+	var half := minf(size.x, size.y) / 2.0
+	var ring := half - 12.0
+
+	#background
+	draw_circle(center, half, BG)
+
+	#segments
+	var step := TAU / SEGMENTS
+	var on_color := FILL.lerp(RED, alert)
+	var off_color := OFF.lerp(Color(RED, 0.35), alert) if ratio <= 0.0 else OFF
+
+	for i in SEGMENTS:
+		var start := -PI / 2.0 + i * step
+		var color := on_color if i < ratio * SEGMENTS else off_color
+		draw_arc(center, ring, start, start + step * 0.7, 6, color, THICKNESS, true)
+
+	#text
+	var font := get_theme_default_font()
+	var left := center.x - half
+	var width := half * 2.0
+
+	draw_string(font, Vector2(left, center.y - 14), \"O2\",
+		HORIZONTAL_ALIGNMENT_CENTER, width, 11, MUTED)
+	draw_string(font, Vector2(left, center.y + 10), str(ceili(oxygen)),
+		HORIZONTAL_ALIGNMENT_CENTER, width, 28, TEXT.lerp(RED, alert))
+	draw_string(font, Vector2(left, center.y + 26), \"/ %d\" % int(max_oxygen),
+		HORIZONTAL_ALIGNMENT_CENTER, width, 11, MUTED)
+"
 
 [node name="Game" type="Node2D" unique_id=1476364967]
 
@@ -40,9 +119,12 @@ layer = 5
 
 [node name="InventoryUI" type="PanelContainer" parent="UI/CanvasLayer/CanvasLayer" unique_id=1053938935]
 visible = false
-anchors_preset = 9
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 233.0
+offset_left = -233.0
+grow_horizontal = 0
 grow_vertical = 2
 script = ExtResource("3_0rn35")
 
@@ -64,32 +146,12 @@ layout_mode = 2
 [node name="ItemList" type="VBoxContainer" parent="UI/CanvasLayer/CanvasLayer/InventoryUI/MarginContainer/VBoxContainer" unique_id=1147646431]
 layout_mode = 2
 
-[node name="OxigenUI" type="PanelContainer" parent="UI/CanvasLayer/CanvasLayer" unique_id=1330791865]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -41.0
-offset_bottom = 54.0
-grow_horizontal = 0
-script = ExtResource("4_kjrfb")
-
-[node name="MarginContainer" type="MarginContainer" parent="UI/CanvasLayer/CanvasLayer/OxigenUI" unique_id=738193477]
-layout_mode = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/CanvasLayer/CanvasLayer/OxigenUI/MarginContainer" unique_id=1134906918]
-layout_mode = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="UI/CanvasLayer/CanvasLayer/OxigenUI/MarginContainer/VBoxContainer" unique_id=1729384976]
-layout_mode = 2
-
-[node name="Title" type="Label" parent="UI/CanvasLayer/CanvasLayer/OxigenUI/MarginContainer/VBoxContainer/HBoxContainer" unique_id=104458993]
-layout_mode = 2
-
-[node name="Value" type="Label" parent="UI/CanvasLayer/CanvasLayer/OxigenUI/MarginContainer/VBoxContainer/HBoxContainer" unique_id=434159080]
-layout_mode = 2
-
-[node name="ProgressBar" type="ProgressBar" parent="UI/CanvasLayer/CanvasLayer/OxigenUI/MarginContainer/VBoxContainer" unique_id=862378621]
-layout_mode = 2
+[node name="OxygenGauge" type="Control" parent="UI/CanvasLayer/CanvasLayer" unique_id=208118251]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = SubResource("GDScript_em1bs")
 
 [node name="GameManager" type="Node" parent="." unique_id=1531804948 node_paths=PackedStringArray("menu")]
 script = ExtResource("2_e3dby")

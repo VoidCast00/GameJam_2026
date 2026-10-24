@@ -6,7 +6,7 @@ signal exitGame;
 
 signal mined(type:String)
 
-var oxygenTankSize: float = 60.0
+var oxygenTankSize: float = 300
 var oxygen: float = oxygenTankSize:  #in seconds
 	set(new_val):
 		var was_empty := oxygen <= 0.0
