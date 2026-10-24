@@ -11,7 +11,7 @@ var current_env: Node = null
 func _ready() -> void:
 	Global.loadWaterEnviroment.connect(loadWaterEnviroment)
 	Global.loadShopEnviroment.connect(loadShopEnviroment)
-
+	Global.exitGame.connect(exitGame)
 
 func loadWaterEnviroment() -> void:
 	menu.hide()
@@ -22,6 +22,9 @@ func loadShopEnviroment() -> void:
 	menu.hide()
 	load_env(ShopEnviroment)
 
+func exitGame():
+	get_tree().quit()
+	
 
 #switch environment
 func load_env(scene: PackedScene) -> void:
