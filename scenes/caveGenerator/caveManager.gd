@@ -4,6 +4,7 @@ extends Node
 @export var cristalNoise: NoiseTexture2D
 @export var caveTilemap: TileMapLayer
 @export var cristalTilemap: TileMapLayer
+@export var transport:StaticBody2D
 
 @onready var BlockBreak: AudioStreamPlayer = $"../Cave/BlockBreak"
 
@@ -97,6 +98,34 @@ func generateCaveSystem() -> void:
 						cristalTilemap.set_cell(cristal, 0, Vector2i(1,1))
 					Vector2i(-1,0):
 						cristalTilemap.set_cell(cristal, 0, Vector2i(0,0))
-
-
 	
+	#create an crater around the transport ======================
+	explode(transport.global_position, 10)  
+	
+	
+	
+
+
+#explosion
+func explode(global_pos: Vector2, radius: int) -> void:
+	var center := caveTilemap.local_to_map(caveTilemap.to_local(global_pos))
+	var cells: Array[Vector2i] = []
+
+	for x in range(-radius, radius + 1):
+		for y in range(-radius, radius + 1):
+			var dist := x * x + y * y
+
+			#round shape
+			if dist > radius * radius:
+				continue
+
+			#outer ring 50% chance to survive
+			if dist > (radius - 1) * (radius - 1) and randf() < 0.5:
+				continue
+
+			var cell := center + Vector2i(x, y)
+			if caveTilemap.get_cell_source_id(cell) != -1:
+				cells.append(cell)
+
+	#erase and fix edges
+	caveTilemap.set_cells_terrain_connect(cells, 0, -1, false)
