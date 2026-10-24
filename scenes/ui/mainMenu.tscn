@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://fm42lqidpgmx"]
 
+[ext_resource type="Script" uid="uid://dft3a0yq81n11" path="res://scenes/ui/main_menu.gd" id="1_j3ryx"]
 [ext_resource type="Texture2D" uid="uid://87ffhaxe2a8x" path="res://assets/Nebula.png" id="1_ph80j"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ofx7d"]
@@ -42,6 +43,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_j3ryx")
 
 [node name="Panel" type="Panel" parent="." unique_id=739571034]
 z_index = -1
@@ -154,3 +156,5 @@ theme_override_font_sizes/font_size = 60
 text = "Water Miner"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[connection signal="pressed" from="VBoxContainer/start" to="." method="_on_start_pressed"]

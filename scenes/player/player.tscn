@@ -30,7 +30,7 @@ texture = ExtResource("2_dovo2")
 zoom = Vector2(2, 2)
 
 [node name="Laser" type="Line2D" parent="." unique_id=2127118092]
-z_index = 1
+z_index = -1
 width_curve = SubResource("Curve_gmlin")
 gradient = SubResource("Gradient_gmlin")
 texture_mode = 1
@@ -39,3 +39,6 @@ texture_mode = 1
 position = Vector2(0, -26)
 
 [node name="RayCast2D" type="RayCast2D" parent="." unique_id=2109613606]
+collision_mask = 4
+
+[node name="Inventory" type="Node" parent="." unique_id=1056460378]

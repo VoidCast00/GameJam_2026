@@ -5,6 +5,15 @@ extends Node
 const MAP_SIZE =  200
 var terrain_cells_arr:Array[Vector2i]
 
+#mining =========
+var mining_timer := 0.0
+var mining_state := false
+var miningPos :Vector2i
+const MINING_ROCK:= 0.5
+const MINING_MINERALS:=1.5
+var miningType
+
+
 const DIRS = [
 	TileSet.CELL_NEIGHBOR_RIGHT_SIDE,
 	TileSet.CELL_NEIGHBOR_BOTTOM_RIGHT_CORNER,
@@ -26,10 +35,30 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	#print("CaveManager: " ,mining_state)
+	if (mining_state):
+		mining_timer += delta
+	if mining_timer > MINING_ROCK :
+		mining_timer = 0
+		stopMining()
+		_mine(miningPos)
+		
 
+func startMining(pos) -> void:
+	print("CaveManager: start minnig" , pos)
+	miningPos = caveTilemap.local_to_map(pos)
+	mining_state = true
+	miningType = "idk" #later
+	mining_timer = 0
 
-func mine(pos: Vector2):
+func stopMining() -> void:
+	print("CaveManager: stop mining ")
+	miningType = ""
+	mining_timer = 0
+	miningPos = Vector2.ZERO
+	mining_state = false
+
+func _mine(pos: Vector2) -> void:
 	var cell: Vector2i = caveTilemap.local_to_map(pos)
 	if caveTilemap.get_cell_source_id(cell) == -1:
 		return
