@@ -39,7 +39,9 @@ const CRYSTAL_TILES := {
 @export var transport: StaticBody2D
 
 @onready var block_break: AudioStreamPlayer = $"../Cave/BlockBreak"
-@onready var ore_break: AudioStreamPlayer = $"../Cave/OreBreak"
+@onready var gold_break: AudioStreamPlayer = $"../Cave/goldBreak"
+@onready var ruby_break: AudioStreamPlayer = $"../Cave/rubyBreak"
+@onready var amethist_break: AudioStreamPlayer = $"../Cave/amethistBreak"
 
 #ores: cell : gold / amethyst
 var ores := {}
@@ -66,11 +68,11 @@ func _process(delta: float) -> void:
 			"rock":
 				block_break.play()
 			"gold":
-				ore_break.play()
+				gold_break.play()
 			"amethyst":
-				ore_break.play()
+				amethist_break.play()
 			"ruby":
-				ore_break.play()
+				ruby_break.play()
 
 		_remove_cells([mining_cell])
 		stopMining()
