@@ -81,11 +81,11 @@ func generateCaveSystem() -> void:
 	#generating cristals =================================
 	for cristal in cristal_ceels_arr:
 		if (caveTilemap.get_cell_source_id(cristal) == -1): continue
+		if (caveTilemap.get_cell_atlas_coords(cristal) == Vector2i(0,4)): continue
+		if (caveTilemap.get_cell_atlas_coords(cristal) == Vector2i(1,4)): continue
 		if (caveTilemap.get_cell_atlas_coords(cristal) == Vector2i(1,1)): continue
-		if (caveTilemap.get_cell_atlas_coords(cristal) == Vector2i(1,1)): continue
-		if (caveTilemap.get_cell_atlas_coords(cristal) == Vector2i(1,1)): continue
-		if (caveTilemap.get_cell_atlas_coords(cristal) == Vector2i(1,1)): continue
-		if (caveTilemap.get_cell_atlas_coords(cristal) == Vector2i(1,1)): continue
+		if (caveTilemap.get_cell_atlas_coords(cristal) == Vector2i(0,5)): continue
+		if (caveTilemap.get_cell_atlas_coords(cristal) == Vector2i(1,5)): continue
 		for neighbourCell:Vector2i in caveTilemap.get_surrounding_cells(cristal):
 			if (caveTilemap.get_cell_atlas_coords(neighbourCell) == Vector2i(1,1)):
 				var dir:Vector2i = cristal - neighbourCell
