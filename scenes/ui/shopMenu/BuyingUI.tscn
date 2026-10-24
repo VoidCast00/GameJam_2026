@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cgl2trpwxfw1n"]
 
 [ext_resource type="Script" uid="uid://belg2q2hjeqgx" path="res://scenes/ui/shopMenu/shop_ui.gd" id="1_lf3py"]
+[ext_resource type="PackedScene" uid="uid://chaugulbspsm5" path="res://scenes/ui/Item/item.tscn" id="2_afst3"]
 [ext_resource type="Script" uid="uid://cpe2ml4pgkvvj" path="res://scenes/AnimatedButton/animated_button.gd" id="2_jgblb"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3aygq"]
@@ -10,7 +11,6 @@ corner_radius_top_right = 16
 corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
 shadow_color = Color(0.15294118, 0.15294118, 0.15294118, 0.8784314)
-shadow_size = 4
 shadow_offset = Vector2(8, 5)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_afst3"]
@@ -27,20 +27,26 @@ corner_radius_top_right = 16
 corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
 shadow_color = Color(0.15294118, 0.15294118, 0.15294118, 0.8784314)
-shadow_size = 4
 shadow_offset = Vector2(8, 5)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x8mcd"]
-bg_color = Color(0, 0, 0.13333334, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_15lw0"]
+bg_color = Color(0.4390491, 0.43904912, 0.43904912, 1)
+expand_margin_left = 10.0
+expand_margin_top = 10.0
+expand_margin_right = 10.0
+expand_margin_bottom = 10.0
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jgblb"]
-bg_color = Color(0.087226965, 0.31827793, 0.15539667, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x8mcd"]
+content_margin_left = 6.0
+bg_color = Color(0, 0, 0.13333334, 1)
 corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_c18aq"]
+grow_begin = -5.0
+grow_end = -5.0
 thickness = 10
 vertical = true
 
@@ -61,6 +67,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_lf3py")
+itemScene = ExtResource("2_afst3")
 
 [node name="Buttons" type="HBoxContainer" parent="." unique_id=1018599329]
 layout_mode = 1
@@ -117,11 +124,13 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Buy" type="PanelContainer" parent="Pages" unique_id=472144950]
+visible = false
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="Sell" type="PanelContainer" parent="Pages" unique_id=372834407]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -134,22 +143,23 @@ offset_right = 453.5
 offset_bottom = 322.5
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_15lw0")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Pages/Sell" unique_id=181730694]
 layout_mode = 2
 theme_override_constants/separation = 10
 
 [node name="ItemPanel" type="VBoxContainer" parent="Pages/Sell/HBoxContainer" unique_id=1386856864]
-custom_minimum_size = Vector2(250, 0)
+custom_minimum_size = Vector2(350, 0)
 layout_mode = 2
-theme_override_constants/separation = 8
+theme_override_constants/separation = 9
 
-[node name="PanelContainer" type="PanelContainer" parent="Pages/Sell/HBoxContainer/ItemPanel" unique_id=1088269332]
+[node name="Text" type="PanelContainer" parent="Pages/Sell/HBoxContainer/ItemPanel" unique_id=1088269332]
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_x8mcd")
 
-[node name="Label" type="Label" parent="Pages/Sell/HBoxContainer/ItemPanel/PanelContainer" unique_id=1589122920]
+[node name="Label" type="Label" parent="Pages/Sell/HBoxContainer/ItemPanel/Text" unique_id=1589122920]
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_font_sizes/font_size = 30
@@ -157,49 +167,10 @@ text = "Items: "
 
 [node name="ItemList" type="VBoxContainer" parent="Pages/Sell/HBoxContainer/ItemPanel" unique_id=972767156]
 layout_mode = 2
-
-[node name="Item1" type="PanelContainer" parent="Pages/Sell/HBoxContainer/ItemPanel/ItemList" unique_id=482029348]
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_jgblb")
-
-[node name="ItemName" type="Label" parent="Pages/Sell/HBoxContainer/ItemPanel/ItemList/Item1" unique_id=806011397]
-layout_mode = 2
-theme_override_font_sizes/font_size = 20
-text = "asdasdasd"
-horizontal_alignment = 1
-
-[node name="Item2" type="PanelContainer" parent="Pages/Sell/HBoxContainer/ItemPanel/ItemList" unique_id=669642710]
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_jgblb")
-
-[node name="ItemName" type="Label" parent="Pages/Sell/HBoxContainer/ItemPanel/ItemList/Item2" unique_id=1016524143]
-layout_mode = 2
-theme_override_font_sizes/font_size = 20
-text = "asdasdasd"
-horizontal_alignment = 1
-
-[node name="Item3" type="PanelContainer" parent="Pages/Sell/HBoxContainer/ItemPanel/ItemList" unique_id=1371215450]
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_jgblb")
-
-[node name="ItemName" type="Label" parent="Pages/Sell/HBoxContainer/ItemPanel/ItemList/Item3" unique_id=825704278]
-layout_mode = 2
-theme_override_font_sizes/font_size = 20
-text = "asdasdasd"
-horizontal_alignment = 1
-
-[node name="Item4" type="PanelContainer" parent="Pages/Sell/HBoxContainer/ItemPanel/ItemList" unique_id=647827045]
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_jgblb")
-
-[node name="ItemName" type="Label" parent="Pages/Sell/HBoxContainer/ItemPanel/ItemList/Item4" unique_id=33433652]
-layout_mode = 2
-theme_override_font_sizes/font_size = 20
-text = "asdasdasd"
-horizontal_alignment = 1
+size_flags_vertical = 3
+theme_override_constants/separation = 12
 
 [node name="VSeparator" type="VSeparator" parent="Pages/Sell/HBoxContainer" unique_id=1330417884]
-custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/separator = SubResource("StyleBoxLine_c18aq")
@@ -217,3 +188,6 @@ size_flags_vertical = 0
 theme_override_fonts/font = SubResource("FontVariation_pd0ml")
 theme_override_font_sizes/font_size = 50
 text = "Sell value: "
+
+[connection signal="pressed" from="Buttons/Buy" to="." method="_on_buy_pressed"]
+[connection signal="pressed" from="Buttons/Sell" to="." method="_on_sell_pressed"]

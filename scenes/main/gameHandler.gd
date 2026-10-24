@@ -10,7 +10,7 @@ extends Node
 
 #current environment
 var current_env: Node = null
-
+var is_loading := false
 
 func _ready() -> void:
 	print(INT64_MAX)
@@ -43,11 +43,18 @@ func _unhandled_input(event: InputEvent) -> void:
 		menu.visible = not menu.visible
 
 
-#switch environment
+
 func load_env(scene: PackedScene) -> void:
 	if not scene:
 		push_error("no environment scene")
 		return
+	if is_loading:
+		return
+	is_loading = true
+
+	#show loading and let it draw
+	Global.loading_text.show()
+	await get_tree().process_frame
 
 	#remove old
 	if current_env:
@@ -56,3 +63,11 @@ func load_env(scene: PackedScene) -> void:
 	#add new
 	current_env = scene.instantiate()
 	sub_viewport.add_child.call_deferred(current_env)
+
+	#wait until loaded
+	await current_env.ready
+	await get_tree().process_frame
+
+	#done
+	Global.loading_text.hide()
+	is_loading = false

@@ -1,0 +1,79 @@
+[gd_scene format=3 uid="uid://chaugulbspsm5"]
+
+[ext_resource type="Script" uid="uid://cpe2ml4pgkvvj" path="res://scenes/AnimatedButton/animated_button.gd" id="1_81gf3"]
+[ext_resource type="Script" uid="uid://ckl5r7j0wuhu8" path="res://scenes/ui/Item/item.gd" id="1_y144f"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jgblb"]
+bg_color = Color(0.087226965, 0.31827793, 0.15539667, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+expand_margin_left = 5.0
+expand_margin_top = 2.0
+expand_margin_right = 5.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3aygq"]
+bg_color = Color(0.17953351, 0.30383018, 0.29889727, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(0.15294118, 0.15294118, 0.15294118, 0.8784314)
+shadow_offset = Vector2(8, 5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_afst3"]
+bg_color = Color(0.056888647, 0.11625751, 0.11436313, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8f7lt"]
+bg_color = Color(0.25018948, 0.40283847, 0.3978507, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(0.15294118, 0.15294118, 0.15294118, 0.8784314)
+shadow_offset = Vector2(8, 5)
+
+[node name="Item" type="PanelContainer" unique_id=649771014]
+theme_override_styles/panel = SubResource("StyleBoxFlat_jgblb")
+script = ExtResource("1_y144f")
+
+[node name="HBox" type="HBoxContainer" parent="." unique_id=1319891233]
+layout_mode = 2
+
+[node name="ItemName" type="Label" parent="HBox" unique_id=959069076]
+custom_minimum_size = Vector2(100, 0)
+custom_maximum_size = Vector2(100, -1)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 20
+text = "Item"
+horizontal_alignment = 1
+
+[node name="Count" type="Label" parent="HBox" unique_id=1844375222]
+custom_minimum_size = Vector2(100, 0)
+custom_maximum_size = Vector2(100, -1)
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_font_sizes/font_size = 20
+text = "count"
+horizontal_alignment = 1
+
+[node name="Sell" type="Button" parent="HBox" unique_id=403204074]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_colors/font_color = Color(0.73783386, 0.66585124, 0.6433071, 1)
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_3aygq")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_afst3")
+theme_override_styles/hover = SubResource("StyleBoxFlat_8f7lt")
+text = "Sell
+"
+script = ExtResource("1_81gf3")
+metadata/_custom_type_script = "uid://cpe2ml4pgkvvj"
