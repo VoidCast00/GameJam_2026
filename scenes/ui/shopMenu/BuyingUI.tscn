@@ -1,17 +1,59 @@
 [gd_scene format=3 uid="uid://cgl2trpwxfw1n"]
 
 [ext_resource type="Script" uid="uid://belg2q2hjeqgx" path="res://scenes/ui/shopMenu/shop_ui.gd" id="1_lf3py"]
+[ext_resource type="Script" uid="uid://cpe2ml4pgkvvj" path="res://scenes/AnimatedButton/animated_button.gd" id="2_jgblb"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8iceo"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3aygq"]
+bg_color = Color(0.17953351, 0.30383018, 0.29889727, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(0.15294118, 0.15294118, 0.15294118, 0.8784314)
+shadow_size = 4
+shadow_offset = Vector2(8, 5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_afst3"]
+bg_color = Color(0.056888647, 0.11625751, 0.11436313, 1)
 corner_radius_top_left = 16
 corner_radius_top_right = 16
 corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m1ae1"]
-bg_color = Color(1, 1, 1, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8f7lt"]
+bg_color = Color(0.25018948, 0.40283847, 0.3978507, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(0.15294118, 0.15294118, 0.15294118, 0.8784314)
+shadow_size = 4
+shadow_offset = Vector2(8, 5)
 
-[node name="BuyingUI" type="Control" unique_id=1585925505]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x8mcd"]
+bg_color = Color(0, 0, 0.13333334, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jgblb"]
+bg_color = Color(0.087226965, 0.31827793, 0.15539667, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_c18aq"]
+thickness = 10
+vertical = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c18aq"]
+bg_color = Color(0.1028057, 0.22046572, 0.41655725, 1)
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+
+[sub_resource type="FontVariation" id="FontVariation_pd0ml"]
+spacing_top = 3
+spacing_bottom = 3
+
+[node name="ShopUI" type="Control" unique_id=1585925505]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -20,77 +62,158 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_lf3py")
 
-[node name="VBoxContainer" type="HBoxContainer" parent="." unique_id=1018599329]
+[node name="Buttons" type="HBoxContainer" parent="." unique_id=1018599329]
 layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -661.0
-offset_top = -576.0
-offset_right = 661.0
-offset_bottom = -181.5
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 483.0
+offset_top = -153.0
+offset_right = -483.0
+offset_bottom = 153.0
 grow_horizontal = 2
-grow_vertical = 0
+grow_vertical = 2
 theme_override_constants/separation = 120
+alignment = 1
 
-[node name="First Button" type="Button" parent="VBoxContainer" unique_id=271722327]
+[node name="Buy" type="Button" parent="Buttons" unique_id=1810060859]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
-theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
-theme_override_styles/normal = SubResource("StyleBoxFlat_8iceo")
-text = "Option 1"
+theme_override_colors/font_color = Color(0.73783386, 0.66585124, 0.6433071, 1)
+theme_override_font_sizes/font_size = 100
+theme_override_styles/normal = SubResource("StyleBoxFlat_3aygq")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_afst3")
+theme_override_styles/hover = SubResource("StyleBoxFlat_8f7lt")
+text = "Buy"
+script = ExtResource("2_jgblb")
+metadata/_custom_type_script = "uid://cpe2ml4pgkvvj"
 
-[node name="Second Button" type="Button" parent="VBoxContainer" unique_id=1155510256]
+[node name="Sell" type="Button" parent="Buttons" unique_id=735022907]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
-theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
-theme_override_styles/normal = SubResource("StyleBoxFlat_8iceo")
-text = "Option 2"
+theme_override_colors/font_color = Color(0.73783386, 0.66585124, 0.6433071, 1)
+theme_override_font_sizes/font_size = 100
+theme_override_styles/normal = SubResource("StyleBoxFlat_3aygq")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_afst3")
+theme_override_styles/hover = SubResource("StyleBoxFlat_8f7lt")
+text = "Sell
+"
+script = ExtResource("2_jgblb")
+metadata/_custom_type_script = "uid://cpe2ml4pgkvvj"
 
-[node name="Third Button" type="Button" parent="VBoxContainer" unique_id=537264130]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
-theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
-theme_override_styles/normal = SubResource("StyleBoxFlat_8iceo")
-text = "Option 3"
-
-[node name="Button" type="Button" parent="." unique_id=1654701991]
+[node name="Pages" type="Control" parent="." unique_id=365671832]
 layout_mode = 1
-anchors_preset = 7
+anchors_preset = 8
 anchor_left = 0.5
-anchor_top = 1.0
+anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -31.0
-offset_top = -99.0
-offset_right = 31.0
-offset_bottom = -68.0
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
 grow_horizontal = 2
-grow_vertical = 0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
-theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
-theme_override_colors/font_disabled_color = Color(0, 0, 0, 0.5019608)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 24
-theme_override_styles/normal = SubResource("StyleBoxFlat_m1ae1")
-text = "Re-Roll"
+grow_vertical = 2
+
+[node name="Buy" type="PanelContainer" parent="Pages" unique_id=472144950]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Sell" type="PanelContainer" parent="Pages" unique_id=372834407]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -404.0
+offset_top = -322.5
+offset_right = 453.5
+offset_bottom = 322.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Pages/Sell" unique_id=181730694]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="ItemPanel" type="VBoxContainer" parent="Pages/Sell/HBoxContainer" unique_id=1386856864]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="PanelContainer" type="PanelContainer" parent="Pages/Sell/HBoxContainer/ItemPanel" unique_id=1088269332]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_x8mcd")
+
+[node name="Label" type="Label" parent="Pages/Sell/HBoxContainer/ItemPanel/PanelContainer" unique_id=1589122920]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 30
+text = "Items: "
+
+[node name="ItemList" type="VBoxContainer" parent="Pages/Sell/HBoxContainer/ItemPanel" unique_id=972767156]
+layout_mode = 2
+
+[node name="Item1" type="PanelContainer" parent="Pages/Sell/HBoxContainer/ItemPanel/ItemList" unique_id=482029348]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_jgblb")
+
+[node name="ItemName" type="Label" parent="Pages/Sell/HBoxContainer/ItemPanel/ItemList/Item1" unique_id=806011397]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "asdasdasd"
+horizontal_alignment = 1
+
+[node name="Item2" type="PanelContainer" parent="Pages/Sell/HBoxContainer/ItemPanel/ItemList" unique_id=669642710]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_jgblb")
+
+[node name="ItemName" type="Label" parent="Pages/Sell/HBoxContainer/ItemPanel/ItemList/Item2" unique_id=1016524143]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "asdasdasd"
+horizontal_alignment = 1
+
+[node name="Item3" type="PanelContainer" parent="Pages/Sell/HBoxContainer/ItemPanel/ItemList" unique_id=1371215450]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_jgblb")
+
+[node name="ItemName" type="Label" parent="Pages/Sell/HBoxContainer/ItemPanel/ItemList/Item3" unique_id=825704278]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "asdasdasd"
+horizontal_alignment = 1
+
+[node name="Item4" type="PanelContainer" parent="Pages/Sell/HBoxContainer/ItemPanel/ItemList" unique_id=647827045]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_jgblb")
+
+[node name="ItemName" type="Label" parent="Pages/Sell/HBoxContainer/ItemPanel/ItemList/Item4" unique_id=33433652]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "asdasdasd"
+horizontal_alignment = 1
+
+[node name="VSeparator" type="VSeparator" parent="Pages/Sell/HBoxContainer" unique_id=1330417884]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/separator = SubResource("StyleBoxLine_c18aq")
+
+[node name="PanelContainer" type="PanelContainer" parent="Pages/Sell/HBoxContainer" unique_id=1849207489]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_styles/panel = SubResource("StyleBoxFlat_c18aq")
+
+[node name="Label" type="Label" parent="Pages/Sell/HBoxContainer/PanelContainer" unique_id=371407738]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_fonts/font = SubResource("FontVariation_pd0ml")
+theme_override_font_sizes/font_size = 50
+text = "Sell value: "
