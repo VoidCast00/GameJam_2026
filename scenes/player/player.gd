@@ -69,7 +69,9 @@ func mine(delta) -> void:
 	
 	if (mining_state != mining_state_last_frame):
 		world_generator.startMining(mining_pos)
+		mining_pos_last_frame = mining_pos
 	if (mining_pos != mining_pos_last_frame):
+		mining_state = false
 		world_generator.stopMining()
 	
 	mining_pos_last_frame = mining_pos

@@ -39,14 +39,15 @@ func _process(delta: float) -> void:
 	if (mining_state):
 		mining_timer += delta
 	if mining_timer > MINING_ROCK :
+		print("mined")
 		mining_timer = 0
-		stopMining()
 		_mine(miningPos)
+		stopMining()
 		
 
 func startMining(pos) -> void:
 	print("CaveManager: start minnig" , pos)
-	miningPos = caveTilemap.local_to_map(pos)
+	miningPos = pos
 	mining_state = true
 	miningType = "idk" #later
 	mining_timer = 0
@@ -61,5 +62,6 @@ func stopMining() -> void:
 func _mine(pos: Vector2) -> void:
 	var cell: Vector2i = caveTilemap.local_to_map(pos)
 	if caveTilemap.get_cell_source_id(cell) == -1:
+		print("emptry: ", pos)
 		return
 	caveTilemap.set_cells_terrain_connect([cell], 0, -1, false)
