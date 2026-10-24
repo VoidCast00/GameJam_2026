@@ -23,8 +23,11 @@ var mining_state_last_frame:bool = false
 @export var world_generator: Node 
 @onready var LaserSound: AudioStreamPlayer = $LaserSound
 @onready var breaking_block_sound: AudioStreamPlayer = $BreakingBlockSound
+@onready var breathing: AudioStreamPlayer = $Breathing
 
 
+func _ready() -> void:
+	breathing.play()
 
 func _physics_process(delta: float) -> void:
 	move(delta)

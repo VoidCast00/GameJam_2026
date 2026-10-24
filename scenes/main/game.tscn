@@ -4,7 +4,6 @@
 [ext_resource type="Script" uid="uid://ccoeuwkyb0cbq" path="res://scenes/main/gameHandler.gd" id="2_e3dby"]
 [ext_resource type="PackedScene" uid="uid://fm42lqidpgmx" path="res://scenes/ui/mainMenu/mainMenu.tscn" id="4_gf1f2"]
 [ext_resource type="PackedScene" uid="uid://bp55nk6o06xuj" path="res://scenes/shopEnviroment/shop.tscn" id="4_gsayk"]
-[ext_resource type="AudioStream" path="res://assets/audio/music/waterminersoundtrack.mp3" id="5_gf1f2"]
 
 [node name="Game" type="Node2D" unique_id=1476364967]
 
@@ -23,5 +22,4 @@ ShopEnviroment = ExtResource("4_gsayk")
 menu = NodePath("../UI/CanvasLayer")
 
 [node name="waterSoundtrack" type="AudioStreamPlayer2D" parent="." unique_id=1821612887]
-stream = ExtResource("5_gf1f2")
 bus = &"Music"
