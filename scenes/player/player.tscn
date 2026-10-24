@@ -4,9 +4,9 @@
 [ext_resource type="Texture2D" uid="uid://of43x4akss18" path="res://assets/player/animations/Scuba_Diver_Torso.png" id="2_gmlin"]
 [ext_resource type="AudioStream" uid="uid://brhghwo45pwr7" path="res://assets/audio/sfx/player/tazenie.mp3" id="3_gmlin"]
 [ext_resource type="Texture2D" uid="uid://bds22acncap3y" path="res://assets/player/animations/Scuba_Diver_LegsSprite.png" id="3_lvxji"]
-[ext_resource type="AudioStream" uid="uid://0sye1sxv3rja" path="res://assets/audio/sfx/player/breathing.mp3" id="5_p47bc"]
 [ext_resource type="Script" uid="uid://chg646lqd83o" path="res://scenes/player/inventory.gd" id="4_p47bc"]
 [ext_resource type="Script" uid="uid://b2ckqh0k0xeai" path="res://scenes/player/inventory_ui.gd" id="5_75vfm"]
+[ext_resource type="AudioStream" uid="uid://0sye1sxv3rja" path="res://assets/audio/sfx/player/breathing.mp3" id="5_p47bc"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dovo2"]
 height = 42.0
@@ -349,15 +349,17 @@ point_count = 2
 [sub_resource type="Gradient" id="Gradient_gmlin"]
 colors = PackedColorArray(0, 0, 0.31764707, 1, 0.48406488, 0.00017943144, 0.48948932, 1)
 
-[sub_resource type="Gradient" id="Gradient_dovo2"]
-offsets = PackedFloat32Array(0.5283019, 0.8584906, 0.9716981)
-colors = PackedColorArray(1, 1, 1, 1, 0.44881737, 0.44881737, 0.44881737, 1, 0, 0, 0, 1)
+[sub_resource type="Gradient" id="Gradient_0owmy"]
+interpolation_mode = 2
+interpolation_color_space = 1
+offsets = PackedFloat32Array(0, 0.36206895, 0.54433495, 0.9285714)
+colors = PackedColorArray(1, 1, 1, 1, 0.8979547, 0.8979547, 0.8979547, 0.78337103, 0.8308082, 0.8308082, 0.8308082, 0.6573692, 0, 0, 0, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_3aygq"]
-gradient = SubResource("Gradient_dovo2")
+gradient = SubResource("Gradient_0owmy")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(0.13529412, 0.12941177)
+fill_to = Vector2(0.06537102, 0.06890459)
 
 [node name="Player" type="CharacterBody2D" unique_id=698144906]
 collision_mask = 6
@@ -396,9 +398,11 @@ position = Vector2(0, -26)
 collision_mask = 4
 
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=1046057679]
-position = Vector2(0, -0.76934826)
-scale = Vector2(16.46875, 15.350958)
-blend_mode = 2
+scale = Vector2(8, 8)
+shadow_enabled = true
+shadow_color = Color(0.03529412, 0.039215688, 0.078431375, 1)
+shadow_filter = 2
+shadow_filter_smooth = 0.5
 texture = SubResource("GradientTexture2D_3aygq")
 
 [node name="LaserSound" type="AudioStreamPlayer" parent="." unique_id=586568699]

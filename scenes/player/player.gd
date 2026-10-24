@@ -24,6 +24,7 @@ var mining_state_last_frame:bool = false
 @onready var LaserSound: AudioStreamPlayer = $LaserSound
 @onready var breaking_block_sound: AudioStreamPlayer = $BreakingBlockSound
 @onready var breathing: AudioStreamPlayer = $Breathing
+@onready var point_light_2d: PointLight2D = $PointLight2D
 
 
 func _ready() -> void:
@@ -53,7 +54,7 @@ func move(delta: float) -> void:
 	if direction != Vector2.ZERO:
 		velocity = velocity.lerp(direction * speed, acceleration)
 		rotation = lerp_angle(rotation, direction.angle() + PI / 2, rotation_speed * delta)
-		
+		point_light_2d.global_rotation = 0.0
 	else:
 		velocity = velocity.lerp(Vector2.ZERO, friction)
 	if is_clicking():
