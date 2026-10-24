@@ -33,6 +33,7 @@ func refresh() -> void:
 func add_row(text: String) -> void:
 	var label := Label.new()
 	label.text = text
+	label.add_theme_font_size_override("font_size", 24)   
 	item_list.add_child(label)
 	
 func _unhandled_input(event: InputEvent) -> void:
