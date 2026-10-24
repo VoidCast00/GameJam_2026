@@ -60,6 +60,7 @@ custom_minimum_size = Vector2(100, 0)
 custom_maximum_size = Vector2(100, -1)
 layout_mode = 2
 size_flags_horizontal = 10
+theme_override_colors/font_shadow_color = Color(0.10639998, 0.35, 0.0455, 0.85882354)
 theme_override_font_sizes/font_size = 20
 text = "count"
 horizontal_alignment = 1
