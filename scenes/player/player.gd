@@ -25,7 +25,6 @@ var mining_state_last_frame:bool = false
 @onready var breathing: AudioStreamPlayer = $Breathing
 @onready var point_light_2d: PointLight2D = $PointLight2D
 #OXYGENNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN
-signal oxygenDepleted
 
 
 
