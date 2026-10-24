@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bp55nk6o06xuj"]
 
 [ext_resource type="Script" uid="uid://eu0sn7th1gci" path="res://scenes/shopEnviroment/customPLayer/custom_player.gd" id="1_ry6u4"]
+[ext_resource type="Texture2D" uid="uid://c41hnlq01uue3" path="res://assets/surface/Surface_Background_export.png" id="2_mkqyk"]
 [ext_resource type="Texture2D" uid="uid://djtja7xynnqrg" path="res://assets/icon.svg" id="2_x2lbe"]
 [ext_resource type="Script" uid="uid://f41kc4e7q3tx" path="res://scenes/shopEnviroment/shop.gd" id="3_528fk"]
 [ext_resource type="Script" uid="uid://cq8hyljfogs4k" path="res://scenes/shopEnviroment/transportDown.gd" id="4_k81a4"]
@@ -31,9 +32,16 @@ texture_filter = 1
 
 [node name="Backround" type="Sprite2D" parent="." unique_id=993751961]
 texture_filter = 1
-position = Vector2(-978, 439)
+position = Vector2(-88.00006, 439)
 scale = Vector2(7, 7)
 texture = ExtResource("9_uaush")
+metadata/_edit_lock_ = true
+
+[node name="SurfaceBackgroundExport" type="Sprite2D" parent="Backround" unique_id=2054662659]
+z_index = -1
+position = Vector2(66.00001, -20.714285)
+scale = Vector2(0.99999994, 0.99999994)
+texture = ExtResource("2_mkqyk")
 metadata/_edit_lock_ = true
 
 [node name="Floor" type="StaticBody2D" parent="." unique_id=630826328]
@@ -88,8 +96,8 @@ shape = SubResource("CapsuleShape2D_528fk")
 
 [node name="Camera2D" type="Camera2D" parent="CustomPlayer" unique_id=190721130]
 texture_filter = 1
-offset = Vector2(0, -200)
-zoom = Vector2(0.4, 0.4)
+offset = Vector2(0, -300)
+zoom = Vector2(0.3, 0.3)
 limit_right = 2605
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0
@@ -117,15 +125,6 @@ collision_layer = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Transport/EnterArea" unique_id=1451094441]
 position = Vector2(1091, 216)
 shape = SubResource("RectangleShape2D_x8mcd")
-
-[node name="Label" type="Label" parent="Transport" unique_id=810203893]
-offset_left = 512.0
-offset_top = -254.0
-offset_right = 940.0
-offset_bottom = -117.0
-theme_override_font_sizes/font_size = 100
-text = "Go down"
-metadata/_edit_use_anchors_ = true
 
 [node name="Ship" type="Sprite2D" parent="Transport" unique_id=2143626126]
 z_index = -1
