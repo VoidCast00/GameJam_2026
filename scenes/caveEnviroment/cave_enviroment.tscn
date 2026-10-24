@@ -618,6 +618,7 @@ stream = ExtResource("5_b6bav")
 stream = ExtResource("7_w32iq")
 
 [node name="OresTilemap" type="TileMapLayer" parent="Static" unique_id=46205129]
+texture_filter = 1
 tile_set = SubResource("TileSet_pd0ml")
 
 [node name="WorldGenerator" type="Node" parent="Static" unique_id=85954663 node_paths=PackedStringArray("caveTilemap", "oreTilemap", "transport")]
