@@ -9,12 +9,12 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("action"):
+	if Input.is_action_just_pressed("action") and playerInside:
 		print("enter shop")
 
 
-func _on_enter_box_body_entered(body: Player) -> void:
+func _on_enter_box_body_entered(body: CharacterBody2D) -> void:
 	playerInside = true
 
-func _on_enter_box_body_exited(body: Player) -> void:
+func _on_enter_box_body_exited(body: CharacterBody2D) -> void:
 	playerInside = false
