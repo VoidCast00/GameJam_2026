@@ -176,7 +176,7 @@ metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="leftBorder" unique_id=822103694]
 z_index = 3
-position = Vector2(-4475.0005, 170)
+position = Vector2(-4475.0005, 158)
 rotation = -1.5707964
 scale = Vector2(0.9999998, 0.9999998)
 shape = SubResource("RectangleShape2D_uaush")

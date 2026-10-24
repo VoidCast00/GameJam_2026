@@ -36,10 +36,10 @@ func _wave(delta: float) -> void:
 
 
 func _on_enter_area_body_entered(body: Node2D) -> void:
-	if body is Player:
+	if body is CharacterBody2D:
 		playerInside = true
 
 
 func _on_enter_area_body_exited(body: Node2D) -> void:
-	if body is Player:
+	if body is CharacterBody2D:
 		playerInside = false
