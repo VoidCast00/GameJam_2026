@@ -28,6 +28,7 @@ size = Vector2(379, 792)
 size = Vector2(741.50006, 347)
 
 [node name="Shop" type="Node2D" unique_id=2046859950]
+texture_filter = 1
 
 [node name="CustomPlayer" type="CharacterBody2D" parent="." unique_id=1560269461]
 z_index = 2
@@ -91,8 +92,8 @@ theme_override_font_sizes/font_size = 100
 text = "Go down"
 metadata/_edit_use_anchors_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="Transport" unique_id=2143626126]
-position = Vector2(-799.9999, 305)
+[node name="Ship" type="Sprite2D" parent="Transport" unique_id=2143626126]
+position = Vector2(-824.9999, 331)
 scale = Vector2(5, 5)
 texture = ExtResource("5_mkqyk")
 
@@ -146,16 +147,18 @@ stream = ExtResource("8_5pml0")
 volume_db = -20.0
 mix_target = 1
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=993751961]
+[node name="Backround" type="Sprite2D" parent="." unique_id=993751961]
 texture_filter = 1
 position = Vector2(-978, 439)
 scale = Vector2(7, 7)
 texture = ExtResource("9_uaush")
+metadata/_edit_lock_ = true
 
 [node name="rightBorder" type="StaticBody2D" parent="." unique_id=1445592504]
 position = Vector2(1717.9999, 405)
 scale = Vector2(0.99999994, 0.99999994)
 collision_layer = 4
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="rightBorder" unique_id=1329526070]
 z_index = 3
@@ -168,10 +171,11 @@ shape = SubResource("RectangleShape2D_uaush")
 position = Vector2(1717.9999, 405)
 scale = Vector2(0.99999994, 0.99999994)
 collision_layer = 4
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="leftBorder" unique_id=822103694]
 z_index = 3
-position = Vector2(-4475.0005, 183)
+position = Vector2(-4475.0005, 170)
 rotation = -1.5707964
 scale = Vector2(0.9999998, 0.9999998)
 shape = SubResource("RectangleShape2D_uaush")
