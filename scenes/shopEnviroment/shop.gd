@@ -14,6 +14,8 @@ func _process(delta: float) -> void:
 		shop_ui.visible = false
 	if Input.is_action_just_pressed("action") and playerInside:
 		shop_ui.visible = true
+	
+	
 
 
 

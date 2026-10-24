@@ -740,7 +740,7 @@ colors = PackedColorArray(1, 1, 1, 1, 0.8979547, 0.8979547, 0.8979547, 0.7833710
 gradient = SubResource("Gradient_0owmy")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(0.06537102, 0.06890459)
+fill_to = Vector2(0.08685446, 0.025821596)
 
 [node name="Player" type="CharacterBody2D" unique_id=698144906]
 collision_mask = 6
@@ -798,14 +798,16 @@ volume_db = -5.0
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=1300191996]
 position = Vector2(0, -16)
-amount = 12
+amount = 5
 texture = ExtResource("7_0owmy")
 lifetime = 6.0
 speed_scale = 0.5
-direction = Vector2(0, -1)
-spread = 30.0
-gravity = Vector2(0, 0)
+direction = Vector2(0, 0)
+spread = 10.0
+gravity = Vector2(0, -20)
 initial_velocity_min = 20.0
 initial_velocity_max = 50.0
-angular_velocity_min = 0.1
-angular_velocity_max = 0.5
+angular_velocity_min = 190.0
+angular_velocity_max = 200.0
+orbit_velocity_min = 0.03
+orbit_velocity_max = 0.05
