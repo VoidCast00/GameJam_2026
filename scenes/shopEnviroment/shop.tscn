@@ -104,6 +104,7 @@ text = "Go down"
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1392447750]
 
 [node name="ShopUI" parent="CanvasLayer" unique_id=1585925505 instance=ExtResource("5_k81a4")]
+visible = false
 
 [node name="LoadingText" type="Control" parent="CanvasLayer" unique_id=2082606841]
 visible = false
