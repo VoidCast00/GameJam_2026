@@ -4,7 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://of43x4akss18" path="res://assets/player/animations/Scuba_Diver_Torso.png" id="2_gmlin"]
 [ext_resource type="AudioStream" uid="uid://brhghwo45pwr7" path="res://assets/audio/sfx/player/tazenie.mp3" id="3_gmlin"]
 [ext_resource type="Texture2D" uid="uid://bds22acncap3y" path="res://assets/player/animations/Scuba_Diver_LegsSprite.png" id="3_lvxji"]
-[ext_resource type="Script" uid="uid://b2ckqh0k0xeai" path="res://scenes/player/inventory_ui.gd" id="5_75vfm"]
 [ext_resource type="AudioStream" uid="uid://0sye1sxv3rja" path="res://assets/audio/sfx/player/breathing.mp3" id="5_p47bc"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dovo2"]
@@ -405,31 +404,3 @@ bus = &"SFX"
 [node name="Breathing" type="AudioStreamPlayer" parent="." unique_id=316902766]
 stream = ExtResource("5_p47bc")
 volume_db = -5.0
-
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=470083292]
-
-[node name="InventoryUI" type="PanelContainer" parent="CanvasLayer" unique_id=913355198]
-visible = false
-anchors_preset = 9
-anchor_bottom = 1.0
-offset_right = 233.0
-grow_vertical = 2
-script = ExtResource("5_75vfm")
-
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/InventoryUI" unique_id=1351990200]
-layout_mode = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/InventoryUI/MarginContainer" unique_id=1083174710]
-layout_mode = 2
-
-[node name="Title" type="Label" parent="CanvasLayer/InventoryUI/MarginContainer/VBoxContainer" unique_id=1594049949]
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 50
-text = "Inventory"
-
-[node name="HSeparator" type="HSeparator" parent="CanvasLayer/InventoryUI/MarginContainer/VBoxContainer" unique_id=23595272]
-layout_mode = 2
-
-[node name="ItemList" type="VBoxContainer" parent="CanvasLayer/InventoryUI/MarginContainer/VBoxContainer" unique_id=654960682]
-layout_mode = 2

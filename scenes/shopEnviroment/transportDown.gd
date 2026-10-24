@@ -1,22 +1,45 @@
 extends Node2D
 
-var playerInside: = false
+#wave
+@export var bob_height: float = 6.0     #pixels up and down
+@export var bob_speed: float = 1.2      #how fast
+@export var tilt_angle: float = 3.0     #degrees left and right
+@export var tilt_speed: float = 0.8
+
+var playerInside := false
+var time := 0.0
+var start_pos: Vector2
+
 @onready var loading_text: Control = $"../CanvasLayer/LoadingText"
+@onready var ship: Sprite2D = $Ship
 
-# Called when the node enters the scene tree for the first time.
+
 func _ready() -> void:
-	pass # Replace with function body.
+	start_pos = ship.position
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	_wave(delta)
+
+	#enter
 	if Input.is_action_just_pressed("action") and playerInside:
 		loading_text.show()
 		await get_tree().process_frame
 		Global.loadWaterEnviroment.emit()
 
-func _on_enter_area_body_entered(body: CharacterBody2D) -> void:
-	playerInside = true
 
-func _on_enter_area_body_exited(body: CharacterBody2D) -> void:
-	playerInside = false
+#ocean bob
+func _wave(delta: float) -> void:
+	time += delta
+	ship.position.y = start_pos.y + sin(time * bob_speed) * bob_height
+	ship.rotation = deg_to_rad(sin(time * tilt_speed + 1.0) * tilt_angle)
+
+
+func _on_enter_area_body_entered(body: Node2D) -> void:
+	if body is Player:
+		playerInside = true
+
+
+func _on_enter_area_body_exited(body: Node2D) -> void:
+	if body is Player:
+		playerInside = false
