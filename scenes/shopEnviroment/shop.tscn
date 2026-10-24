@@ -37,6 +37,7 @@ texture = ExtResource("2_x2lbe")
 shape = SubResource("CapsuleShape2D_528fk")
 
 [node name="Camera2D" type="Camera2D" parent="CustomPlayer" unique_id=190721130]
+position_smoothing_enabled = true
 
 [node name="Floor" type="StaticBody2D" parent="." unique_id=630826328]
 position = Vector2(51, 337)
