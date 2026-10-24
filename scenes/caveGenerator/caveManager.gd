@@ -72,7 +72,7 @@ func _mine(pos: Vector2) -> void:
 func generateCaveSystem() -> void:
 	for x in range(-(MAP_SIZE/2),(MAP_SIZE/2), 1):
 		for y in range(-(MAP_SIZE/2),(MAP_SIZE/2), 1):
-			if cristalNoise.noise.get_noise_2d(x,y) > 0.6:
+			if cristalNoise.noise.get_noise_2d(x,y) > 0.5:
 				cristal_ceels_arr.append(Vector2i(x,y)) 
 			if caveNoise.noise.get_noise_2d(x,y) > 0:
 				terrain_cells_arr.append(Vector2i(x,y))

@@ -22,7 +22,6 @@ var mining_state_last_frame:bool = false
 @onready var ray_cast: RayCast2D = $RayCast2D
 @export var world_generator: Node 
 @onready var LaserSound: AudioStreamPlayer = $LaserSound
-@onready var breaking_block_sound: AudioStreamPlayer = $BreakingBlockSound
 
 
 
