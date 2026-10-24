@@ -8,6 +8,8 @@
 [ext_resource type="AudioStream" uid="uid://xak3e440bhdx" path="res://assets/audio/sfx/player/breaking bloks.mp3" id="5_b6bav"]
 [ext_resource type="Script" uid="uid://ccus05sctsxmx" path="res://scenes/caveEnviroment/perlin_backround.gd" id="5_hyba4"]
 [ext_resource type="Script" uid="uid://bokuosutvx4fr" path="res://scenes/caveEnviroment/transportUp.gd" id="7_k1atb"]
+[ext_resource type="Script" uid="uid://c4gisitxcsjxa" path="res://scenes/caveEnviroment/background_music_manager.gd" id="9_53e16"]
+[ext_resource type="AudioStream" uid="uid://b47ert4sspfga" path="res://assets/audio/music/caveSoundtrack.mp3" id="9_yf8om"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3aygq"]
 shader = ExtResource("4_g0opn")
@@ -518,6 +520,14 @@ shape = SubResource("RectangleShape2D_3aygq")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1700140599]
 layer = -1
+
+[node name="BackgroundMusicManager" type="Node" parent="." unique_id=140477788]
+script = ExtResource("9_53e16")
+
+[node name="Ambience" type="AudioStreamPlayer" parent="BackgroundMusicManager" unique_id=385490424]
+
+[node name="Soundtrack" type="AudioStreamPlayer" parent="BackgroundMusicManager" unique_id=2018717848]
+stream = ExtResource("9_yf8om")
 
 [connection signal="body_entered" from="Static/TransportUp/Enter" to="Static/TransportUp" method="_on_enter_body_entered"]
 [connection signal="body_exited" from="Static/TransportUp/Enter" to="Static/TransportUp" method="_on_enter_body_exited"]
