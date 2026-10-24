@@ -19,6 +19,7 @@ var mining_state_last_frame:bool = false
 @onready var laser: Line2D = $Laser
 @onready var ray_cast: RayCast2D = $RayCast2D
 @export var world_generator: Node 
+@onready var LaserSound: AudioStreamPlayer = $LaserSound
 
 
 func _physics_process(delta: float) -> void:
@@ -56,23 +57,31 @@ func mine(delta) -> void:
 	#print("player: " ,mining_state)
 	if not cave_tilemap or not can_mine():
 		laser.hide()
+		LaserSound.stop()
+		
 		if mining_state:
 			mining_state = false
 			world_generator.stopMining()
+			
 		return
 
 	var mouse_pos := get_global_mouse_position()
 	show_laser(mouse_pos)
 	
+	
 	mining_state = true
 	mining_pos = get_cell_center(mouse_pos)
+	
 	
 	if (mining_state != mining_state_last_frame):
 		world_generator.startMining(mining_pos)
 		mining_pos_last_frame = mining_pos
+		LaserSound.play()
+		
 	if (mining_pos != mining_pos_last_frame):
 		mining_state = false
 		world_generator.stopMining()
+		
 	
 	mining_pos_last_frame = mining_pos
 	mining_state_last_frame = mining_state

@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bgrn0bl0mxpub" path="res://scenes/player/player.gd" id="1_8afob"]
 [ext_resource type="Texture2D" uid="uid://djtja7xynnqrg" path="res://assets/icon.svg" id="2_dovo2"]
+[ext_resource type="AudioStream" uid="uid://dfpppyg8sbvrx" path="res://assets/audio/sfx/player/tazenie_laser.mp3" id="3_gmlin"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dovo2"]
 radius = 11.0
@@ -42,3 +43,7 @@ position = Vector2(0, -26)
 collision_mask = 4
 
 [node name="Inventory" type="Node" parent="." unique_id=1056460378]
+
+[node name="LaserSound" type="AudioStreamPlayer" parent="." unique_id=586568699]
+stream = ExtResource("3_gmlin")
+bus = &"SFX"
