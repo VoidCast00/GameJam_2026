@@ -59,7 +59,7 @@ corner_radius_bottom_right = 32
 spacing_top = 3
 spacing_bottom = 3
 
-[node name="ShopUI" type="Control" unique_id=1585925505]
+[node name="ShopUI" type="Control" unique_id=1585925505 node_paths=PackedStringArray("item_list", "sell_value", "Sell_All")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -68,6 +68,9 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_lf3py")
 itemScene = ExtResource("2_afst3")
+item_list = NodePath("Pages/Sell/HBoxContainer/ItemPanel/ItemList")
+sell_value = NodePath("Pages/Sell/HBoxContainer/PanelContainer/VBoxContainer/TextSellValue")
+Sell_All = NodePath("Pages/Sell/HBoxContainer/PanelContainer/VBoxContainer/Sell_All")
 
 [node name="Buttons" type="HBoxContainer" parent="." unique_id=1018599329]
 layout_mode = 1
@@ -130,7 +133,6 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="Sell" type="PanelContainer" parent="Pages" unique_id=372834407]
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -181,13 +183,29 @@ layout_mode = 2
 size_flags_horizontal = 8
 theme_override_styles/panel = SubResource("StyleBoxFlat_c18aq")
 
-[node name="Label" type="Label" parent="Pages/Sell/HBoxContainer/PanelContainer" unique_id=371407738]
+[node name="VBoxContainer" type="VBoxContainer" parent="Pages/Sell/HBoxContainer/PanelContainer" unique_id=983596655]
+layout_mode = 2
+
+[node name="TextSellValue" type="Label" parent="Pages/Sell/HBoxContainer/PanelContainer/VBoxContainer" unique_id=371407738]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
 theme_override_fonts/font = SubResource("FontVariation_pd0ml")
 theme_override_font_sizes/font_size = 50
 text = "Sell value: "
+
+[node name="Sell_All" type="Button" parent="Pages/Sell/HBoxContainer/PanelContainer/VBoxContainer" unique_id=368183300]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(0.73783386, 0.66585124, 0.6433071, 1)
+theme_override_font_sizes/font_size = 70
+theme_override_styles/normal = SubResource("StyleBoxFlat_3aygq")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_afst3")
+theme_override_styles/hover = SubResource("StyleBoxFlat_8f7lt")
+text = " SELL ALL!! "
+script = ExtResource("2_jgblb")
+metadata/_custom_type_script = "uid://cpe2ml4pgkvvj"
 
 [connection signal="pressed" from="Buttons/Buy" to="." method="_on_buy_pressed"]
 [connection signal="pressed" from="Buttons/Sell" to="." method="_on_sell_pressed"]

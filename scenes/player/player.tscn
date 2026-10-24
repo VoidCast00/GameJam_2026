@@ -797,6 +797,7 @@ stream = ExtResource("5_p47bc")
 volume_db = -5.0
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=1300191996]
+texture_filter = 1
 position = Vector2(0, -16)
 amount = 5
 texture = ExtResource("7_0owmy")
