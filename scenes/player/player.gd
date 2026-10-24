@@ -25,13 +25,10 @@ var mining_state_last_frame:bool = false
 @onready var breathing: AudioStreamPlayer = $Breathing
 @onready var point_light_2d: PointLight2D = $PointLight2D
 #OXYGENNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN
-signal oxygenDepleted;
-var oxygenTankSize:float = 60.0
-var oxygen :float = oxygenTankSize: #in seconds
-	set(new_val):
-		if new_val < 0.0:
-			oxygenDepleted.emit()
-		oxygen = clamp(new_val, 0.0,oxygenTankSize)
+signal oxygenDepleted
+
+
+
 
 func _ready() -> void:
 	breathing.play()
@@ -41,7 +38,7 @@ func _physics_process(delta: float) -> void:
 
 
 func _process(delta: float) -> void:
-	oxygen -= delta
+	Global.oxygen -= delta
 	mine(delta)
 
 
@@ -68,65 +65,53 @@ func move(delta: float) -> void:
 		rotation = lerp_angle(rotation, global_position.angle_to_point(get_global_mouse_position()) + PI * 0.5, (rotation_speed * delta) )
 	move_and_slide()
 
-
 #mine=======================================================================
-func mine(delta) -> void:
-	if not cave_tilemap or not can_mine():
-		laser.hide()
-		LaserSound.stop()
-		
-		if mining_state:
-			mining_state = false
+var is_lasering := false
+
+
+func mine(_delta: float) -> void:
+	var hit = get_laser_hit()
+
+	#not mining
+	if hit == null:
+		if is_lasering:
+			is_lasering = false
+			laser.hide()
+			LaserSound.stop()
 			world_generator.stopMining()
-			
 		return
 
-	var mouse_pos := get_global_mouse_position()
-	show_laser(mouse_pos)
-	
-	
-	mining_state = true
-	mining_pos = get_cell_center(mouse_pos)
-	
-	
-	if (mining_state != mining_state_last_frame):
-		world_generator.startMining(mining_pos)
-		mining_pos_last_frame = mining_pos
+	#laser
+	is_lasering = true
+	show_laser(hit)
+	if not LaserSound.playing:
 		LaserSound.play()
-		
-	if (mining_pos != mining_pos_last_frame):
-		mining_state = false
-		world_generator.stopMining()
-		
-	
-	mining_pos_last_frame = mining_pos
-	mining_state_last_frame = mining_state
+
+	#step a bit inside the wall so we get the hit cell
+	var inside: Vector2 = hit - ray_cast.get_collision_normal() * 2.0
+	world_generator.startMining(inside)
 
 
-func can_mine() -> bool:
-	var mouse_pos := get_global_mouse_position()
+#returns hit point on the cave, or null
+func get_laser_hit():
+	if not cave_tilemap or not is_clicking():
+		return null
 
-	#click and range
-	if not is_clicking():
-		return false
-	if global_position.distance_to(mouse_pos) > LASER_LENGTH:
-		return false
+	#aim at mouse, max laser length
+	var from := shooting_point.global_position
+	var dir := get_global_mouse_position() - from
+	dir = dir.limit_length(LASER_LENGTH)
 
 	#raycast
-	ray_cast.global_position = shooting_point.global_position
-	ray_cast.target_position = ray_cast.to_local(mouse_pos)
+	ray_cast.global_position = from
+	ray_cast.target_position = ray_cast.to_local(from + dir)
 	ray_cast.force_raycast_update()
-	if not ray_cast.is_colliding():
-		return false
 
-	#hit near the clicked cell
-	var hit_pos := ray_cast.get_collision_point()
-	return hit_pos.distance_to(get_cell_center(mouse_pos)) < CELL_HIT_RANGE
+	#only the cave counts
+	if not ray_cast.is_colliding() or ray_cast.get_collider() != cave_tilemap:
+		return null
 
-
-func get_cell_center(global_pos: Vector2) -> Vector2:
-	var cell := cave_tilemap.local_to_map(cave_tilemap.to_local(global_pos))
-	return cave_tilemap.to_global(cave_tilemap.map_to_local(cell))
+	return ray_cast.get_collision_point()
 
 
 #laser
