@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://ba7vddmnq4tp"]
 
 [ext_resource type="PackedScene" uid="uid://dcbh3t1vcddv8" path="res://scenes/player/player.tscn" id="1_ibr66"]
+[ext_resource type="Script" uid="uid://dya6n0ugxdo3n" path="res://scenes/caveEnviroment/subpixelCamera.gd" id="2_iqo5d"]
 [ext_resource type="Texture2D" uid="uid://clf2jhe35jjp6" path="res://scenes/caveGenerator/CaveTileMap.png" id="2_smjkd"]
 [ext_resource type="Script" uid="uid://dpvdyqogqjqu8" path="res://scenes/caveGenerator/caveManager.gd" id="3_g0opn"]
 [ext_resource type="Shader" uid="uid://bximonf5agbam" path="res://scenes/caveEnviroment/cave_background_perlin.gdshader" id="4_g0opn"]
@@ -574,15 +575,15 @@ size = Vector2(110, 68)
 
 [node name="Entities" type="Node2D" parent="." unique_id=1331239193]
 
-[node name="Player" parent="Entities" unique_id=698144906 node_paths=PackedStringArray("cave_tilemap", "world_generator") instance=ExtResource("1_ibr66")]
+[node name="Camera2D" type="Camera2D" parent="Entities" unique_id=2116341652 node_paths=PackedStringArray("player")]
+texture_filter = 1
 position = Vector2(-126, -2)
-cave_tilemap = NodePath("../../Static/Cave")
-world_generator = NodePath("../../Static/WorldGenerator")
+position_smoothing_enabled = true
+position_smoothing_speed = 4.0
+script = ExtResource("2_iqo5d")
+player = NodePath("../Player")
 
-[node name="Camera2D" type="Camera2D" parent="Entities/Player" unique_id=2116341652]
-zoom = Vector2(3, 3)
-
-[node name="PerlinBackround" type="ColorRect" parent="Entities/Player/Camera2D" unique_id=733196155]
+[node name="PerlinBackround" type="ColorRect" parent="Entities/Camera2D" unique_id=733196155]
 top_level = true
 z_index = -18
 material = SubResource("ShaderMaterial_3aygq")
@@ -593,8 +594,13 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("5_hyba4")
 
-[node name="CanvasModulate" type="CanvasModulate" parent="Entities/Player/Camera2D" unique_id=663374839]
+[node name="CanvasModulate" type="CanvasModulate" parent="Entities/Camera2D" unique_id=663374839]
 color = Color(0, 0, 0, 1)
+
+[node name="Player" parent="Entities" unique_id=698144906 node_paths=PackedStringArray("cave_tilemap", "world_generator") instance=ExtResource("1_ibr66")]
+position = Vector2(-126, -2)
+cave_tilemap = NodePath("../../Static/Cave")
+world_generator = NodePath("../../Static/WorldGenerator")
 
 [node name="Static" type="Node2D" parent="." unique_id=961585314]
 

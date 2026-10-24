@@ -1,6 +1,7 @@
 extends Node
 
-@onready var game: Node2D = $".."
+
+@onready var sub_viewport: SubViewport = $"../SubViewportContainer/SubViewport"
 @export var WaterEnviroment: PackedScene
 @export var ShopEnviroment: PackedScene
 @export var menu:CanvasLayer
@@ -29,6 +30,13 @@ func exitGame():
 	get_tree().quit()
 	
 
+
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("esc"):
+		menu.visible = not menu.visible
+
+
 #switch environment
 func load_env(scene: PackedScene) -> void:
 	if not scene:
@@ -40,6 +48,5 @@ func load_env(scene: PackedScene) -> void:
 		current_env.queue_free()
 
 	#add new
-	print("loading")
 	current_env = scene.instantiate()
-	game.add_child.call_deferred(current_env)
+	sub_viewport.add_child.call_deferred(current_env)

@@ -2,7 +2,7 @@ class_name Player
 extends CharacterBody2D
 
 #movement==================================================
-@export var speed: float = 2000
+@export var speed: float = 200
 @export var friction: float = 0.4
 @export var acceleration: float = 0.1
 @export var rotation_speed: float = 4
@@ -24,7 +24,14 @@ var mining_state_last_frame:bool = false
 @onready var LaserSound: AudioStreamPlayer = $LaserSound
 @onready var breathing: AudioStreamPlayer = $Breathing
 @onready var point_light_2d: PointLight2D = $PointLight2D
-
+#OXYGENNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN
+signal oxygenDepleted;
+var oxygenTankSize:float = 60.0
+var oxygen :float = oxygenTankSize: #in seconds
+	set(new_val):
+		if new_val < 0.0:
+			oxygenDepleted.emit()
+		oxygen = clamp(new_val, 0.0,oxygenTankSize)
 
 func _ready() -> void:
 	breathing.play()
@@ -34,6 +41,7 @@ func _physics_process(delta: float) -> void:
 
 
 func _process(delta: float) -> void:
+	oxygen -= delta
 	mine(delta)
 
 
