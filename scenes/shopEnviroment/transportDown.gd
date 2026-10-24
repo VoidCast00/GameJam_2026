@@ -10,7 +10,7 @@ var playerInside := false
 var time := 0.0
 var start_pos: Vector2
 
-@onready var loading_text: Control = $"../CanvasLayer/LoadingText"
+@onready var loading_text: Control = Global.loading_text
 @onready var ship: Sprite2D = $Ship
 
 

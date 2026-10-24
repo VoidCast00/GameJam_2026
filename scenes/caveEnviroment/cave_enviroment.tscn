@@ -1,8 +1,7 @@
-[gd_scene format=3 uid="uid://ba7vddmnq4tp"]
+[gd_scene format=4 uid="uid://ba7vddmnq4tp"]
 
 [ext_resource type="PackedScene" uid="uid://dcbh3t1vcddv8" path="res://scenes/player/player.tscn" id="1_ibr66"]
 [ext_resource type="Script" uid="uid://dya6n0ugxdo3n" path="res://scenes/caveEnviroment/subpixelCamera.gd" id="2_iqo5d"]
-[ext_resource type="Texture2D" uid="uid://clf2jhe35jjp6" path="res://scenes/caveGenerator/CaveTileMap.png" id="2_smjkd"]
 [ext_resource type="Script" uid="uid://dpvdyqogqjqu8" path="res://scenes/caveGenerator/caveManager.gd" id="3_g0opn"]
 [ext_resource type="Shader" uid="uid://bximonf5agbam" path="res://scenes/caveEnviroment/cave_background_perlin.gdshader" id="4_g0opn"]
 [ext_resource type="AudioStream" uid="uid://xak3e440bhdx" path="res://assets/audio/sfx/player/breaking bloks.mp3" id="5_b6bav"]
@@ -10,6 +9,7 @@
 [ext_resource type="Script" uid="uid://bokuosutvx4fr" path="res://scenes/caveEnviroment/transportUp.gd" id="7_k1atb"]
 [ext_resource type="AudioStream" uid="uid://b2sufp58s406l" path="res://assets/audio/sfx/player/oreDestroy.mp3" id="7_w32iq"]
 [ext_resource type="Script" uid="uid://c4gisitxcsjxa" path="res://scenes/caveEnviroment/background_music_manager.gd" id="9_53e16"]
+[ext_resource type="Texture2D" uid="uid://gdoku45w78rt" path="res://scenes/caveGenerator/CaveTilemap.png" id="9_w32iq"]
 [ext_resource type="AudioStream" uid="uid://b47ert4sspfga" path="res://assets/audio/music/caveSoundtrack.mp3" id="9_yf8om"]
 [ext_resource type="AudioStream" uid="uid://0i1gv5oi48j2" path="res://assets/audio/sfx/ambience/CaveAmbience.mp3" id="10_iqo5d"]
 
@@ -25,8 +25,11 @@ shader_parameter/camera_pos = Vector2(0, 0)
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_53e16"]
 polygon = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_6leeu"]
+load_path = "res://.godot/imported/CaveTileMap.png-5e4d09d14186afa0dfbbfffbd3b60af3.ctex"
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_em1bs"]
-texture = ExtResource("2_smjkd")
+texture = SubResource("CompressedTexture2D_6leeu")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 0:0/0/terrain_set = 0
@@ -421,7 +424,7 @@ terrain_set_0/terrain_0/color = Color(0.010794957, 0.004454754, 0.267876, 1)
 sources/0 = SubResource("TileSetAtlasSource_em1bs")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yf8om"]
-texture = ExtResource("2_smjkd")
+texture = SubResource("CompressedTexture2D_6leeu")
 texture_region_size = Vector2i(32, 32)
 0:6/0 = 0
 0:6/0/custom_data_0 = "gold"
@@ -569,8 +572,18 @@ fractal_octaves = 7
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_30230"]
 noise = SubResource("FastNoiseLite_6kpao")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3aygq"]
-size = Vector2(110, 68)
+[sub_resource type="CircleShape2D" id="CircleShape2D_pd0ml"]
+radius = 28.071337
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ti1pm"]
+texture = ExtResource("9_w32iq")
+texture_region_size = Vector2i(32, 32)
+7:14/0 = 0
+7:15/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_x8mcd"]
+tile_size = Vector2i(32, 32)
+sources/0 = SubResource("TileSetAtlasSource_ti1pm")
 
 [node name="CaveEnviroment" type="Node2D" unique_id=647867534]
 
@@ -633,18 +646,18 @@ collision_layer = 0
 script = ExtResource("7_k1atb")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Static/TransportUp" unique_id=1638617501]
-polygon = PackedVector2Array(-30, 84, -60, 82, -49, 36, -56, -58, -35, -51, 83, -55, 99, -61, 78, 42, 87, 86, 60, 87, 40, 42, -16, 39)
-
-[node name="Polygon2D" type="Polygon2D" parent="Static/TransportUp" unique_id=1703230038]
-color = Color(0.20265341, 0.07983922, 0.23422372, 1)
-polygon = PackedVector2Array(-53, -29, -49, 38, -60, 83, -28, 84, -16, 38, 40, 41, 61, 87, 88, 86, 78, 42, 99, -61, 84, -55, -33, -50, -56, -59)
+polygon = PackedVector2Array(5, 12, 8, 23, 14, 30, 21, 29, 28, 23, 26, 18, 20, 20, 19, 7, 14, 7, 13, 8, 12, 18, 10, 10, 7, 9)
 
 [node name="Enter" type="Area2D" parent="Static/TransportUp" unique_id=2016073260]
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Static/TransportUp/Enter" unique_id=1695575211]
-position = Vector2(14, 57)
-shape = SubResource("RectangleShape2D_3aygq")
+position = Vector2(18, 17)
+shape = SubResource("CircleShape2D_pd0ml")
+
+[node name="Anchor" type="TileMapLayer" parent="Static/TransportUp" unique_id=590528014]
+tile_map_data = PackedByteArray("AAAAAAAAAAAHAA8AAAAAAP//AAAHAA4AAAAAAP7/AAAHAA4AAAAAAP3/AAAHAA4AAAAAAPz/AAAHAA4AAAAAAPv/AAAHAA4AAAAAAPr/AAAHAA4AAAAAAPn/AAAHAA4AAAAAAMf/AAAHAA4AAAAAAMj/AAAHAA4AAAAAAMn/AAAHAA4AAAAAAMr/AAAHAA4AAAAAAMv/AAAHAA4AAAAAAMz/AAAHAA4AAAAAAM3/AAAHAA4AAAAAAM7/AAAHAA4AAAAAAM//AAAHAA4AAAAAAND/AAAHAA4AAAAAANH/AAAHAA4AAAAAANL/AAAHAA4AAAAAANP/AAAHAA4AAAAAANT/AAAHAA4AAAAAANX/AAAHAA4AAAAAANb/AAAHAA4AAAAAANf/AAAHAA4AAAAAANj/AAAHAA4AAAAAANn/AAAHAA4AAAAAANr/AAAHAA4AAAAAANv/AAAHAA4AAAAAANz/AAAHAA4AAAAAAN3/AAAHAA4AAAAAAN7/AAAHAA4AAAAAAN//AAAHAA4AAAAAAOD/AAAHAA4AAAAAAOH/AAAHAA4AAAAAAOL/AAAHAA4AAAAAAOP/AAAHAA4AAAAAAOT/AAAHAA4AAAAAAOX/AAAHAA4AAAAAAOb/AAAHAA4AAAAAAOf/AAAHAA4AAAAAAOj/AAAHAA4AAAAAAOn/AAAHAA4AAAAAAOr/AAAHAA4AAAAAAOv/AAAHAA4AAAAAAOz/AAAHAA4AAAAAAO3/AAAHAA4AAAAAAO7/AAAHAA4AAAAAAO//AAAHAA4AAAAAAPD/AAAHAA4AAAAAAPH/AAAHAA4AAAAAAPL/AAAHAA4AAAAAAPP/AAAHAA4AAAAAAPT/AAAHAA4AAAAAAPX/AAAHAA4AAAAAAPb/AAAHAA4AAAAAAPf/AAAHAA4AAAAAAPj/AAAHAA4AAAAAAJ//AAAHAA4AAAAAAKD/AAAHAA4AAAAAAKH/AAAHAA4AAAAAAKL/AAAHAA4AAAAAAKP/AAAHAA4AAAAAAKT/AAAHAA4AAAAAAKX/AAAHAA4AAAAAAKb/AAAHAA4AAAAAAKf/AAAHAA4AAAAAAKj/AAAHAA4AAAAAAKn/AAAHAA4AAAAAAKr/AAAHAA4AAAAAAKv/AAAHAA4AAAAAAKz/AAAHAA4AAAAAAK3/AAAHAA4AAAAAAK7/AAAHAA4AAAAAAK//AAAHAA4AAAAAALD/AAAHAA4AAAAAALH/AAAHAA4AAAAAALL/AAAHAA4AAAAAALP/AAAHAA4AAAAAALT/AAAHAA4AAAAAALX/AAAHAA4AAAAAALb/AAAHAA4AAAAAALf/AAAHAA4AAAAAALj/AAAHAA4AAAAAALn/AAAHAA4AAAAAALr/AAAHAA4AAAAAALv/AAAHAA4AAAAAALz/AAAHAA4AAAAAAL3/AAAHAA4AAAAAAL7/AAAHAA4AAAAAAL//AAAHAA4AAAAAAMD/AAAHAA4AAAAAAMH/AAAHAA4AAAAAAML/AAAHAA4AAAAAAMP/AAAHAA4AAAAAAMT/AAAHAA4AAAAAAMX/AAAHAA4AAAAAAMb/AAAHAA4AAAAAAJH/AAAHAA4AAAAAAJL/AAAHAA4AAAAAAJP/AAAHAA4AAAAAAJT/AAAHAA4AAAAAAJX/AAAHAA4AAAAAAJb/AAAHAA4AAAAAAJf/AAAHAA4AAAAAAJj/AAAHAA4AAAAAAJn/AAAHAA4AAAAAAJr/AAAHAA4AAAAAAJv/AAAHAA4AAAAAAJz/AAAHAA4AAAAAAJ3/AAAHAA4AAAAAAJ7/AAAHAA4AAAA=")
+tile_set = SubResource("TileSet_x8mcd")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1700140599]
 layer = -1

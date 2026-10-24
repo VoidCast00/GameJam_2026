@@ -14,3 +14,11 @@ var oxygen: float = oxygenTankSize:  #in seconds
 		#only once
 		if oxygen <= 0.0 and not was_empty:
 			Global.oxygenDepleted.emit()
+
+@onready var oxygen_gauge: Control 
+@onready var shop_ui: Control 
+@onready var loading_text: Control 
+
+var cash:int = 0:
+	set(new_val):
+		cash = clamp(new_val, 0, INT64_MAX)

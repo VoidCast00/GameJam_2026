@@ -1,7 +1,7 @@
 extends Node2D
 
 var playerInside:bool = false
-@onready var shop_ui: Control = $"../CanvasLayer/ShopUI"
+@onready var shop_ui: Control = Global.shop_ui
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

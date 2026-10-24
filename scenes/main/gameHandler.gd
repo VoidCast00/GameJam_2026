@@ -1,10 +1,11 @@
 extends Node
 
 
-@onready var sub_viewport: SubViewport = $"../SubViewportContainer/SubViewport"
+@export var sub_viewport: SubViewport
 @export var WaterEnviroment: PackedScene
 @export var ShopEnviroment: PackedScene
 @export var menu:CanvasLayer
+@export var oxygen_gauge: Control 
 
 
 #current environment
@@ -12,6 +13,11 @@ var current_env: Node = null
 
 
 func _ready() -> void:
+	print(INT64_MAX)
+	print(oxygen_gauge)
+	Global.shop_ui = %ShopUI
+	Global.loading_text = %LoadingText
+	Global.oxygen_gauge = oxygen_gauge
 	Global.loadWaterEnviroment.connect(loadWaterEnviroment)
 	Global.loadShopEnviroment.connect(loadShopEnviroment)
 	Global.exitGame.connect(exitGame)
