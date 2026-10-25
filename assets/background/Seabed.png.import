@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c41hnlq01uue3"
-path="res://.godot/imported/Surface_Background_export.png-175c0fbba2b61bd016bbeb5eb1d30115.ctex"
+uid="uid://ddd6fp1m12eee"
+path="res://.godot/imported/Seabed.png-9d4bebce958c80a7a741219093ad68a2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/surface/Surface_Background_export.png"
-dest_files=["res://.godot/imported/Surface_Background_export.png-175c0fbba2b61bd016bbeb5eb1d30115.ctex"]
+source_file="res://assets/background/Seabed.png"
+dest_files=["res://.godot/imported/Seabed.png-9d4bebce958c80a7a741219093ad68a2.ctex"]
 
 [params]
 

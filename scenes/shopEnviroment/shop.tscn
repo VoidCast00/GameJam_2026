@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bp55nk6o06xuj"]
 
 [ext_resource type="Script" uid="uid://eu0sn7th1gci" path="res://scenes/shopEnviroment/customPLayer/custom_player.gd" id="1_ry6u4"]
-[ext_resource type="Texture2D" uid="uid://c41hnlq01uue3" path="res://assets/surface/Surface_Background_export.png" id="2_mkqyk"]
+[ext_resource type="Texture2D" uid="uid://c41hnlq01uue3" path="res://assets/background/Surface_Background_export.png" id="2_mkqyk"]
 [ext_resource type="Script" uid="uid://f41kc4e7q3tx" path="res://scenes/shopEnviroment/shop.gd" id="3_528fk"]
 [ext_resource type="Script" uid="uid://cq8hyljfogs4k" path="res://scenes/shopEnviroment/transportDown.gd" id="4_k81a4"]
 [ext_resource type="Texture2D" uid="uid://bstt7m8r73mqh" path="res://assets/player/animations/Scuba_Diver_Surface_Animations.png" id="4_mkqyk"]
