@@ -175,16 +175,15 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Buy" type="PanelContainer" parent="Pages" unique_id=472144950]
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -387.5
+offset_left = -531.0
 offset_top = -318.0
-offset_right = 387.5
+offset_right = 531.0
 offset_bottom = 318.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -214,9 +213,9 @@ script = ExtResource("2_jgblb")
 metadata/_custom_type_script = "uid://cpe2ml4pgkvvj"
 
 [node name="PanelContainer" type="PanelContainer" parent="Pages/Buy/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=1106984711]
-custom_minimum_size = Vector2(313.555, 47.085)
+custom_minimum_size = Vector2(429.485, 47.085)
 layout_mode = 2
-size_flags_horizontal = 8
+size_flags_horizontal = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_s5be7")
 
 [node name="Title" type="Label" parent="Pages/Buy/HBoxContainer/VBoxContainer/HBoxContainer/PanelContainer" unique_id=117787663]
@@ -227,7 +226,6 @@ text = "Upgrades:"
 [node name="ScrollContainer" type="ScrollContainer" parent="Pages/Buy/HBoxContainer/VBoxContainer" unique_id=373510810]
 custom_minimum_size = Vector2(350, 0)
 layout_mode = 2
-size_flags_horizontal = 0
 size_flags_vertical = 3
 
 [node name="Upgrades" type="VBoxContainer" parent="Pages/Buy/HBoxContainer/VBoxContainer/ScrollContainer" unique_id=574894224]
@@ -254,7 +252,6 @@ text = "Traits:"
 [node name="ScrollContainer2" type="ScrollContainer" parent="Pages/Buy/HBoxContainer/VBoxContainer2" unique_id=738486622]
 custom_minimum_size = Vector2(350, 0)
 layout_mode = 2
-size_flags_horizontal = 0
 size_flags_vertical = 3
 
 [node name="trait_upgrades" type="VBoxContainer" parent="Pages/Buy/HBoxContainer/VBoxContainer2/ScrollContainer2" unique_id=1607133444]

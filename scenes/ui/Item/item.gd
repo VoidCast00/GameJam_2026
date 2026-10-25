@@ -4,6 +4,7 @@ extends PanelContainer
 var itemName:String;
 var itemCount:int
 var sellAmount:float;
+var parent:Control
 @onready var sellButton: AnimatedButton = $HBox/Sell
 
 func _ready() -> void:
@@ -14,5 +15,7 @@ func _ready() -> void:
 func sell() -> void:
 	Inventory.cash += itemCount * sellAmount;
 	Inventory.remove(itemName,itemCount)
+	self.parent.spawnMoneyParticle(itemCount * sellAmount)
+
 	self.queue_free()
 	return
