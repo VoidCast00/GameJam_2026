@@ -5,6 +5,9 @@
 [ext_resource type="Script" uid="uid://cpe2ml4pgkvvj" path="res://scenes/AnimatedButton/animated_button.gd" id="2_jgblb"]
 [ext_resource type="PackedScene" uid="uid://tbdgcsql6byc" path="res://scenes/ui/UpgradeUI/upgrade.tscn" id="4_8f7lt"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3aygq"]
+bg_color = Color(0.06469653, 0.06469653, 0.06469653, 0.23921569)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eiwcj"]
 bg_color = Color(0.25882354, 0.40784314, 0.41960785, 1)
 corner_radius_top_left = 16
@@ -87,7 +90,7 @@ base_font = SubResource("SystemFont_8f7lt")
 variation_embolden = 2.0
 variation_transform = Transform2D(1.11, 0, -0.25, 1.57, 0, 0)
 
-[node name="ShopUI" type="Control" unique_id=1585925505 node_paths=PackedStringArray("sell_value", "Sell_All", "MoneyParticle", "timer", "buttons", "back0", "back1", "upgradesList")]
+[node name="ShopUI" type="Control" unique_id=1585925505 node_paths=PackedStringArray("item_list", "sell_value", "Sell_All", "MoneyParticle", "timer", "buttons", "back0", "back1", "upgradesList", "trait_upgrades")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -96,6 +99,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_lf3py")
 itemScene = ExtResource("2_afst3")
+item_list = NodePath("Pages/Sell/HBoxContainer/ItemPanel/ItemList")
 sell_value = NodePath("Pages/Sell/HBoxContainer/PanelContainer/VBoxContainer/TextSellValue")
 Sell_All = NodePath("Pages/Sell/HBoxContainer/PanelContainer/VBoxContainer/Sell_All")
 MoneyParticle = NodePath("MoneyParticle")
@@ -105,6 +109,16 @@ back0 = NodePath("Pages/Sell/HBoxContainer/ItemPanel/HBoxContainer/Back")
 back1 = NodePath("Pages/Buy/HBoxContainer/VBoxContainer/HBoxContainer/Back")
 UPGRADE_OBJECT = ExtResource("4_8f7lt")
 upgradesList = NodePath("Pages/Buy/HBoxContainer/VBoxContainer/ScrollContainer/Upgrades")
+trait_upgrades = NodePath("Pages/Buy/HBoxContainer/VBoxContainer2/ScrollContainer2/trait_upgrades")
+
+[node name="Panel" type="Panel" parent="." unique_id=1774445215]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_3aygq")
 
 [node name="Buttons" type="HBoxContainer" parent="." unique_id=1018599329]
 layout_mode = 1
@@ -200,7 +214,7 @@ script = ExtResource("2_jgblb")
 metadata/_custom_type_script = "uid://cpe2ml4pgkvvj"
 
 [node name="PanelContainer" type="PanelContainer" parent="Pages/Buy/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=1106984711]
-custom_minimum_size = Vector2(215, 46)
+custom_minimum_size = Vector2(313.555, 47.085)
 layout_mode = 2
 size_flags_horizontal = 8
 theme_override_styles/panel = SubResource("StyleBoxFlat_s5be7")
@@ -208,15 +222,45 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_s5be7")
 [node name="Title" type="Label" parent="Pages/Buy/HBoxContainer/VBoxContainer/HBoxContainer/PanelContainer" unique_id=117787663]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.7372549, 0.6666667, 0.6431373, 1)
-text = "Static Upgrades:"
+text = "Upgrades:"
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Pages/Buy/HBoxContainer/VBoxContainer" unique_id=373510810]
+custom_minimum_size = Vector2(350, 0)
 layout_mode = 2
+size_flags_horizontal = 0
 size_flags_vertical = 3
 
 [node name="Upgrades" type="VBoxContainer" parent="Pages/Buy/HBoxContainer/VBoxContainer/ScrollContainer" unique_id=574894224]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 10
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Pages/Buy/HBoxContainer" unique_id=1041684853]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PanelContainer" type="PanelContainer" parent="Pages/Buy/HBoxContainer/VBoxContainer2" unique_id=409420551]
+custom_minimum_size = Vector2(313.555, 47.085)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_s5be7")
+
+[node name="Title" type="Label" parent="Pages/Buy/HBoxContainer/VBoxContainer2/PanelContainer" unique_id=1816154823]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7372549, 0.6666667, 0.6431373, 1)
+text = "Traits:"
+
+[node name="ScrollContainer2" type="ScrollContainer" parent="Pages/Buy/HBoxContainer/VBoxContainer2" unique_id=738486622]
+custom_minimum_size = Vector2(350, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 3
+
+[node name="trait_upgrades" type="VBoxContainer" parent="Pages/Buy/HBoxContainer/VBoxContainer2/ScrollContainer2" unique_id=1607133444]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 10
 

@@ -16,7 +16,7 @@ const GOLD_PER_SLOT := 50
 const ALL := {
 	#--- always on ---
 	"None_Mining": {
-		"name": "Sharper Drill",
+		"name": "Sharper Laser",
 		"desc": "+15% mining speed per level.",
 		"cost": 40,
 		"max_level": 5,
@@ -24,7 +24,7 @@ const ALL := {
 		"per_upgrade": 0.15,
 	},
 	"None_Speed": {
-		"name": "Stronger Engine",
+		"name": "Bigger fins",
 		"desc": "+10% movement speed per level.",
 		"cost": 40,
 		"max_level": 5,
@@ -32,7 +32,7 @@ const ALL := {
 		"per_upgrade": 0.1,
 	},
 	"None_Oxygen": {
-		"name": "Bigger Tank",
+		"name": "More O2 Presure",
 		"desc": "+10% oxygen capacity per level.",
 		"cost": 50,
 		"max_level": 5,
@@ -40,7 +40,7 @@ const ALL := {
 		"per_upgrade": 0.1,
 	},
 	"None_InventoryCap": {
-		"name": "Cargo Bay",
+		"name": "Resource Compresion",
 		"desc": "+3 material slots per level.",
 		"cost": 60,
 		"max_level": 5,
@@ -48,9 +48,9 @@ const ALL := {
 		"per_upgrade": 3.0,
 	},
 	"None_Fortune": {
-		"name": "Lucky Laser",
+		"name": "Silk Touch",
 		"desc": "Every time you mine, +10% chance per level for +1 drop.",
-		"cost": 75,
+		"cost": 250,
 		"max_level": 3,
 		"default": 0.0,  #chance
 		"per_upgrade": 0.1,
@@ -70,7 +70,7 @@ const ALL := {
 		"name": "Amethyst Breather",
 		"desc": "Every time you mine an Amethyst, +0.5 seconds of oxygen per level.",
 		"cost": 60,
-		"max_level": 3,
+		"max_level": 1,
 		"default": 0.0,  #seconds
 		"per_upgrade": 0.5,
 	},
@@ -78,7 +78,7 @@ const ALL := {
 		"name": "Amethyst Focus",
 		"desc": "For each Amethyst mined during the current dive, +0.2 mining speed per level.",
 		"cost": 80,
-		"max_level": 3,
+		"max_level": 1,
 		"default": 0.0,  #per amethyst
 		"per_upgrade": 0.2,
 	},
@@ -86,7 +86,7 @@ const ALL := {
 		"name": "Amethyst Rush",
 		"desc": "For each Amethyst mined during the current dive, +0.2 movement speed per level.",
 		"cost": 80,
-		"max_level": 3,
+		"max_level": 1,
 		"default": 0.0,  #per amethyst
 		"per_upgrade": 0.2,
 	},
@@ -94,7 +94,7 @@ const ALL := {
 		"name": "Amethyst Luck",
 		"desc": "Every time you mine an Amethyst, +12.5% chance per level for +1 drop.",
 		"cost": 70,
-		"max_level": 3,
+		"max_level": 1,
 		"default": 0.0,  #chance
 		"per_upgrade": 0.125,
 	},
@@ -102,7 +102,7 @@ const ALL := {
 		"name": "Amethyst Tax",
 		"desc": "Every time you mine an Amethyst, +2 money per level.",
 		"cost": 70,
-		"max_level": 3,
+		"max_level": 1,
 		"default": 0.0,  #money
 		"per_upgrade": 2.0,
 	},
@@ -112,7 +112,7 @@ const ALL := {
 		"name": "Gold Focus",
 		"desc": "For each Gold mined during the current dive, +0.35 mining speed per level.",
 		"cost": 120,
-		"max_level": 3,
+		"max_level": 1,
 		"default": 0.0,  #per gold
 		"per_upgrade": 0.35,
 	},
@@ -120,7 +120,7 @@ const ALL := {
 		"name": "Gold Rush",
 		"desc": "For each Gold mined during the current dive, +0.35 movement speed per level.",
 		"cost": 120,
-		"max_level": 3,
+		"max_level": 1,
 		"default": 0.0,  #per gold
 		"per_upgrade": 0.35,
 	},
@@ -128,7 +128,7 @@ const ALL := {
 		"name": "Gold Breather",
 		"desc": "Every time you mine a Gold ore, +2 seconds of oxygen per level.",
 		"cost": 100,
-		"max_level": 3,
+		"max_level": 1,
 		"default": 0.0,  #seconds
 		"per_upgrade": 2.0,
 	},
@@ -136,7 +136,7 @@ const ALL := {
 		"name": "Gold Hoarder",
 		"desc": "Every 50 Gold ores mined, +1 permanent Inventory Space per level.",
 		"cost": 100,
-		"max_level": 3,
+		"max_level": 1,
 		"default": 0.0,  #slots per 50 gold
 		"per_upgrade": 1.0,
 	},
@@ -144,7 +144,7 @@ const ALL := {
 		"name": "Gold Luck",
 		"desc": "Every time you mine a Gold Ore, +7.5% chance per level for +2 drop.",
 		"cost": 130,
-		"max_level": 3,
+		"max_level": 1,
 		"default": 0.0,  #chance
 		"per_upgrade": 0.075,
 	},

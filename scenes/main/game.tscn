@@ -117,6 +117,7 @@ size = Vector2i(642, 362)
 render_target_update_mode = 4
 
 [node name="UI" type="Control" parent="." unique_id=383421448]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 0
 
@@ -211,6 +212,7 @@ theme_override_font_sizes/font_size = 200
 text = "DAY 1. BEGINS"
 
 [node name="GameManager" type="Node" parent="." unique_id=1531804948 node_paths=PackedStringArray("sub_viewport", "menu", "pause", "oxygen_gauge")]
+process_mode = 3
 script = ExtResource("2_e3dby")
 sub_viewport = NodePath("../SubViewportContainer/SubViewport")
 WaterEnviroment = ExtResource("1_e3dby")

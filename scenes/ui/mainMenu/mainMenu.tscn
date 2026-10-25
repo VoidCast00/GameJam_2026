@@ -14,11 +14,11 @@ modulate_color = Color(0.3953672, 0.39536718, 0.39536715, 1)
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3aygq"]
 shader = ExtResource("3_0stch")
 shader_parameter/color_dark = Color(0.03489842, 0.079970054, 0.15464306, 1)
-shader_parameter/color_light = Color(0.048149914, 0.25276026, 0.33676103, 1)
-shader_parameter/contrast = 2.5
-shader_parameter/depth_fade = 0.5
+shader_parameter/color_light = Color(0.08898523, 0.3748907, 0.4959771, 1)
+shader_parameter/contrast = 2.125
+shader_parameter/depth_fade = 1.21
 shader_parameter/scale = 0.004
-shader_parameter/speed = 0.05
+shader_parameter/speed = 0.09
 shader_parameter/warp = 0.0
 shader_parameter/pixel_size = 1.0
 
