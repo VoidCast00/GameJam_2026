@@ -13,6 +13,7 @@ config_version=5
 config/name="UnderPressure"
 run/main_scene="uid://dxxby0mufpujj"
 config/features=PackedStringArray("4.7", "GL Compatibility")
+run/max_fps=60
 boot_splash/bg_color=Color(0.20784314, 0.22745098, 0.36862746, 1)
 boot_splash/image="uid://c6fuu3uigptcs"
 config/icon="uid://c6fuu3uigptcs"
@@ -32,8 +33,8 @@ Upgrades="*uid://bgpxjunmhlnj0"
 window/size/viewport_width=1920
 window/size/viewport_height=1080
 window/size/mode=3
+window/stretch/mode="viewport"
 window/stretch/aspect="expand"
-window/stretch/scale_mode="integer"
 
 [file_customization]
 

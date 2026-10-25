@@ -1,2 +1,21 @@
-# Normalize EOL for all files that Git considers text files.
+# Normalize EOL for text files Git considers text.
 * text=auto eol=lf
+
+# Never apply text/EOL conversion to binary assets — this prevents the
+# checkout corruption that shows up as "compression"/image load errors in Godot.
+*.png   binary
+*.jpg   binary
+*.jpeg  binary
+*.webp  binary
+*.svg   binary
+*.ico   binary
+*.mp3   binary
+*.ogg   binary
+*.wav   binary
+*.ttf   binary
+*.otf   binary
+*.res   binary
+*.scn   binary
+*.glb   binary
+*.exr   binary
+*.ctex  binary
