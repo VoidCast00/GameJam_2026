@@ -7,6 +7,7 @@ extends Node
 @export var menu:Control
 @export var pause:Control
 @export var oxygen_gauge: Control 
+@export var label: Label
 
 
 
@@ -28,6 +29,8 @@ func _ready() -> void:
 
 func loadWaterEnviroment() -> void:
 	menu.hide()
+	oxygen_gauge.show()
+	label.hide()
 	load_env(WaterEnviroment)
 
 
@@ -41,6 +44,8 @@ func loadShopEnviroment() -> void:
 	Global.loading_text.get_children()[1].text = text
 	Global.loading_text.show()
 	menu.hide()
+	oxygen_gauge.hide()
+	label.show()
 	await get_tree().create_timer(2.0).timeout
 	load_env(ShopEnviroment)
 	Global.day += 1
