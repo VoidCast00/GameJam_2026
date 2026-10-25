@@ -19,6 +19,7 @@ var current_env: Node = null
 var is_loading := false
 
 func _ready() -> void:
+	pause.resume.connect(switchPause)
 	Global.shop_ui = %ShopUI
 	Global.loading_text = %LoadingText
 	Global.oxygen_gauge = oxygen_gauge
@@ -55,6 +56,9 @@ func exitGame():
 	get_tree().quit()
 	
 
+func switchPause() -> void:
+	pause.visible = not pause.visible
+	get_tree().paused = pause.visible
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -63,8 +67,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 	if menu.visible:
 		return
-	pause.visible = not pause.visible
-	get_tree().paused = pause.visible
+	switchPause()
 
 
 func load_env(scene: PackedScene) -> void:

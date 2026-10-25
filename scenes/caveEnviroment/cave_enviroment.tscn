@@ -551,6 +551,7 @@ offsets = PackedFloat32Array(0, 0.5)
 frequency = 0.0242
 fractal_octaves = 8
 cellular_distance_function = 2
+domain_warp_enabled = true
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_yf8om"]
 noise = SubResource("FastNoiseLite_0rn35")

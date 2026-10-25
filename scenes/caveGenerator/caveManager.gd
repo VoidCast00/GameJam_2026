@@ -121,6 +121,13 @@ func breakPar(position: Vector2) -> void:
 
 #generate
 func generateCaveSystem() -> void:
+	#random seed so every run generates a different cave
+	randomize()
+	caveNoise.noise.seed = randi()
+	crystalNoise.noise.seed = randi()
+	goldNoise.noise.seed = randi()
+
+
 	#rock
 	var rock: Array[Vector2i] = []
 	for x in range(-HALF_SIZE, HALF_SIZE):
