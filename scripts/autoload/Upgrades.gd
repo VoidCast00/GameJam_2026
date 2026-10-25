@@ -16,7 +16,7 @@ const GOLD_PER_SLOT := 50
 const ALL := {
 	#--- always on ---
 	"None_Mining": {
-		"name": "Sharper Drill",
+		"name": "Sharper Laser",
 		"desc": "+15% mining speed per level.",
 		"cost": 40,
 		"max_level": 5,
@@ -24,7 +24,7 @@ const ALL := {
 		"per_upgrade": 0.15,
 	},
 	"None_Speed": {
-		"name": "Stronger Engine",
+		"name": "Bigger fins",
 		"desc": "+10% movement speed per level.",
 		"cost": 40,
 		"max_level": 5,
@@ -32,7 +32,7 @@ const ALL := {
 		"per_upgrade": 0.1,
 	},
 	"None_Oxygen": {
-		"name": "Bigger Tank",
+		"name": "More O2 Presure",
 		"desc": "+10% oxygen capacity per level.",
 		"cost": 50,
 		"max_level": 5,
@@ -40,7 +40,7 @@ const ALL := {
 		"per_upgrade": 0.1,
 	},
 	"None_InventoryCap": {
-		"name": "Cargo Bay",
+		"name": "Resource Compresion",
 		"desc": "+3 material slots per level.",
 		"cost": 60,
 		"max_level": 5,
@@ -48,7 +48,7 @@ const ALL := {
 		"per_upgrade": 3.0,
 	},
 	"None_Fortune": {
-		"name": "Lucky Laser",
+		"name": "Silk Touch",
 		"desc": "Every time you mine, +10% chance per level for +1 drop.",
 		"cost": 250,
 		"max_level": 3,

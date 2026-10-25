@@ -53,12 +53,13 @@ func exitGame():
 
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("esc") and menu.visible:
-		pass
-	else:
-		if event.is_action_pressed("esc"):
-			pause.visible = not pause.visible
+	if not event.is_action_pressed("esc"):
+		return
 
+	if menu.visible:
+		return
+	pause.visible = not pause.visible
+	get_tree().paused = pause.visible
 
 
 func load_env(scene: PackedScene) -> void:

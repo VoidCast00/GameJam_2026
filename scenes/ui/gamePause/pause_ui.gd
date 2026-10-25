@@ -2,7 +2,7 @@ extends Control
 
 @onready var back_to_game: AnimatedButton = $VBoxContainer/backToGame
 @onready var options: AnimatedButton = $VBoxContainer/options
-@onready var exit: AnimatedButton = $VBoxContainer/exit
+@onready var exit: AnimatedButton = $VBoxContainer/goMainMenu
 
 
 func _ready() -> void:
@@ -11,5 +11,6 @@ func _ready() -> void:
 
 
 func _on_exit_pressed() -> void:
+	#todo: main menu load
 	Global.exitGame.emit()
 	

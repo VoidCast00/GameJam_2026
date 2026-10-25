@@ -16,6 +16,7 @@ var money_tween: Tween
 @export var back1: AnimatedButton
 @export var UPGRADE_OBJECT:PackedScene
 @export var upgradesList: VBoxContainer
+@export var trait_upgrades: VBoxContainer
 
 const SELL_AMOUNT := {
 	"rock": 1,
@@ -30,11 +31,18 @@ func _ready() -> void:
 	Sell_All.pressed.connect(sellAll)
 	back0.pressed.connect(go_back)
 	back1.pressed.connect(go_back)
+	var temp_trait_upgrades_list:Array;
 	for id in Upgrades.ALL:
 		var upgradeItem:UpgradeObjUI= UPGRADE_OBJECT.instantiate()
 		upgradeItem.id = id
-		upgradesList.add_child(upgradeItem)
-	
+		if Upgrades.ALL[id]["max_level"] == 1:
+			if Upgrades.get_level(id) == 0:
+				temp_trait_upgrades_list.append(upgradeItem)
+		else: 
+			upgradesList.add_child(upgradeItem)
+	temp_trait_upgrades_list.shuffle()
+	for i in range(3):
+		trait_upgrades.add_child(temp_trait_upgrades_list[i])
 func _on_buy_pressed() -> void:
 	sell.hide()
 	buy.show()

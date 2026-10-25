@@ -27,6 +27,8 @@ base_font = SubResource("SystemFont_pd0ml")
 spacing_space = -1
 spacing_top = -7
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0stch"]
+
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_3aygq"]
 color = Color(0, 0.2509804, 0.003921569, 1)
 grow_begin = 0.0
@@ -68,7 +70,7 @@ corner_radius_bottom_left = 2
 
 [node name="Upgrade" type="PanelContainer" unique_id=893944204]
 custom_maximum_size = Vector2(-1, 160)
-offset_right = 297.0
+offset_right = 341.0
 offset_bottom = 112.0
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_3aygq")
@@ -94,9 +96,16 @@ layout_mode = 2
 size_flags_vertical = 10
 theme_override_colors/font_color = Color(0.62, 0.62, 0.62, 0.89411765)
 theme_override_fonts/font = SubResource("FontVariation_x8mcd")
-theme_override_font_sizes/font_size = 11
-text = "Upgrade is an upgrade Upgrade is an upgrade Upgrade is an upgrade Upgrade is an upgrade"
+theme_override_font_sizes/font_size = 14
+text = "Upgrade is an upgrade Upgrade "
 autowrap_mode = 3
+
+[node name="Panel" type="Panel" parent="HBox" unique_id=1628699469]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxTexture_0stch")
 
 [node name="VSeparator" type="VSeparator" parent="HBox" unique_id=936036873]
 layout_mode = 2
