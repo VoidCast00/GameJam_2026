@@ -11,6 +11,11 @@ const basePosMoneyParticlePos:Vector2 = Vector2(920, 510)
 @onready var cashParticleText: Label = $MoneyParticle/Cash
 @export var timer: Timer
 var money_tween: Tween
+@export var buttons: HBoxContainer
+@export var back0: AnimatedButton
+@export var back1: AnimatedButton
+@export var UPGRADE_OBJECT:PackedScene
+@export var upgradesList: VBoxContainer
 
 const SELL_AMOUNT := {
 	"rock": 1,
@@ -19,26 +24,45 @@ const SELL_AMOUNT := {
 	"amethyst": 6,
 }
 
+
+
 func _ready() -> void:
 	Sell_All.pressed.connect(sellAll)
-
+	back0.pressed.connect(go_back)
+	back1.pressed.connect(go_back)
+	for id in Upgrades.ALL:
+		var upgradeItem:UpgradeObjUI= UPGRADE_OBJECT.instantiate()
+		upgradeItem.id = id
+		upgradesList.add_child(upgradeItem)
+	
 func _on_buy_pressed() -> void:
 	sell.hide()
 	buy.show()
+	buttons.hide()
+
+
 
 
 func _on_sell_pressed() -> void:
 	sell.show()
 	buy.hide()
-	
+	buttons.hide()
 	for item in Inventory.items:
 		var itemObj:ItemObjUI= itemScene.instantiate()
 		itemObj.itemCount = Inventory.items[item]
 		itemObj.itemName = str(item)
 		itemObj.sellAmount = SELL_AMOUNT[item]
 		item_list.add_child(itemObj)
-		
+
+func go_back() -> void:
+	sell.hide()
+	buy.hide()
+	buttons.show()
+	
+
+
 func sellAll() -> void:
+	buttons.hide()
 	var sell_value := 0
 	for item in Inventory.items:
 		sell_value += SELL_AMOUNT.get(item, 0) * Inventory.items[item]
@@ -47,7 +71,7 @@ func sellAll() -> void:
 	if sell_value <= 0:
 		return
 
-	Global.cash += sell_value
+	Inventory.cash += sell_value
 	Inventory.items.clear()
 
 	$Buttons.hide()
@@ -92,4 +116,4 @@ func spawnMoneyParticle(sell_value: int) -> void:
 
 
 func _set_cash_text(value: float) -> void:
-	cashParticleText.text = "+%d$" % int(value)
+	cashParticleText.text = str(value) + "$"

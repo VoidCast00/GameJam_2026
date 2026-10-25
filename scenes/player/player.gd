@@ -40,7 +40,7 @@ func _physics_process(delta: float) -> void:
 
 
 func _process(delta: float) -> void:
-	Global.oxygen -= delta
+	Inventory.oxygen -= delta
 	mine(delta)
 	
 

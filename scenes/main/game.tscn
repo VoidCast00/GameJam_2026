@@ -40,8 +40,8 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
-	oxygen = Global.oxygen
-	max_oxygen = Global.oxygenTankSize
+	oxygen = Inventory.oxygen
+	max_oxygen = Inventory.oxygenTankSize
 	alert = _get_alert(oxygen / max_oxygen)
 	queue_redraw()
 

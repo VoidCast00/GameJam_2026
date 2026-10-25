@@ -25,6 +25,8 @@ func _process(delta: float) -> void:
 		loading_text.show()
 		await get_tree().process_frame
 		Global.loadWaterEnviroment.emit()
+		$"../BackgroundmusicHandler/ShopSoundtrack".stop()
+		$"../BackgroundmusicHandler/ShopAmbience".volume_db = - 10
 
 
 #ocean bob

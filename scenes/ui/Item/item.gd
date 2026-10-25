@@ -12,7 +12,7 @@ func _ready() -> void:
 	$HBox/Count.text = str(itemCount)
 
 func sell() -> void:
-	Global.cash += itemCount * sellAmount;
+	Inventory.cash += itemCount * sellAmount;
 	Inventory.remove(itemName,itemCount)
 	self.queue_free()
 	return
