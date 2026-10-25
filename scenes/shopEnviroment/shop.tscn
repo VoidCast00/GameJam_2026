@@ -10,6 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://df38h0acwkb5x" path="res://assets/audio/music/beachTrack.mp3" id="7_5pml0"]
 [ext_resource type="AudioStream" uid="uid://c3dhqtrcibjit" path="res://assets/audio/sfx/ambience/beachambience.mp3" id="8_5pml0"]
 [ext_resource type="Texture2D" uid="uid://i4ojbefinv88" path="res://assets/surface/Surface_exprts.png" id="9_uaush"]
+[ext_resource type="Script" uid="uid://cfsyin6lct8u3" path="res://scenes/shopEnviroment/label.gd" id="11_uydx1"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_uaush"]
 distance = 69.0
@@ -317,6 +318,33 @@ stream = ExtResource("7_5pml0")
 stream = ExtResource("8_5pml0")
 volume_db = -20.0
 mix_target = 1
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=155228530]
+
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=935620869]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+
+[node name="Label" type="Label" parent="CanvasLayer/Control" unique_id=647164585]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -254.0
+offset_top = -80.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 50
+text = "cash: "
+script = ExtResource("11_uydx1")
 
 [connection signal="body_entered" from="Shop/EnterBox" to="Shop" method="_on_enter_box_body_entered"]
 [connection signal="body_exited" from="Shop/EnterBox" to="Shop" method="_on_enter_box_body_exited"]
