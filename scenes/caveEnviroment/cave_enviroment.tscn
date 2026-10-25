@@ -28,11 +28,8 @@ shader_parameter/camera_pos = Vector2(0, 0)
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_53e16"]
 polygon = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_6leeu"]
-load_path = "res://.godot/imported/CaveTileMap.png-5e4d09d14186afa0dfbbfffbd3b60af3.ctex"
-
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_em1bs"]
-texture = SubResource("CompressedTexture2D_6leeu")
+texture = ExtResource("9_w32iq")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 0:0/0/terrain_set = 0
@@ -427,7 +424,7 @@ terrain_set_0/terrain_0/color = Color(0.010794957, 0.004454754, 0.267876, 1)
 sources/0 = SubResource("TileSetAtlasSource_em1bs")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yf8om"]
-texture = SubResource("CompressedTexture2D_6leeu")
+texture = ExtResource("9_w32iq")
 texture_region_size = Vector2i(32, 32)
 0:6/0 = 0
 0:6/0/custom_data_0 = "gold"
@@ -601,7 +598,6 @@ script = ExtResource("2_iqo5d")
 player = NodePath("../Player")
 
 [node name="PerlinBackround" type="ColorRect" parent="Entities/Camera2D" unique_id=733196155]
-visible = false
 top_level = true
 z_index = -18
 material = SubResource("ShaderMaterial_3aygq")
@@ -613,7 +609,6 @@ grow_vertical = 2
 script = ExtResource("5_hyba4")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="Entities/Camera2D" unique_id=663374839]
-visible = false
 color = Color(0, 0, 0, 1)
 
 [node name="Player" parent="Entities" unique_id=698144906 node_paths=PackedStringArray("cave_tilemap", "world_generator") instance=ExtResource("1_ibr66")]
@@ -649,7 +644,6 @@ initial_velocity_max = 50.0
 
 [node name="Cave" type="TileMapLayer" parent="Static" unique_id=1651881328]
 texture_filter = 1
-tile_map_data = PackedByteArray("AAADAPn/AAADAAEAAAADAPr/AAADAAEAAAAEAPv/AAABAAMAAAAFAPv/AAABAAMAAAAGAPv/AAABAAMAAAAHAPv/AAABAAMAAAAIAPv/AAAFAAEAAAAJAPv/AAABAAIAAAAJAPr/AAAAAAUAAAAKAPr/AAAEAAAAAAAIAPr/AAAAAAEAAAAIAPn/AAABAAQAAAAHAPn/AAAAAAIAAAAHAPj/AAABAAQAAAAGAPj/AAABAAIAAAAFAPj/AAABAAIAAAAEAPj/AAAFAAEAAAADAPj/AAAGAAIAAAADAPv/AAAGAAMAAAAIAPj/AAABAAEAAAAJAPj/AAADAAUAAAAKAPj/AAABAAMAAAALAPj/AAABAAMAAAAMAPj/AAAFAAQAAAAMAPf/AAAAAAEAAAANAPf/AAABAAEAAAAJAPn/AAACAAEAAAAHAPf/AAABAAEAAAAHAPb/AAABAAUAAAAGAPb/AAABAAAAAAAFAPb/AAAGAAEAAAAFAPX/AAAFAAIAAAAEAPX/AAAAAAMAAAAIAPf/AAAAAAUAAAAJAPf/AAACAAAAAAAGAPf/AAABAAEAAAAEAPf/AAAAAAAAAAAFAPf/AAABAAUAAAAIAPb/AAACAAEAAAAIAPX/AAAEAAAAAAAJAPX/AAAFAAEAAAAKAPX/AAAEAAEAAAALAPX/AAAFAAAAAAAMAPX/AAABAAAAAAANAPX/AAAHAAEAAAANAPT/AAADAAAAAAALAPb/AAAAAAIAAAAMAPb/AAABAAQAAAAOAPf/AAABAAEAAAAKAPT/AAACAAAAAAAJAPT/AAAGAAEAAAAIAPP/AAABAAMAAAAHAPP/AAAEAAAAAAAGAPP/AAABAAAAAAAFAPP/AAAAAAAAAAAFAPT/AAAGAAAAAAAGAPT/AAABAAIAAAAHAPT/AAAHAAAAAAAHAPX/AAAGAAEAAAAJAPP/AAAHAAIAAAARAPj/AAACAAIAAAARAPf/AAACAAEAAAARAPb/AAACAAAAAAAQAPj/AAACAAUAAAAQAPf/AAABAAEAAAAQAPb/AAABAAAAAAAPAPj/AAABAAIAAAAPAPf/AAABAAEAAAAPAPb/AAABAAAAAAAOAPj/AAACAAUAAAAOAPb/AAABAAAAAAANAPj/AAABAAIAAAANAPb/AAAAAAUAAAAQAPn/AAADAAEAAAAQAPr/AAAHAAEAAAAPAPr/AAAFAAAAAAAOAPr/AAAFAAMAAAANAPr/AAABAAMAAAAMAPr/AAAFAAMAAAALAPr/AAABAAMAAAAKAPv/AAACAAIAAAAMAPn/AAADAAEAAAAOAPn/AAADAAEAAAAPAPv/AAAAAAIAAAAQAPv/AAACAAIAAAA=")
 tile_set = SubResource("TileSet_vsfrg")
 
 [node name="BlockBreak" type="AudioStreamPlayer" parent="Static/Cave" unique_id=420296650]
