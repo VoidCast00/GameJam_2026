@@ -33,6 +33,9 @@ func refresh() -> void:
 	upgrade_descText.text = data["desc"]
 
 	if Upgrades.is_maxed(id):
+		#one time upgrades disappear
+		if data.get("once", false):
+			hide()
 		costText.text = "MAX"
 		buy_upgradeButton.disabled = true
 	else:

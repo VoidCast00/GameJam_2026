@@ -68,7 +68,7 @@ func _process(delta: float) -> void:
 		
 
 	mining_timer += delta
-	if mining_timer >= MINING_TIMES.get(mining_type, 1.0):
+	if mining_timer >= MINING_TIMES.get(mining_type, 1.0) / Upgrades.mining_speed():
 		Global.mined.emit(mining_type)
 		match mining_type:
 			"rock":
@@ -154,30 +154,23 @@ func explode(global_pos: Vector2, radius: int) -> void:
 	for x in range(-radius, radius + 1):
 		for y in range(-radius, radius + 1):
 			var dist := x * x + y * y
-
-			#round shape
 			if dist > radius * radius:
 				continue
-
 			#outer ring 50% chance to survive
 			if dist > (radius - 1) * (radius - 1) and randf() < 0.5:
 				continue
-
 			var cell := center + Vector2i(x, y)
 			if caveTilemap.get_cell_source_id(cell) != -1:
 				cells.append(cell)
 
 	_remove_cells(cells)
 
-
-#remove rock and fix ores around it
 func _remove_cells(cells: Array[Vector2i]) -> void:
 	if cells.is_empty():
 		return
 
 	caveTilemap.set_cells_terrain_connect(cells, 0, -1, false)
 
-	#find ores near changed tiles
 	var nearby := {}
 	for cell in cells:
 		for x in range(-2, 3):
@@ -190,7 +183,6 @@ func _remove_cells(cells: Array[Vector2i]) -> void:
 		_update_ore(c)
 
 
-#redraw one ore to match the rock under it
 func _update_ore(cell: Vector2i) -> void:
 	var rock_tile := caveTilemap.get_cell_atlas_coords(cell)
 	var ore_tile := NONE
@@ -201,7 +193,6 @@ func _update_ore(cell: Vector2i) -> void:
 		else:
 			ore_tile = _crystal_tile(cell)
 
-	#remove or draw
 	if ore_tile == NONE:
 		ores.erase(cell)
 		oreTilemap.erase_cell(cell)

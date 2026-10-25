@@ -26,3 +26,9 @@ func _on_enter_box_body_entered(body: CharacterBody2D) -> void:
 
 func _on_enter_box_body_exited(body: CharacterBody2D) -> void:
 	playerInside = false
+
+
+func _on_easter_egg_pressed() -> void:
+	shop_ui.spawnMoneyParticle(1000)
+	
+	Inventory.cash += 1000

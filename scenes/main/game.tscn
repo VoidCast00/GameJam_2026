@@ -93,6 +93,14 @@ func _draw() -> void:
 		HORIZONTAL_ALIGNMENT_CENTER, width, 11, MUTED)
 "
 
+[sub_resource type="SystemFont" id="SystemFont_se30j"]
+
+[sub_resource type="FontVariation" id="FontVariation_kjrfb"]
+base_font = SubResource("SystemFont_se30j")
+variation_embolden = 1.29
+variation_transform = Transform2D(0.975, 0, 0, 1.05, 0, 0)
+spacing_glyph = 9
+
 [node name="Game" type="Node2D" unique_id=1476364967]
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=1451652045]
@@ -197,8 +205,10 @@ offset_right = 135.47241
 offset_bottom = 34.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 50
-text = "LOADING..."
+theme_override_colors/font_color = Color(0.26194242, 0.5523878, 0.55113465, 1)
+theme_override_fonts/font = SubResource("FontVariation_kjrfb")
+theme_override_font_sizes/font_size = 200
+text = "DAY 1. BEGINS"
 
 [node name="GameManager" type="Node" parent="." unique_id=1531804948 node_paths=PackedStringArray("sub_viewport", "menu", "pause", "oxygen_gauge")]
 script = ExtResource("2_e3dby")

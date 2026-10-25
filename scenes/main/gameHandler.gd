@@ -18,8 +18,6 @@ var current_env: Node = null
 var is_loading := false
 
 func _ready() -> void:
-	print(INT64_MAX)
-	print(oxygen_gauge)
 	Global.shop_ui = %ShopUI
 	Global.loading_text = %LoadingText
 	Global.oxygen_gauge = oxygen_gauge
@@ -34,8 +32,19 @@ func loadWaterEnviroment() -> void:
 
 
 func loadShopEnviroment() -> void:
+	var daysLeft = (Global.deadline - Global.day) 
+	var text :String = ""
+	if daysLeft == 1:
+		text = "1. day remeaning"
+	else:
+		text = str(daysLeft) + ". days remaning"
+	Global.loading_text.get_children()[1].text = text
+	Global.loading_text.show()
 	menu.hide()
+	await get_tree().create_timer(2.0).timeout
 	load_env(ShopEnviroment)
+	Global.day += 1
+
 
 func exitGame():
 	get_tree().quit()
@@ -60,8 +69,8 @@ func load_env(scene: PackedScene) -> void:
 		return
 	is_loading = true
 
-	#show loading and let it draw
 	Global.loading_text.show()
+
 	await get_tree().process_frame
 
 	#remove old
@@ -76,7 +85,7 @@ func load_env(scene: PackedScene) -> void:
 	await current_env.ready
 	await get_tree().process_frame
 
-	#done
+
 	Global.loading_text.hide()
 	is_loading = false
 		

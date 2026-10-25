@@ -10,10 +10,12 @@ config_version=5
 
 [application]
 
-config/name="GameJam_2026"
+config/name="UnderPressure"
 run/main_scene="uid://dxxby0mufpujj"
 config/features=PackedStringArray("4.7", "GL Compatibility")
-config/icon="uid://djtja7xynnqrg"
+boot_splash/bg_color=Color(0.20784314, 0.22745098, 0.36862746, 1)
+boot_splash/image="uid://c6fuu3uigptcs"
+config/icon="uid://c6fuu3uigptcs"
 
 [audio]
 

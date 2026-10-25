@@ -26,14 +26,8 @@ var mining_state_last_frame:bool = false
 @onready var cpu_particles_2d: CPUParticles2D = $CPUParticles2D
 @onready var timer: Timer = $Timer
 @onready var point_light_2d: PointLight2D = $PointLight2D
-#OXYGENNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN
 
 
-
-
-
-
-	
 
 func _physics_process(delta: float) -> void:
 	move(delta)
@@ -59,7 +53,7 @@ func move(delta: float) -> void:
 	var direction := get_movement_input()
 
 	if direction != Vector2.ZERO:
-		velocity = velocity.lerp(direction * speed, acceleration)
+		velocity = velocity.lerp(direction * speed * Upgrades.move_speed(), acceleration)
 		rotation = lerp_angle(rotation, direction.angle() + PI / 2, rotation_speed * delta)
 		point_light_2d.global_rotation = 0.0
 	else:

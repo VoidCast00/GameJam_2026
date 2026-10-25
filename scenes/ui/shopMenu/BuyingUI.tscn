@@ -87,7 +87,7 @@ base_font = SubResource("SystemFont_8f7lt")
 variation_embolden = 2.0
 variation_transform = Transform2D(1.11, 0, -0.25, 1.57, 0, 0)
 
-[node name="ShopUI" type="Control" unique_id=1585925505 node_paths=PackedStringArray("item_list", "sell_value", "Sell_All", "MoneyParticle", "timer", "buttons", "back0", "back1", "upgradesList")]
+[node name="ShopUI" type="Control" unique_id=1585925505 node_paths=PackedStringArray("sell_value", "Sell_All", "MoneyParticle", "timer", "buttons", "back0", "back1", "upgradesList")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -96,7 +96,6 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_lf3py")
 itemScene = ExtResource("2_afst3")
-item_list = NodePath("Pages/Sell/HBoxContainer/ItemPanel/ItemList")
 sell_value = NodePath("Pages/Sell/HBoxContainer/PanelContainer/VBoxContainer/TextSellValue")
 Sell_All = NodePath("Pages/Sell/HBoxContainer/PanelContainer/VBoxContainer/Sell_All")
 MoneyParticle = NodePath("MoneyParticle")
@@ -105,7 +104,7 @@ buttons = NodePath("Buttons")
 back0 = NodePath("Pages/Sell/HBoxContainer/ItemPanel/HBoxContainer/Back")
 back1 = NodePath("Pages/Buy/HBoxContainer/VBoxContainer/HBoxContainer/Back")
 UPGRADE_OBJECT = ExtResource("4_8f7lt")
-upgradesList = NodePath("Pages/Buy/HBoxContainer/VBoxContainer/Upgrades")
+upgradesList = NodePath("Pages/Buy/HBoxContainer/VBoxContainer/ScrollContainer/Upgrades")
 
 [node name="Buttons" type="HBoxContainer" parent="." unique_id=1018599329]
 layout_mode = 1
@@ -162,6 +161,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Buy" type="PanelContainer" parent="Pages" unique_id=472144950]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -181,6 +181,7 @@ layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Pages/Buy/HBoxContainer" unique_id=831638758]
 layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Pages/Buy/HBoxContainer/VBoxContainer" unique_id=1871096200]
 layout_mode = 2
@@ -209,7 +210,11 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.7372549, 0.6666667, 0.6431373, 1)
 text = "Static Upgrades:"
 
-[node name="Upgrades" type="VBoxContainer" parent="Pages/Buy/HBoxContainer/VBoxContainer" unique_id=574894224]
+[node name="ScrollContainer" type="ScrollContainer" parent="Pages/Buy/HBoxContainer/VBoxContainer" unique_id=373510810]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Upgrades" type="VBoxContainer" parent="Pages/Buy/HBoxContainer/VBoxContainer/ScrollContainer" unique_id=574894224]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 size_flags_vertical = 3

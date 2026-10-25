@@ -23,6 +23,7 @@ func _process(delta: float) -> void:
 	#enter
 	if Input.is_action_just_pressed("action") and playerInside:
 		loading_text.show()
+		loading_text.get_children()[1].text = "Loading..."
 		await get_tree().process_frame
 		Global.loadWaterEnviroment.emit()
 		$"../BackgroundmusicHandler/ShopSoundtrack".stop()

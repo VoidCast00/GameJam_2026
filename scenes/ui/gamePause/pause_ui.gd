@@ -1,11 +1,12 @@
 extends Control
 
+@onready var back_to_game: AnimatedButton = $VBoxContainer/backToGame
+@onready var options: AnimatedButton = $VBoxContainer/options
+@onready var exit: AnimatedButton = $VBoxContainer/exit
 
-	
 
-
-func _on_start_pressed() -> void:
-	Global.loadShopEnviroment.emit()
+func _ready() -> void:
+	exit.pressed.connect(_on_exit_pressed)
 	
 
 

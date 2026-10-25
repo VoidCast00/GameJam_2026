@@ -182,6 +182,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c18aq"]
 size = Vector2(512, 318.34937)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3aygq"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x8mcd"]
 size = Vector2(379, 792)
 
@@ -201,6 +204,9 @@ position = Vector2(66.00001, -20.714285)
 scale = Vector2(0.99999994, 0.99999994)
 texture = ExtResource("2_mkqyk")
 metadata/_edit_lock_ = true
+
+[node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1278390018]
+position = Vector2(1, 0)
 
 [node name="Floor" type="StaticBody2D" parent="." unique_id=630826328]
 position = Vector2(27.000122, 760)
@@ -276,6 +282,14 @@ collision_layer = 0
 position = Vector2(355, 77.37658)
 shape = SubResource("RectangleShape2D_c18aq")
 
+[node name="EasterEgg" type="Button" parent="Shop" unique_id=1493500711]
+offset_left = 532.0
+offset_top = -281.0
+offset_right = 540.0
+offset_bottom = -273.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_3aygq")
+text = "     "
+
 [node name="Transport" type="Node2D" parent="." unique_id=685474258]
 position = Vector2(-1699, 348)
 script = ExtResource("4_k81a4")
@@ -306,5 +320,6 @@ mix_target = 1
 
 [connection signal="body_entered" from="Shop/EnterBox" to="Shop" method="_on_enter_box_body_entered"]
 [connection signal="body_exited" from="Shop/EnterBox" to="Shop" method="_on_enter_box_body_exited"]
+[connection signal="pressed" from="Shop/EasterEgg" to="Shop" method="_on_easter_egg_pressed"]
 [connection signal="body_entered" from="Transport/EnterArea" to="Transport" method="_on_enter_area_body_entered"]
 [connection signal="body_exited" from="Transport/EnterArea" to="Transport" method="_on_enter_area_body_exited"]
