@@ -4,8 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://chaugulbspsm5" path="res://scenes/ui/Item/item.tscn" id="2_afst3"]
 [ext_resource type="Script" uid="uid://cpe2ml4pgkvvj" path="res://scenes/AnimatedButton/animated_button.gd" id="2_jgblb"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3aygq"]
-bg_color = Color(0.17953351, 0.30383018, 0.29889727, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eiwcj"]
+bg_color = Color(0.25882354, 0.40784314, 0.41960785, 1)
 corner_radius_top_left = 16
 corner_radius_top_right = 16
 corner_radius_bottom_right = 16
@@ -28,6 +28,25 @@ corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
 shadow_color = Color(0.15294118, 0.15294118, 0.15294118, 0.8784314)
 shadow_offset = Vector2(8, 5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pd0ml"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0.37413922, 0.37413928, 0.37413913, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s5be7"]
+content_margin_left = 10.0
+bg_color = Color(0.26033783, 0.4073143, 0.421473, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_15lw0"]
 bg_color = Color(0.4390491, 0.43904912, 0.43904912, 1)
@@ -60,13 +79,14 @@ spacing_top = 3
 spacing_bottom = 3
 
 [sub_resource type="SystemFont" id="SystemFont_8f7lt"]
+subpixel_positioning = 0
 
 [sub_resource type="FontVariation" id="FontVariation_afst3"]
 base_font = SubResource("SystemFont_8f7lt")
 variation_embolden = 2.0
 variation_transform = Transform2D(1.11, 0, -0.25, 1.57, 0, 0)
 
-[node name="ShopUI" type="Control" unique_id=1585925505 node_paths=PackedStringArray("item_list", "sell_value", "Sell_All", "MoneyParticle", "timer")]
+[node name="ShopUI" type="Control" unique_id=1585925505 node_paths=PackedStringArray("item_list", "sell_value", "Sell_All", "MoneyParticle", "timer", "buttons", "back0", "back1")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -80,6 +100,9 @@ sell_value = NodePath("Pages/Sell/HBoxContainer/PanelContainer/VBoxContainer/Tex
 Sell_All = NodePath("Pages/Sell/HBoxContainer/PanelContainer/VBoxContainer/Sell_All")
 MoneyParticle = NodePath("MoneyParticle")
 timer = NodePath("MoneyParticle/Timer")
+buttons = NodePath("Buttons")
+back0 = NodePath("Pages/Sell/HBoxContainer/ItemPanel/HBoxContainer/Back")
+back1 = NodePath("Pages/Buy/HBoxContainer/VBoxContainer/HBoxContainer/Back")
 
 [node name="Buttons" type="HBoxContainer" parent="." unique_id=1018599329]
 layout_mode = 1
@@ -101,7 +124,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_colors/font_color = Color(0.73783386, 0.66585124, 0.6433071, 1)
 theme_override_font_sizes/font_size = 100
-theme_override_styles/normal = SubResource("StyleBoxFlat_3aygq")
+theme_override_styles/normal = SubResource("StyleBoxFlat_eiwcj")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_afst3")
 theme_override_styles/hover = SubResource("StyleBoxFlat_8f7lt")
 text = "Buy"
@@ -113,7 +136,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_colors/font_color = Color(0.73783386, 0.66585124, 0.6433071, 1)
 theme_override_font_sizes/font_size = 100
-theme_override_styles/normal = SubResource("StyleBoxFlat_3aygq")
+theme_override_styles/normal = SubResource("StyleBoxFlat_eiwcj")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_afst3")
 theme_override_styles/hover = SubResource("StyleBoxFlat_8f7lt")
 text = "Sell
@@ -137,9 +160,58 @@ grow_vertical = 2
 
 [node name="Buy" type="PanelContainer" parent="Pages" unique_id=472144950]
 visible = false
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -387.5
+offset_top = -318.0
+offset_right = 387.5
+offset_bottom = 318.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_pd0ml")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Pages/Buy" unique_id=407410995]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Pages/Buy/HBoxContainer" unique_id=831638758]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Pages/Buy/HBoxContainer/VBoxContainer" unique_id=1871096200]
+layout_mode = 2
+
+[node name="Back" type="Button" parent="Pages/Buy/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=970813438]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_colors/font_color = Color(0.73783386, 0.66585124, 0.6433071, 1)
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_eiwcj")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_afst3")
+theme_override_styles/hover = SubResource("StyleBoxFlat_8f7lt")
+text = "< back"
+script = ExtResource("2_jgblb")
+metadata/_custom_type_script = "uid://cpe2ml4pgkvvj"
+
+[node name="PanelContainer" type="PanelContainer" parent="Pages/Buy/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=1106984711]
+custom_minimum_size = Vector2(215, 46)
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_styles/panel = SubResource("StyleBoxFlat_s5be7")
+
+[node name="Title" type="Label" parent="Pages/Buy/HBoxContainer/VBoxContainer/HBoxContainer/PanelContainer" unique_id=117787663]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7372549, 0.6666667, 0.6431373, 1)
+text = "Static Upgrades:"
+
+[node name="Upgrades" type="VBoxContainer" parent="Pages/Buy/HBoxContainer/VBoxContainer" unique_id=574894224]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 10
 
 [node name="Sell" type="PanelContainer" parent="Pages" unique_id=372834407]
 visible = false
@@ -166,14 +238,32 @@ custom_minimum_size = Vector2(350, 0)
 layout_mode = 2
 theme_override_constants/separation = 9
 
-[node name="Text" type="PanelContainer" parent="Pages/Sell/HBoxContainer/ItemPanel" unique_id=1088269332]
+[node name="HBoxContainer" type="HBoxContainer" parent="Pages/Sell/HBoxContainer/ItemPanel" unique_id=34840472]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_constants/separation = -150
+
+[node name="Back" type="Button" parent="Pages/Sell/HBoxContainer/ItemPanel/HBoxContainer" unique_id=1325811391]
+custom_minimum_size = Vector2(85, 0)
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_colors/font_color = Color(0.73783386, 0.66585124, 0.6433071, 1)
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_eiwcj")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_afst3")
+theme_override_styles/hover = SubResource("StyleBoxFlat_8f7lt")
+text = "< back"
+script = ExtResource("2_jgblb")
+metadata/_custom_type_script = "uid://cpe2ml4pgkvvj"
+
+[node name="Text" type="PanelContainer" parent="Pages/Sell/HBoxContainer/ItemPanel/HBoxContainer" unique_id=1088269332]
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
+size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_x8mcd")
 
-[node name="Label" type="Label" parent="Pages/Sell/HBoxContainer/ItemPanel/Text" unique_id=1589122920]
+[node name="Label" type="Label" parent="Pages/Sell/HBoxContainer/ItemPanel/HBoxContainer/Text" unique_id=1589122920]
 layout_mode = 2
-size_flags_horizontal = 0
 theme_override_font_sizes/font_size = 30
 text = "Items: "
 
@@ -210,7 +300,7 @@ size_flags_horizontal = 6
 size_flags_vertical = 4
 theme_override_colors/font_color = Color(0.73783386, 0.66585124, 0.6433071, 1)
 theme_override_font_sizes/font_size = 70
-theme_override_styles/normal = SubResource("StyleBoxFlat_3aygq")
+theme_override_styles/normal = SubResource("StyleBoxFlat_eiwcj")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_afst3")
 theme_override_styles/hover = SubResource("StyleBoxFlat_8f7lt")
 text = " SELL ALL!! "

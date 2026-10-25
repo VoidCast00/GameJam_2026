@@ -1,0 +1,136 @@
+[gd_scene format=3 uid="uid://tbdgcsql6byc"]
+
+[ext_resource type="Script" uid="uid://cpe2ml4pgkvvj" path="res://scenes/AnimatedButton/animated_button.gd" id="1_1661k"]
+[ext_resource type="Script" uid="uid://b20ogcbqkggcv" path="res://scenes/ui/UpgradeUI/upgradeUI.gd" id="1_eiwcj"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3aygq"]
+content_margin_left = 15.0
+content_margin_top = 15.0
+content_margin_right = 15.0
+content_margin_bottom = 15.0
+bg_color = Color(0.26459998, 0.49, 0.3021666, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0.25173542, 0.0051772324, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="SystemFont" id="SystemFont_pd0ml"]
+subpixel_positioning = 0
+
+[sub_resource type="FontVariation" id="FontVariation_x8mcd"]
+base_font = SubResource("SystemFont_pd0ml")
+spacing_space = -1
+spacing_top = -7
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_3aygq"]
+color = Color(0, 0.2509804, 0.003921569, 1)
+grow_begin = 0.0
+grow_end = 0.0
+thickness = 2
+vertical = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eiwcj"]
+bg_color = Color(0.25882354, 0.40784314, 0.41960785, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(0.15294118, 0.15294118, 0.15294118, 0.8784314)
+shadow_offset = Vector2(8, 5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_afst3"]
+bg_color = Color(0.056888647, 0.11625751, 0.11436313, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8f7lt"]
+bg_color = Color(0.25018948, 0.40283847, 0.3978507, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(0.15294118, 0.15294118, 0.15294118, 0.8784314)
+shadow_offset = Vector2(8, 5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_opb7t"]
+bg_color = Color(0.32966655, 0, 0.43, 0.14901961)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[node name="Upgrade" type="PanelContainer" unique_id=893944204]
+custom_maximum_size = Vector2(-1, 160)
+offset_right = 297.0
+offset_bottom = 112.0
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_3aygq")
+script = ExtResource("1_eiwcj")
+
+[node name="HBox" type="HBoxContainer" parent="." unique_id=1771865208]
+layout_mode = 2
+
+[node name="VBoxText" type="VBoxContainer" parent="HBox" unique_id=760487740]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="UpgradeName" type="Label" parent="HBox/VBoxText" unique_id=1635970256]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+text = "Upgrade Name"
+
+[node name="UpgradeDesc" type="Label" parent="HBox/VBoxText" unique_id=1823623587]
+custom_maximum_size = Vector2(170, 200)
+propagate_maximum_size = true
+layout_mode = 2
+size_flags_vertical = 10
+theme_override_colors/font_color = Color(0.62, 0.62, 0.62, 0.89411765)
+theme_override_fonts/font = SubResource("FontVariation_x8mcd")
+theme_override_font_sizes/font_size = 11
+text = "Upgrade is an upgrade Upgrade is an upgrade Upgrade is an upgrade Upgrade is an upgrade"
+autowrap_mode = 3
+
+[node name="VSeparator" type="VSeparator" parent="HBox" unique_id=936036873]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_3aygq")
+
+[node name="VBoxBuy" type="VBoxContainer" parent="HBox" unique_id=1636968501]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme_override_constants/separation = 12
+
+[node name="BuyUpgrade" type="Button" parent="HBox/VBoxBuy" unique_id=1982050338]
+custom_minimum_size = Vector2(85, 50)
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(0.73783386, 0.66585124, 0.6433071, 1)
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_eiwcj")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_afst3")
+theme_override_styles/hover = SubResource("StyleBoxFlat_8f7lt")
+text = "BUY"
+script = ExtResource("1_1661k")
+metadata/_custom_type_script = "uid://cpe2ml4pgkvvj"
+
+[node name="MarginContainer" type="PanelContainer" parent="HBox/VBoxBuy" unique_id=1397164797]
+custom_minimum_size = Vector2(85, 20)
+custom_maximum_size = Vector2(100, 25)
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_styles/panel = SubResource("StyleBoxFlat_opb7t")
+
+[node name="Cost" type="Label" parent="HBox/VBoxBuy/MarginContainer" unique_id=2063625875]
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+text = "Cost: 100$"
+horizontal_alignment = 1
