@@ -1,15 +1,20 @@
 extends Control
-@onready var utopia___main_menu_soundtrack: AudioStreamPlayer = $"Utopia - mainMenuSoundtrack"
+@export var main_menu_soundtrack: AudioStreamPlayer
+@export var start: AnimatedButton
+@export var options: AnimatedButton
+@export var exit: AnimatedButton
 
 func _ready() -> void:
-	utopia___main_menu_soundtrack.play()
+	main_menu_soundtrack.play()
+	exit.pressed.connect(_on_exit_pressed)
+	start.pressed.connect(_on_start_pressed)
 
 
 func _on_start_pressed() -> void:
 	Global.loadShopEnviroment.emit()
-	utopia___main_menu_soundtrack.stop()
+	main_menu_soundtrack.stop()
 
 
 func _on_exit_pressed() -> void:
 	Global.exitGame.emit()
-	utopia___main_menu_soundtrack.stop()
+	main_menu_soundtrack.stop()
