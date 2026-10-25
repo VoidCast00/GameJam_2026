@@ -23,7 +23,8 @@ var mining_state_last_frame:bool = false
 @export var world_generator: Node 
 @onready var LaserSound: AudioStreamPlayer = $LaserSound
 
-
+@onready var cpu_particles_2d: CPUParticles2D = $CPUParticles2D
+@onready var timer: Timer = $Timer
 @onready var point_light_2d: PointLight2D = $PointLight2D
 #OXYGENNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN
 
@@ -41,6 +42,7 @@ func _physics_process(delta: float) -> void:
 func _process(delta: float) -> void:
 	Global.oxygen -= delta
 	mine(delta)
+	
 
 
 #input===================================================================
@@ -122,3 +124,7 @@ func show_laser(target: Vector2) -> void:
 		laser.to_local(shooting_point.global_position),
 		laser.to_local(target)
 	])
+
+
+func _on_timer_timeout() -> void:
+	cpu_particles_2d.emitting = true

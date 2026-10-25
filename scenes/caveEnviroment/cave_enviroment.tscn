@@ -621,6 +621,30 @@ world_generator = NodePath("../../Static/WorldGenerator")
 
 [node name="Static" type="Node2D" parent="." unique_id=961585314]
 
+[node name="BreakingPar" type="CPUParticles2D" parent="Static" unique_id=674174720]
+modulate = Color(0.23537052, 0.23537052, 0.23537052, 1)
+z_index = 5
+emitting = false
+amount = 12
+lifetime = 0.8
+preprocess = 0.25
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 15.0
+initial_velocity_max = 60.0
+
+[node name="AfterBreakPar" type="CPUParticles2D" parent="Static" unique_id=1678426234]
+modulate = Color(0.3530626, 0.35306263, 0.35306257, 1)
+emitting = false
+amount = 12
+lifetime = 0.3
+one_shot = true
+explosiveness = 0.57
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 20.0
+initial_velocity_max = 50.0
+
 [node name="Cave" type="TileMapLayer" parent="Static" unique_id=1651881328]
 texture_filter = 1
 tile_set = SubResource("TileSet_vsfrg")
@@ -641,7 +665,7 @@ stream = ExtResource("8_4h610")
 texture_filter = 1
 tile_set = SubResource("TileSet_pd0ml")
 
-[node name="WorldGenerator" type="Node" parent="Static" unique_id=85954663 node_paths=PackedStringArray("caveTilemap", "oreTilemap", "transport")]
+[node name="WorldGenerator" type="Node" parent="Static" unique_id=85954663 node_paths=PackedStringArray("caveTilemap", "oreTilemap", "transport", "cpu_particles_2d", "after_break_par")]
 script = ExtResource("3_g0opn")
 caveNoise = SubResource("NoiseTexture2D_yf8om")
 crystalNoise = SubResource("NoiseTexture2D_u0fae")
@@ -649,6 +673,8 @@ goldNoise = SubResource("NoiseTexture2D_30230")
 caveTilemap = NodePath("../Cave")
 oreTilemap = NodePath("../OresTilemap")
 transport = NodePath("../TransportUp")
+cpu_particles_2d = NodePath("../BreakingPar")
+after_break_par = NodePath("../AfterBreakPar")
 
 [node name="TransportUp" type="StaticBody2D" parent="Static" unique_id=1637920218]
 collision_layer = 0

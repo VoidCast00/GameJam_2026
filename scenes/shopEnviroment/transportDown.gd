@@ -17,7 +17,6 @@ var start_pos: Vector2
 func _ready() -> void:
 	start_pos = ship.position
 
-
 func _process(delta: float) -> void:
 	_wave(delta)
 

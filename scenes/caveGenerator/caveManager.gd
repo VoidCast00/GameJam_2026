@@ -42,6 +42,9 @@ const CRYSTAL_TILES := {
 @onready var gold_break: AudioStreamPlayer = $"../Cave/goldBreak"
 @onready var ruby_break: AudioStreamPlayer = $"../Cave/rubyBreak"
 @onready var amethist_break: AudioStreamPlayer = $"../Cave/amethistBreak"
+@export var cpu_particles_2d: CPUParticles2D
+@export var after_break_par: CPUParticles2D
+
 
 #ores: cell : gold / amethyst
 var ores := {}
@@ -58,8 +61,11 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
+	
+	
 	if not is_mining:
 		return
+		
 
 	mining_timer += delta
 	if mining_timer >= MINING_TIMES.get(mining_type, 1.0):
@@ -78,9 +84,11 @@ func _process(delta: float) -> void:
 		stopMining()
 
 
+
+
 #mining (global position)
 func startMining(global_pos: Vector2) -> void:
-	var cell := caveTilemap.local_to_map(caveTilemap.to_local(global_pos))
+	var cell :=  caveTilemap.local_to_map(caveTilemap.to_local(global_pos))
 
 	#already mining this cell
 	if is_mining and cell == mining_cell:
@@ -95,14 +103,21 @@ func startMining(global_pos: Vector2) -> void:
 	mining_type = ores.get(cell, "rock")
 	mining_timer = 0.0
 	is_mining = true
+	cpu_particles_2d.global_position = global_pos
+	cpu_particles_2d.emitting = true
 
 
 func stopMining() -> void:
+	cpu_particles_2d.emitting = false
+	breakPar(cpu_particles_2d.global_position)
 	is_mining = false
 	mining_cell = Vector2i.ZERO
 	mining_type = ""
 	mining_timer = 0.0
-
+	
+func breakPar(position: Vector2) -> void:
+	after_break_par.global_position = position
+	after_break_par.emitting = true
 
 #generate
 func generateCaveSystem() -> void:

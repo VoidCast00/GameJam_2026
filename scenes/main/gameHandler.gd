@@ -4,7 +4,8 @@ extends Node
 @export var sub_viewport: SubViewport
 @export var WaterEnviroment: PackedScene
 @export var ShopEnviroment: PackedScene
-@export var menu:CanvasLayer
+@export var menu:Control
+@export var pause:Control
 @export var oxygen_gauge: Control 
 
 
@@ -43,8 +44,11 @@ func exitGame():
 
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("esc"):
-		menu.visible = not menu.visible
+	if event.is_action_pressed("esc") and menu.visible:
+		pass
+	else:
+		if event.is_action_pressed("esc"):
+			pause.visible = not pause.visible
 
 
 
