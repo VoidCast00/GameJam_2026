@@ -10,6 +10,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("action") and playerInside:
 		Global.loadShopEnviroment.emit()
+		Global.day += 1
 		
 
 
