@@ -49,18 +49,21 @@ func _on_buy_pressed() -> void:
 	buttons.hide()
 
 
+func updateSellItemList() -> void:
+	for item in Inventory.items:
+		var itemObj:ItemObjUI= itemScene.instantiate()
+		itemObj.itemCount = Inventory.items[item]
+		itemObj.itemName = str(item)
+		itemObj.sellAmount = SELL_AMOUNT[item]
+		itemObj.parent = self
+		item_list.add_child(itemObj)
 
 
 func _on_sell_pressed() -> void:
 	sell.show()
 	buy.hide()
 	buttons.hide()
-	for item in Inventory.items:
-		var itemObj:ItemObjUI= itemScene.instantiate()
-		itemObj.itemCount = Inventory.items[item]
-		itemObj.itemName = str(item)
-		itemObj.sellAmount = SELL_AMOUNT[item]
-		item_list.add_child(itemObj)
+	updateSellItemList()
 
 func go_back() -> void:
 	sell.hide()
@@ -74,17 +77,14 @@ func sellAll() -> void:
 	var sell_value := 0
 	for item in Inventory.items:
 		sell_value += SELL_AMOUNT.get(item, 0) * Inventory.items[item]
-
 	#nothing to sell
 	if sell_value <= 0:
 		return
-
 	Inventory.cash += sell_value
 	Inventory.items.clear()
 
-	$Buttons.hide()
-	$Pages.hide()
 	spawnMoneyParticle(sell_value)
+	updateSellItemList()
 
 
 func spawnMoneyParticle(sell_value: int) -> void:
