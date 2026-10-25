@@ -23,6 +23,7 @@ buses/default_bus_layout="uid://cjd56bn8m2dpq"
 
 Global="*uid://4btp2cewmru6"
 Inventory="*uid://chg646lqd83o"
+Upgrades="*uid://bgpxjunmhlnj0"
 
 [display]
 

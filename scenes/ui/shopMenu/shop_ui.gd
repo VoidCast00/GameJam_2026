@@ -14,6 +14,8 @@ var money_tween: Tween
 @export var buttons: HBoxContainer
 @export var back0: AnimatedButton
 @export var back1: AnimatedButton
+@export var UPGRADE_OBJECT:PackedScene
+@export var upgradesList: VBoxContainer
 
 const SELL_AMOUNT := {
 	"rock": 1,
@@ -28,10 +30,17 @@ func _ready() -> void:
 	Sell_All.pressed.connect(sellAll)
 	back0.pressed.connect(go_back)
 	back1.pressed.connect(go_back)
+	for id in Upgrades.ALL:
+		var upgradeItem:UpgradeObjUI= UPGRADE_OBJECT.instantiate()
+		upgradeItem.id = id
+		upgradesList.add_child(upgradeItem)
+	
 func _on_buy_pressed() -> void:
 	sell.hide()
 	buy.show()
 	buttons.hide()
+
+
 
 
 func _on_sell_pressed() -> void:
