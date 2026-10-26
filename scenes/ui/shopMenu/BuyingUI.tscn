@@ -175,6 +175,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Buy" type="PanelContainer" parent="Pages" unique_id=472144950]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -340,7 +341,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 0
 theme_override_fonts/font = SubResource("FontVariation_pd0ml")
 theme_override_font_sizes/font_size = 50
-text = "Sell value: "
+text = "                   "
 
 [node name="Sell_All" type="Button" parent="Pages/Sell/HBoxContainer/PanelContainer/VBoxContainer" unique_id=368183300]
 layout_mode = 2

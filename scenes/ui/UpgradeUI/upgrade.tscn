@@ -96,11 +96,11 @@ layout_mode = 2
 size_flags_vertical = 10
 theme_override_colors/font_color = Color(0.62, 0.62, 0.62, 0.89411765)
 theme_override_fonts/font = SubResource("FontVariation_x8mcd")
-theme_override_font_sizes/font_size = 14
+theme_override_font_sizes/font_size = 15
 text = "Upgrade is an upgrade Upgrade "
 autowrap_mode = 3
 
-[node name="Panel" type="Panel" parent="HBox" unique_id=1628699469]
+[node name="TraitIcon" type="Panel" parent="HBox" unique_id=1628699469]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 size_flags_horizontal = 8

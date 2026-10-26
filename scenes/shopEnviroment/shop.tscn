@@ -248,7 +248,7 @@ shape = SubResource("RectangleShape2D_uaush")
 
 [node name="CustomPlayer" type="CharacterBody2D" parent="." unique_id=1560269461]
 z_index = 2
-position = Vector2(-550, 638)
+position = Vector2(-357, 596)
 collision_mask = 6
 script = ExtResource("1_ry6u4")
 
@@ -269,9 +269,10 @@ sprite_frames = SubResource("SpriteFrames_8iceo")
 animation = &"jump"
 autoplay = "idle"
 
-[node name="Shop" type="Node2D" parent="." unique_id=1090378436]
+[node name="Shop" type="Node2D" parent="." unique_id=1090378436 node_paths=PackedStringArray("press_e")]
 position = Vector2(1735, 327)
 script = ExtResource("3_528fk")
+press_e = NodePath("Press_E")
 
 [node name="EnterBox" type="Area2D" parent="Shop" unique_id=127864080]
 position = Vector2(5, 15)
@@ -290,9 +291,19 @@ offset_bottom = -273.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_3aygq")
 text = "     "
 
-[node name="Transport" type="Node2D" parent="." unique_id=685474258]
+[node name="Press_E" type="Label" parent="Shop" unique_id=582863349]
+visible = false
+offset_left = 136.0
+offset_top = 11.0
+offset_right = 247.0
+offset_bottom = 53.0
+theme_override_font_sizes/font_size = 32
+text = "press: E"
+
+[node name="Transport" type="Node2D" parent="." unique_id=685474258 node_paths=PackedStringArray("press_e")]
 position = Vector2(-1699, 348)
 script = ExtResource("4_k81a4")
+press_e = NodePath("Press_E")
 
 [node name="EnterArea" type="Area2D" parent="Transport" unique_id=1328667083]
 collision_layer = 0
@@ -306,6 +317,15 @@ z_index = -1
 position = Vector2(1540, 141)
 scale = Vector2(12, 12)
 texture = ExtResource("5_mkqyk")
+
+[node name="Press_E" type="Label" parent="Transport" unique_id=873377300]
+visible = false
+offset_left = 1096.0
+offset_top = 86.0
+offset_right = 1156.0
+offset_bottom = 109.0
+theme_override_font_sizes/font_size = 30
+text = "press: E"
 
 [node name="BackgroundmusicHandler" type="Node" parent="." unique_id=884699706]
 script = ExtResource("6_vnm1a")

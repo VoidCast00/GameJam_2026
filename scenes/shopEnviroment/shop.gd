@@ -2,6 +2,7 @@ extends Node2D
 
 var playerInside:bool = false
 @onready var shop_ui: Control = Global.shop_ui
+@export var press_e: Label
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -23,9 +24,10 @@ func _process(delta: float) -> void:
 
 func _on_enter_box_body_entered(body: CharacterBody2D) -> void:
 	playerInside = true
-
+	press_e.show()
 func _on_enter_box_body_exited(body: CharacterBody2D) -> void:
 	playerInside = false
+	press_e.hide()
 
 
 func _on_easter_egg_pressed() -> void:

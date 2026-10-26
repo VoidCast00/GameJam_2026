@@ -12,9 +12,11 @@ const LINE := Color(1, 1, 1, 0.08)
 @onready var title: Label = $MarginContainer/VBoxContainer/Title
 @onready var separator: HSeparator = $MarginContainer/VBoxContainer/HSeparator
 @onready var item_list: VBoxContainer = $MarginContainer/VBoxContainer/ItemList
+@export var cash: Label
 
 
 func _process(delta: float) -> void:
+	cash.text = "cash :"+str(Inventory.cash)
 	if Input.is_action_pressed("inventory"):
 		visible = true
 	else:

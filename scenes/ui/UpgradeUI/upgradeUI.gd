@@ -7,13 +7,27 @@ var id: String
 @onready var upgrade_descText: Label = $HBox/VBoxText/UpgradeDesc
 @onready var buy_upgradeButton: AnimatedButton = $HBox/VBoxBuy/BuyUpgrade
 @onready var costText: Label = $HBox/VBoxBuy/MarginContainer/Cost
+@onready var trait_icon: Panel = $HBox/TraitIcon
 
 
 func _ready() -> void:
 	buy_upgradeButton.pressed.connect(_on_buy)
 	Upgrades.bought.connect(_on_bought)
 	visibility_changed.connect(refresh)
+	_setup_icon()
 	refresh()
+
+
+#show the trait image for this upgrade, if one exists in assets/traits
+func _setup_icon() -> void:
+	var path := "res://assets/traits/%s.png" % id
+	if not ResourceLoader.exists(path):
+		trait_icon.hide()
+		return
+
+	var box := StyleBoxTexture.new()
+	box.texture = load(path)
+	trait_icon.add_theme_stylebox_override("panel", box)
 
 
 func _on_buy() -> void:

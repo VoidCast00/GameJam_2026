@@ -8,6 +8,9 @@ extends Node
 @export var pause:Control
 @export var oxygen_gauge: Control 
 @export var label: Label
+@export var lost_quota: Control
+@export var main_menu: Control
+@export var death: Control
 
 
 
@@ -19,6 +22,7 @@ var current_env: Node = null
 var is_loading := false
 
 func _ready() -> void:
+	Inventory.oxygenDepleted.connect(killPLayer)
 	pause.resume.connect(switchPause)
 	Global.shop_ui = %ShopUI
 	Global.loading_text = %LoadingText
@@ -31,25 +35,49 @@ func _ready() -> void:
 func loadWaterEnviroment() -> void:
 	menu.hide()
 	oxygen_gauge.show()
-	label.hide()
-	load_env(WaterEnviroment)
+	
+	var daysLeft = (Global.deadline - Global.day) 
+	if (daysLeft == 0 and Inventory.cash - Global.quota < 0):
+			lost_quota.show()
+			var sound : AudioStreamPlayer = main_menu.main_menu_soundtrack
+			sound.play()
+			sound.pitch_scale = 0.8	
+			unload()
+	
+	else:
+		if (daysLeft == 0):
+			Inventory.cash -= Global.quota
+			Global.quota *= 2
+			Global.deadline += 3
+		else:
+			Global.day += 1
+		load_env(WaterEnviroment)
+		
+
+func killPLayer():
+	unload()
+	death.show()
+
+
+func unload() -> void:
+	if current_env:
+		current_env.queue_free()
 
 
 func loadShopEnviroment() -> void:
-	var daysLeft = (Global.deadline - Global.day) 
+	var daysLeft = (Global.deadline - Global.day) 			
 	var text :String = ""
 	if daysLeft == 1:
 		text = "1. day remeaning"
 	else:
 		text = str(daysLeft) + ". days remaning"
 	Global.loading_text.get_children()[1].text = text
+	Global.loading_text.get_children()[2].text = "Quota: " + str(Global.quota)
 	Global.loading_text.show()
 	menu.hide()
 	oxygen_gauge.hide()
-	label.show()
 	await get_tree().create_timer(2.0).timeout
 	load_env(ShopEnviroment)
-	Global.day += 1
 
 
 func exitGame():
@@ -82,9 +110,7 @@ func load_env(scene: PackedScene) -> void:
 
 	await get_tree().process_frame
 
-	#remove old
-	if current_env:
-		current_env.queue_free()
+	unload()
 
 	#add new
 	current_env = scene.instantiate()

@@ -5,6 +5,7 @@ extends Node2D
 @export var bob_speed: float = 1.2      #how fast
 @export var tilt_angle: float = 3.0     #degrees left and right
 @export var tilt_speed: float = 0.8
+@export var press_e: Label
 
 var playerInside := false
 var time := 0.0
@@ -40,8 +41,9 @@ func _wave(delta: float) -> void:
 func _on_enter_area_body_entered(body: Node2D) -> void:
 	if body is CharacterBody2D:
 		playerInside = true
-
+		press_e.show()
 
 func _on_enter_area_body_exited(body: Node2D) -> void:
 	if body is CharacterBody2D:
 		playerInside = false
+		press_e.hide()

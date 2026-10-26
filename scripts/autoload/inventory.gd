@@ -1,9 +1,9 @@
 extends  Node
 
 signal changed(item: String, amount: int)
+signal oxygenDepleted
 
-
-var cash:int = 100:
+var cash:int = 190:
 	set(new_val):
 		cash = clamp(new_val, 0, INT64_MAX)
 		
@@ -27,7 +27,7 @@ var oxygen: float:  #in seconds (filled in _ready)
 		oxygen = clampf(new_val, 0.0, oxygenTankSize)
 		#only once
 		if oxygen <= 0.0 and not was_empty:
-			Global.oxygenDepleted.emit()
+			oxygenDepleted.emit()
 
 
 #item name -> amount
